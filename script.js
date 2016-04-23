@@ -1050,9 +1050,9 @@ var contactContent =
 	</header>\
 	<address>\
 		<p class="headerText">Mobile: 07804666318</p>\
-		<p class="headerText">E-mail: ryan6tk@hotmail.co.uk</p>\
+		<p class="headerText">E-mail: mail@ryanjp.co.uk</p>\
 	</address>\
-	<p class="headerText">CV download: <a class="downloadLink" href="https://onedrive.live.com/redir?resid=54DE7EFF7828975F!827&authkey=!ADDtMb5w-czZYC4&ithint=file%2cdocx" target="_blank">here</a></p>\
+	<p class="headerText">CV download: <a class="downloadLink" href="https://onedrive.live.com/redir?resid=54DE7EFF7828975F!829&authkey=!AEEFVD54hEEtJt4&ithint=file%2cdocx" target="_blank">here</a></p>\
 	<footer>\
 		<p class="footer standardText">A recent graduate of the University of Huddersfield with experience in software, web and games programming.</p>\
 	</footer>';
