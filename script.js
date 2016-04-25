@@ -56,18 +56,18 @@ var activeImageClass = 'galleryImageActive';
 function setupImageGallery(tile) {
 	var galleryImages = tile.getElementsByClassName('galleryImage');
 	
-	// Galleries either use portrait or landscape images (never a mix), if there are no portrait images then it must be a landscape one
-	if (galleryImages.length === 0) {
-		galleryImages = tile.getElementsByClassName('galleryImageLandscape');
-		activeImageClass = 'galleryImageLandscapeActive';
-	} else {
-		activeImageClass = 'galleryImageActive';
-	}
+	// // Galleries either use portrait or landscape images (never a mix), if there are no portrait images then it must be a landscape one
+	// if (galleryImages.length === 0) {
+		// galleryImages = tile.getElementsByClassName('galleryImageLandscape');
+		// activeImageClass = 'galleryImageLandscapeActive';
+	// } else {
+		// activeImageClass = 'galleryImageActive';
+	// }
 	
 	// prevent clicks inside the gallery deactivating the tile
-	document.getElementsByClassName('gallery')[0].addEventListener('click', function(event) {
-		event.stopPropagation(); 
-	});
+	// document.getElementsByClassName('gallery')[0].addEventListener('click', function(event) {
+		// event.stopPropagation(); 
+	// });
 	
 	// expand an image when clicked, shrink it when clicked again
 	for (var i = 0; i < galleryImages.length; i++) {
@@ -749,16 +749,16 @@ var projectsTilesSelectedContent = [
 	</section>\
 	<div class="gallery">\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/ab.png"></img>\
+			<img class="galleryImage" src="img/ab.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/ab-0.png"></img>\
+			<img class="galleryImage" src="img/ab-0.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/ab-1.png"></img>\
+			<img class="galleryImage" src="img/ab-1.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/ab-2.png"></img>\
+			<img class="galleryImage" src="img/ab-2.png"></img>\
 		</div>\
 	</div>\
 	<section class="activeTileText">\
@@ -900,19 +900,19 @@ var projectsTilesSelectedContent = [
 	</section>\
 	<div class="gallery">\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/work-0.png"></img>\
+			<img class="galleryImage" src="img/work-0.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/work-1.png"></img>\
+			<img class="galleryImage" src="img/work-1.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/work-2.png"></img>\
+			<img class="galleryImage" src="img/work-2.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/work-3.png"></img>\
+			<img class="galleryImage" src="img/work-3.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/work-4.png"></img>\
+			<img class="galleryImage" src="img/work-4.png"></img>\
 		</div>\
 	</div>\
 	<section class="activeTileText">\
@@ -958,28 +958,28 @@ var projectsTilesSelectedContent = [
 	</section>\
 	<div class="gallery">\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush.jpg"></img>\
+			<img class="galleryImage" src="img/hush.jpg"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-0.jpg"></img>\
+			<img class="galleryImage" src="img/hush-0.jpg"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-1.jpg"></img>\
+			<img class="galleryImage" src="img/hush-1.jpg"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-2.jpg"></img>\
+			<img class="galleryImage" src="img/hush-2.jpg"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-3.jpg"></img>\
+			<img class="galleryImage" src="img/hush-3.jpg"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-4.jpg"></img>\
+			<img class="galleryImage" src="img/hush-4.jpg"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-5.png"></img>\
+			<img class="galleryImage" src="img/hush-5.png"></img>\
 		</div>\
 		<div class="galleryFrame">\
-			<img class="galleryImageLandscape" src="img/hush-6.jpg"></img>\
+			<img class="galleryImage" src="img/hush-6.jpg"></img>\
 		</div>\
 	</div>\
 	<section class="activeTileText">\
