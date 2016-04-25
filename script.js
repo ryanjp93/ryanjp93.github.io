@@ -56,29 +56,19 @@ var activeImageClass = 'galleryImageActive';
 function setupImageGallery(tile) {
 	var galleryImages = tile.getElementsByClassName('galleryImage');
 	
-	// // Galleries either use portrait or landscape images (never a mix), if there are no portrait images then it must be a landscape one
-	// if (galleryImages.length === 0) {
-		// galleryImages = tile.getElementsByClassName('galleryImageLandscape');
-		// activeImageClass = 'galleryImageLandscapeActive';
-	// } else {
-		// activeImageClass = 'galleryImageActive';
-	// }
-	
-	// prevent clicks inside the gallery deactivating the tile
-	// document.getElementsByClassName('gallery')[0].addEventListener('click', function(event) {
-		// event.stopPropagation(); 
-	// });
-	
 	// expand an image when clicked, shrink it when clicked again
 	for (var i = 0; i < galleryImages.length; i++) {
 		galleryImages[i].addEventListener('click', function(event) {
 			event.stopPropagation(); // prevent clicks to images marking the tile inactive
 			
 			var selectedImage = event.target;
+			
+			var imageHeight = selectedImage.height + 'px';
 	
 			if (isActive(selectedImage, activeImageClass)) {
 				// make the clicked image inactive
 				selectedImage.classList.remove(activeImageClass);
+				setTimeout(function() { selectedImage.removeAttribute('style'); }, 10); // Delay to register transition.
 				activeImage = null;
 				
 				return;
@@ -87,10 +77,21 @@ function setupImageGallery(tile) {
 			// if there is already an active image, make it inactive (only one active image allowed at a time)
 			if (activeImage != null) {
 				activeImage.classList.remove(activeImageClass); 
+				
+				var oldActiveImage = activeImage;
+				
+				setTimeout(function() { oldActiveImage.removeAttribute('style'); }, 10); // Delay to register transition.
 			}
 			
 			// make the clicked image active
 			selectedImage.classList.add(activeImageClass);
+			
+			// CSS transitions don't like auto sizes. Calculate what the auto size would be and apply it as an inline style instead.
+			selectedImage.style.height = 'auto';
+			var autoHeight = selectedImage.height + 'px';
+			selectedImage.style.height = imageHeight;
+			
+			setTimeout(function() { selectedImage.style.height = autoHeight; }, 10); // Delay to register transition.
 			activeImage = selectedImage;
 		});
 	}
