@@ -78,7 +78,9 @@ function setupImageGallery(tile) {
 				
 				var oldActiveImage = activeImage;
 				
-				setTimeout(function() { oldActiveImage.removeAttribute('style'); }, 10); // Delay to register transition.
+				setTimeout(function() { 
+					oldActiveImage.removeAttribute('style'); 
+				}, 10); // Delay to register transition.
 			}
 			
 			// make the clicked image active
@@ -86,10 +88,25 @@ function setupImageGallery(tile) {
 			
 			// CSS transitions don't like auto sizes. Calculate what the auto size would be and apply it as an inline style instead.
 			selectedImage.style.height = 'auto';
-			var autoHeight = selectedImage.height + 'px';
+			
+			
+			// Iphones seem to have issues getting a non 0 figure from this, so just make it auto in that case.
+			var autoHeight = 'auto';
+			if (selectedImage.height !== 0) {
+				autoHeight = selectedImage.height + 'px';
+			}
+			
 			selectedImage.removeAttribute('style');
 			
-			setTimeout(function() { selectedImage.style.height = autoHeight; }, 10); // Delay to register transition.
+			setTimeout(function() { 
+				selectedImage.style.height = autoHeight; 
+				
+				// Iphone has issue mentioned in previous comment, use max-height to get some choppy but passable animation.
+				if (autoHeight === 'auto') {
+					selectedImage.style.maxHeight = '800px';
+				}
+				
+			}, 10); // Delay to register transition.
 			activeImage = selectedImage;
 		});
 	}
