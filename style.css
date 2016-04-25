@@ -119,7 +119,7 @@ a
 .titleText 
 {
 	font-size: 4rem;
-	padding-bottom: 12px;
+	padding-bottom: 0 4px 12px 4px;
 	text-align: center;
 }
 
@@ -339,6 +339,7 @@ article.activeTile
 	
 	.navElement 
 	{
+		box-sizing: border-box;
 		margin: auto;
 	}
 	
@@ -379,6 +380,7 @@ article.activeTile
 	{
 		font-size: 0.8rem;
 		padding-bottom: 12px;
+		
 	}
 	
 	.largeTileHeader 

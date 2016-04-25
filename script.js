@@ -62,8 +62,6 @@ function setupImageGallery(tile) {
 			event.stopPropagation(); // prevent clicks to images marking the tile inactive
 			
 			var selectedImage = event.target;
-			
-			var imageHeight = selectedImage.height + 'px';
 	
 			if (isActive(selectedImage, activeImageClass)) {
 				// make the clicked image inactive
@@ -89,7 +87,7 @@ function setupImageGallery(tile) {
 			// CSS transitions don't like auto sizes. Calculate what the auto size would be and apply it as an inline style instead.
 			selectedImage.style.height = 'auto';
 			var autoHeight = selectedImage.height + 'px';
-			selectedImage.style.height = imageHeight;
+			selectedImage.removeAttribute('style');
 			
 			setTimeout(function() { selectedImage.style.height = autoHeight; }, 10); // Delay to register transition.
 			activeImage = selectedImage;
