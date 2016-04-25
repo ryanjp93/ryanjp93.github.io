@@ -126,7 +126,7 @@ function loadTiles(unselectedHTMLString, selectedHTMLString) {
 			// make the clicked tile active
 			clickedTile.innerHTML = selectedHTMLString[tileIndex];
 			clickedTile.classList.add(activeTileClass);
-			setTimeout(function() { clickedTile.scrollIntoView({block: "start", behavior: "smooth"}); }, 1000); // fit the tile to the screen
+			//setTimeout(function() { clickedTile.scrollIntoView({block: "start", behavior: "smooth"}); }, 1000); // fit the tile to the screen
 			
 			setupImageGallery(clickedTile);
 		});
