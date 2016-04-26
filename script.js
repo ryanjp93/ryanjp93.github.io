@@ -89,24 +89,20 @@ function setupImageGallery(tile) {
 			// CSS transitions don't like auto sizes. Calculate what the auto size would be and apply it as an inline style instead.
 			selectedImage.style.height = 'auto';
 			
-			
 			// IOS seems to have issues getting a non 0 figure from this, so just make it auto in that case.
-			var autoHeight = 'auto';
-			if (selectedImage.height !== 0) {
-				autoHeight = selectedImage.height + 'px';
+			if (selectedImage.height === 0) {
+				selectedImage.style.maxHeight = '800px'; // use max-height to get some choppy but passable animation
+				activeImage = selectedImage;
+				return;
 			}
 			
+			var autoHeight = selectedImage.height + 'px';
 			selectedImage.removeAttribute('style');
 			
 			setTimeout(function() { 
 				selectedImage.style.height = autoHeight; 
-				
-				// IOS has issue mentioned in previous comment, use max-height to get some choppy but passable animation.
-				// if (autoHeight === 'auto') {
-					// selectedImage.style.maxHeight = '800px';
-				// }
-				
 			}, 10); // Delay to register transition.
+			
 			activeImage = selectedImage;
 		});
 	}
