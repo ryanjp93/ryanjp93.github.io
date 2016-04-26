@@ -90,7 +90,7 @@ function setupImageGallery(tile) {
 			selectedImage.style.height = 'auto';
 			
 			// IOS seems to have issues getting a reasonable figure from this, so just make it auto in that case.
-			if (selectedImage.height === < 150) {
+			if (selectedImage.height < 150) {
 				activeImage = selectedImage;
 				return;
 			}
