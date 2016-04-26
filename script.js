@@ -90,7 +90,7 @@ function setupImageGallery(tile) {
 			selectedImage.style.height = 'auto';
 			
 			
-			// Iphones seem to have issues getting a non 0 figure from this, so just make it auto in that case.
+			// IOS seems to have issues getting a non 0 figure from this, so just make it auto in that case.
 			var autoHeight = 'auto';
 			if (selectedImage.height !== 0) {
 				autoHeight = selectedImage.height + 'px';
@@ -101,10 +101,10 @@ function setupImageGallery(tile) {
 			setTimeout(function() { 
 				selectedImage.style.height = autoHeight; 
 				
-				// Iphone has issue mentioned in previous comment, use max-height to get some choppy but passable animation.
-				if (autoHeight === 'auto') {
-					selectedImage.style.maxHeight = '800px';
-				}
+				// IOS has issue mentioned in previous comment, use max-height to get some choppy but passable animation.
+				// if (autoHeight === 'auto') {
+					// selectedImage.style.maxHeight = '800px';
+				// }
 				
 			}, 10); // Delay to register transition.
 			activeImage = selectedImage;
