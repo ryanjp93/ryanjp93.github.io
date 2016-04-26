@@ -89,9 +89,8 @@ function setupImageGallery(tile) {
 			// CSS transitions don't like auto sizes. Calculate what the auto size would be and apply it as an inline style instead.
 			selectedImage.style.height = 'auto';
 			
-			// IOS seems to have issues getting a non 0 figure from this, so just make it auto in that case.
-			if (selectedImage.height === 0) {
-				selectedImage.style.maxHeight = '800px'; // use max-height to get some choppy but passable animation
+			// IOS seems to have issues getting a reasonable figure from this, so just make it auto in that case.
+			if (selectedImage.height === < 150) {
 				activeImage = selectedImage;
 				return;
 			}
