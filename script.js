@@ -506,7 +506,7 @@ var projectsTilesSelectedContent = [
 		<h3 class="bold">Overview</h3>\
 		<p>\
 			This website was originally created as a means of practicing modern web design, in particular responsive design. It is written using HTML, CSS and JavaScript and targets\
-			most modern browsers, resolutions and devices. This includes tablets and phones both in landscape and portrait. In achieve its responsive design, the site uses only CSS media\
+			most modern browsers, resolutions and devices. This includes tablets and phones both in landscape and portrait. In order to achieve its responsive design, the site uses only CSS media\
 			queries which adjust the content styling whenever a device passes a threshold. The core CSS targets the smallest screens first and is overridden each time a decent amount of space\
 			becomes available. In trying to target both phones and desktops, which sit on completely opposite ends of the screen size scale, the site design also shifts between a portrait and\
 			landscape layout as phones typically have more vertical space than horizontal space, while desktop monitors are the opposite.\
