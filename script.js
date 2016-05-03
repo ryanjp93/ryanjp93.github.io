@@ -155,7 +155,7 @@ var homeContent =
 		<h2 class="headerText">Showcasing a variety of projects I have worked on over the past three years.</h2>\
 	</header>\
 	<footer>\
-		<p class="footer standardText">A recent graduate of the University of Huddersfield with experience in software, web and games programming</p>\
+		<p class="footer standardText">A recent graduate of the University of Huddersfield with experience in software, web and games programming.</p>\
 	</footer>';
 
 homeButton.addEventListener('click', function() {
