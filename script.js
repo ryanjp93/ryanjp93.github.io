@@ -136,7 +136,7 @@ function loadTiles(unselectedHTMLString, selectedHTMLString) {
 			// make the clicked tile active
 			clickedTile.innerHTML = selectedHTMLString[tileIndex];
 			clickedTile.classList.add(activeTileClass);
-			//setTimeout(function() { clickedTile.scrollIntoView({block: "start", behavior: "smooth"}); }, 1000); // fit the tile to the screen
+			setTimeout(function() { clickedTile.scrollIntoView({block: "start", behavior: "smooth"}); }, 1000); // fit the tile to the screen
 			
 			setupImageGallery(clickedTile);
 		});
@@ -400,7 +400,7 @@ var projectsTilesUnselectedContent = [
 		<h2 class="tileText">Pure C, Terminal</h2>\
 	</header>\
 	<image class="tileImage" src="img/c.png"/>\
-	<p class="tileText tileDescription">Three small projects (simple XOR encryption, a card game and a credential generator) used to gain a better understanding of pure C.</p>',
+	<p class="tileText tileDescription">Three small projects (simple encryption, a card game and a credential generator) used to gain a better understanding of pure C.</p>',
 	'<span class="tileNumber">3</span>\
 	<header>\
 		<h1 class="tileHeader">Football Stat Crawler</h1>\
