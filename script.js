@@ -48,7 +48,7 @@ function changeActiveTab(index) {
 	// Manage page content
 	fade();
 	httpRequest(tabUrls[index], function(html) {
-		content.innerHTML = html;
+		contentArea.innerHTML = html;
 		
 		// Clean up any tiles on the page
 		var numberOfTiles = tiles.length;
