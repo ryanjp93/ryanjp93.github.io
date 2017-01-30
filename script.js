@@ -5,10 +5,12 @@ var tabUrls = ['home.html', 'featured.html', 'recent.html', 'contact.html'];
 
 var tiles = [];
 var activeTileIndex = -1;
+var activeTileClass = "tile-Tile-active";
 var clickedTile;
 
 var activeTab;
 var activeTabIndex = -1;
+var activeTabClass = "navButton-active";
 changeActiveTab(0);
 
 /* Basic http request. */
@@ -34,17 +36,18 @@ function fade() {
 
 /* Switches to the given tab by changing classes. */
 function changeActiveTab(index) {
-	if (index === activeTabIndex) {
+	var isTabAlreadyActive = index === activeTabIndex;
+	if (isTabAlreadyActive) {
 		return; // Don't bother switching to a tab we are already on
 	}
 	activeTabIndex = index;
 	
 	// Manage tab styling
 	if (activeTab) {
-		activeTab.className = "navButton";
+		activeTab.classList.remove(activeTabClass);
 	}
 	activeTab = tabs[index];
-	activeTab.className = "navButton navButton-active";
+	activeTab.classList.add(activeTabClass);
 	
 	// Manage page content
 	fade();
@@ -78,13 +81,15 @@ function tileClick() {
 	clickedTile = this;
 	
 	var tileIndex = clickedTile.firstElementChild.textContent; // each tile's first child is a span containing the numerical position of the tile
-	if (tileIndex === activeTileIndex) {
-		clickedTile.className = "tile";
+	var isTileAlreadyActive = tileIndex === activeTileIndex;
+	if (isTileAlreadyActive) {
+		clickedTile.classList.remove(activeTileClass);
 		activeTileIndex = -1;
 		return;
 	};
 	
-	clickedTile.className = "tile-Tile tile-Tile-active";
+	tiles[activeTileIndex].classList.remove(activeTileClass);
+	clickedTile.classList.add(activeTileClass);
 }
 
 for (var i = 0, count = tabs.length; i < count; i++) {

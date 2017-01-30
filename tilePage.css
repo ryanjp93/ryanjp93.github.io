@@ -51,6 +51,10 @@
 	color: #383838;
 	background-color: #EEE;
 	border: 1px solid #383838;
+	width: 96%;
+	height: auto;
+	max-height: 95vh;
+	overflow-y: auto;
 }
 
 .tile-TileNumber {
