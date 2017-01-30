@@ -1,7 +1,6 @@
 body {
 	font-family: 'latoregular';
 	box-sizing: border-box;
-	background-color: #EEE;
 }
 
 .mainBackground {
@@ -10,11 +9,11 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-	background-color: #EEE;
+	background: repeating-linear-gradient(-45deg, #EEE, #EEE 10px, #DDD 10px, #DDD 20px);
 }
 
 .screenContainer {
-	background-color: #c0392b;
+	background-color: #bb3023;
 	box-shadow: 0 0 20px 0 rgb(0, 0, 0);
 	position: absolute;
 	top: 104px;
@@ -23,14 +22,13 @@ body {
 	right: 8px;
 	border-radius: 8px;
 	/* overflow-y: scroll; */
-	/* border: 20px solid #c0392b; */
+	/* border: 20px solid #bb3023; */
 }
 
 .banner {
 	height: 60px;
 	text-align: center;
-	color: #c0392b;
-	background-color: #EEE;
+	color: #bb3023;
 }
 
 .bannerText {
@@ -54,6 +52,12 @@ body {
 	display: inline-block;
 	padding: 0 8px;
 	background-color: #484848;
+	background-image:
+		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+		linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+	background-size: 70px 120px;
 	cursor: pointer;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -61,18 +65,19 @@ body {
 }
 
 .navButton:hover {
-	background-color: #c0392b;
+	background-color: #bb3023;
 }
 
 .navButton-active {
-	background-color: #c0392b;
+	background: 0;
+	background-color: #bb3023;
 	cursor: default;
 	z-index: 2;
 	position: relative;
 }
 
 .navButton-active:hover{
-	background-color: #c0392b;
+	background-color: #bb3023;
 }
 
 .navLink {
@@ -98,7 +103,7 @@ body {
 .footerText {
 	color: #484848;
 	line-height: 22px;
-	margin-right: 2%;
+	margin-right: 8px;
 	font-size: 0.8rem;
 }
 
@@ -109,9 +114,15 @@ body {
 }
 
 .verticalBorder {
-	width: 12px;
+	width: 18px;
 	height: 100%;
 	background-color: #484848;
+	background-image:
+		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+		linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+	background-size: 70px 120px;
 	position: absolute;
 	top: 0;
 	right: 30px;
@@ -121,6 +132,12 @@ body {
 	width: 100%;
 	height: 12px;
 	background-color: #484848;
+	background-image:
+		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+		linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+	background-size: 70px 120px;
 	position: absolute;
 	bottom: 15px
 }
