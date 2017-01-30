@@ -1,0 +1,71 @@
+.contactCenteringContainer {
+	width: 100%;
+	height: 100%;
+	display: table;
+}
+
+.contactTitleContainer {
+	vertical-align: middle;
+	display: table-cell;
+    position: relative;
+    bottom: 65px;
+}
+
+.contactPost {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
+
+.contactTitle {
+	color: #EEE;
+	background-color: #484848;
+	padding: 0 4px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	position: relative;
+	top: -2px;
+	left: 8px;
+    padding: 0 10px;
+}
+
+.contactContent {
+	font-size: 1.6rem;
+	padding: 20px;
+	color: #484848;
+	background-color: #EEE;
+	border-radius: 8px;
+	box-shadow: inset 0 0 20px 0 rgb(0, 0, 0);
+	border: 1px solid #484848;
+	text-align: center;
+}
+
+.contactFooter {
+	position: absolute;
+	text-align: center;
+	bottom: 80px;
+	color: #EEE;
+	left: 70px;
+	right: 70px;
+}
+
+@media screen and (min-width: 1200px) {
+	.contactContent {
+		font-size: 2rem;
+	}
+	
+	.contactFooter {
+		font-size: 1.4rem;
+		margin-left: 80px;
+		margin-right: 80px;
+	}
+}
+
+
+@media screen and (min-height: 600px) {
+	.contactContent {
+		font-size: 2.6rem;
+		padding: 30px;
+	}
+}
