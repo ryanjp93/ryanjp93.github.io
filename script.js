@@ -1,7 +1,7 @@
 var contentArea = document.getElementsByClassName('content')[0];
 
 var tabs = document.querySelectorAll('.navButton');
-var tabUrls = ['index.html', 'featured.html', 'recent.html', 'contact.html'];
+var tabUrls = ['home.html', 'featured.html', 'recent.html', 'contact.html'];
 
 var tiles = [];
 var activeTileIndex = -1;
