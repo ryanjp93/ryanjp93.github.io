@@ -49,7 +49,7 @@ body {
 .navButton {
 	display: inline-block;
 	padding: 0 8px;
-	background-color: #484848;
+	background-color: #383838;
 	background-image:
 		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
 		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
@@ -99,7 +99,7 @@ body {
 }
 
 .footerText {
-	color: #484848;
+	color: #383838;
 	line-height: 22px;
 	margin-right: 8px;
 	font-size: 0.8rem;
@@ -114,7 +114,7 @@ body {
 .verticalBorder {
 	width: 18px;
 	height: 100%;
-	background-color: #484848;
+	background-color: #383838;
 	background-image:
 		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
 		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
@@ -129,7 +129,7 @@ body {
 .horizontalBorder {
 	width: 100%;
 	height: 12px;
-	background-color: #484848;
+	background-color: #383838;
 	background-image:
 		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
 		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),

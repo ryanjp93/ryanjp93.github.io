@@ -9,17 +9,17 @@
 	padding-right: 53px;
 	
 	/* Modern IE scrollbars */
-	scrollbar-3dlight-color: #484848;
+	scrollbar-3dlight-color: #383838;
 	scrollbar-arrow-color: #bb2323;
-	scrollbar-base-color: #484848;
-	scrollbar-darkshadow-color: #484848;
-	scrollbar-face-color: #484848;
+	scrollbar-base-color: #383838;
+	scrollbar-darkshadow-color: #383838;
+	scrollbar-face-color: #383838;
 	scrollbar-highlight-color: #bb2323;
-	scrollbar-shadow-color: #484848;
+	scrollbar-shadow-color: #383838;
 }
 
 .tile-Tile {
-	background-color: #484848;
+	background-color: #383838;
 	box-sizing: border-box;
 	position: relative;
 	display: inline-block;
@@ -41,16 +41,16 @@
 }
 
 .tile-Tile:hover {
-	color: #484848;
+	color: #383838;
 	background-color: #EEE;
-	border: 1px solid #484848;
+	border: 1px solid #383838;
 }
 
 .tile-Tile-active {
 	box-shadow: inset 0 0 20px 0 rgb(0, 0, 0);
-	color: #484848;
+	color: #383838;
 	background-color: #EEE;
-	border: 1px solid #484848;
+	border: 1px solid #383838;
 }
 
 /* Chrome Scrollbars */
@@ -64,12 +64,12 @@
 } 
 
 ::-webkit-scrollbar-thumb { 
-	background: #484848; 
+	background: #383838; 
 	border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive { 
-	background: #484848; 
+	background: #383838; 
 }
  
   /* width < 1185 should move to different nav buttons */
