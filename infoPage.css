@@ -1,24 +1,33 @@
-.indexCenteringContainer {
+.info-CenteringContainer {
 	width: 100%;
 	height: 100%;
 	display: table;
 }
 
-.indexTitleContainer {
+.info-TitleContainer {
 	vertical-align: middle;
 	display: table-cell;
     position: relative;
     bottom: 65px;
 }
 
-.indexPost {
+.info-Banner {
+	position: absolute;
+	top: 50%;
+	bottom: 102px; 
+	left: 140px;
+	right: 140px;
+	transform: translateY(-50%);
+}
+
+.info-Post {
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 30px;
 }
 
-.indexTitle {
+.info-PostTitle {
 	color: #EEE;
 	background-color: #484848;
 	padding: 0 4px;
@@ -30,7 +39,7 @@
     padding: 0 10px;
 }
 
-.indexContent {
+.info-PostContent {
 	font-size: 1.6rem;
 	padding: 20px;
 	color: #484848;
@@ -41,7 +50,21 @@
 	text-align: center;
 }
 
-.indexFooter {
+.info-PostFooter {
+	color: #EEE;
+	background-color: #484848;
+	padding: 0 4px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	position: absolute;
+	right: 124px;
+    padding: 0 10px;
+	transform: translateX(50%);
+	margin-top: -1px;
+	line-height: 22px;
+}
+
+.info-Footer {
 	position: absolute;
 	text-align: center;
 	bottom: 80px;
@@ -51,17 +74,17 @@
 }
 
 @media screen and (min-width: 1200px) {
-	.indexPost {
+	.info-Post {
 		margin-left: 80px;
 		margin-right: 80px;
 	}
 
-	.indexContent {
+	.info-Content {
 		font-size: 2rem;
 	}
 	
-	.indexFooter {
-		font-size: 1.4rem;
+	.info-Footer {
+		font-size: 1.2rem;
 		margin-left: 80px;
 		margin-right: 80px;
 	}
@@ -69,7 +92,7 @@
 
 
 @media screen and (min-height: 600px) {
-	.indexContent {
+	.info-Content {
 		font-size: 2.6rem;
 		padding: 30px;
 	}
