@@ -54,7 +54,7 @@ function changeActiveTab(index) {
 		var numberOfTiles = tiles.length;
 		if (numberOfTiles > 0) {
 			for (var i = numberOfTiles - 1; i >= 0; i--) {
-				tiles[i].pop().removeEventListener("click", tileClick);
+				tiles.pop().removeEventListener("click", tileClick);
 			}
 		}
 		
