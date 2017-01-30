@@ -53,6 +53,10 @@
 	border: 1px solid #383838;
 }
 
+.tile-TileNumber {
+	display: hidden;
+}
+
 /* Chrome Scrollbars */
 
 ::-webkit-scrollbar {

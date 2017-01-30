@@ -1,6 +1,6 @@
 var contentArea = document.getElementsByClassName('content')[0];
 
-var tabs = document.querySelectorAll('.navButton');
+var tabs = document.getElementsByClassName('navButton');
 var tabUrls = ['home.html', 'featured.html', 'recent.html', 'contact.html'];
 
 var tiles = [];
@@ -64,7 +64,7 @@ function changeActiveTab(index) {
 			return;
 		}
 		
-		tiles = document.querySelectorAll('.tile');
+		tiles = document.getElementsByClassName('tile-Tile');
 		numberOfTiles = tiles.length;
 		if (numberOfTiles > 0) {
 			for (var i = 0; i < numberOfTiles; i++) {
@@ -84,7 +84,7 @@ function tileClick() {
 		return;
 	};
 	
-	clickedTile.className = "tile tile-active";
+	clickedTile.className = "tile-Tile tile-Tile-active";
 }
 
 for (var i = 0, count = tabs.length; i < count; i++) {
