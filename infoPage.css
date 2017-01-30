@@ -7,16 +7,15 @@
 .info-TitleContainer {
 	vertical-align: middle;
 	display: table-cell;
-    position: relative;
-    bottom: 65px;
+    padding-bottom: 130px;
 }
 
 .info-Banner {
 	position: absolute;
 	top: 50%;
-	bottom: 102px; 
 	left: 140px;
 	right: 140px;
+	padding-bottom: 130px;
 	transform: translateY(-50%);
 }
 
@@ -74,11 +73,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-	.info-Post {
-		margin-left: 80px;
-		margin-right: 80px;
-	}
-
 	.info-Content {
 		font-size: 2rem;
 	}

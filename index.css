@@ -83,6 +83,7 @@ body {
 .content {
 	width: 100%;
 	height: 100%;
+	opacity: 0;
 }
 
 .footer {
@@ -102,11 +103,9 @@ body {
 }
 
 .fade {
-	-webkit-transition:  opacity 500ms;
-	transition: opacity 500ms;
+	-webkit-transition:  opacity 200ms;
+	transition: opacity 200ms;
 	opacity: 1;
-	/* IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
 .verticalBorder {

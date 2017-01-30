@@ -37,6 +37,7 @@ function changeActiveTab(index) {
 	if (index === activeTabIndex) {
 		return; // Don't bother switching to a tab we are already on
 	}
+	activeTabIndex = index;
 	
 	// Manage tab styling
 	if (activeTab) {
