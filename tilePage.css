@@ -46,14 +46,15 @@
 	border: 1px solid #383838;
 }
 
-.tile-Tile-active {
+.tile-Tile.tile-Tile-active {
 	box-shadow: inset 0 0 20px 0 rgb(0, 0, 0);
 	color: #383838;
 	background-color: #EEE;
 	border: 1px solid #383838;
-	width: 96%;
-	height: auto;
-	max-height: 95vh;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	margin: 0;
 	overflow-y: auto;
 }
 
