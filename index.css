@@ -13,7 +13,7 @@ body {
 }
 
 .screenContainer {
-	background-color: #bb3023;
+	background-color: #bb2323;
 	box-shadow: 0 0 20px 0 rgb(0, 0, 0);
 	position: absolute;
 	top: 104px;
@@ -21,14 +21,12 @@ body {
 	left: 8px;
 	right: 8px;
 	border-radius: 8px;
-	/* overflow-y: scroll; */
-	/* border: 20px solid #bb3023; */
 }
 
 .banner {
 	height: 60px;
 	text-align: center;
-	color: #bb3023;
+	color: #bb2323;
 }
 
 .bannerText {
@@ -65,19 +63,19 @@ body {
 }
 
 .navButton:hover {
-	background-color: #bb3023;
+	background-color: #bb2323;
 }
 
 .navButton-active {
 	background: 0;
-	background-color: #bb3023;
+	background-color: #bb2323;
 	cursor: default;
 	z-index: 2;
 	position: relative;
 }
 
 .navButton-active:hover{
-	background-color: #bb3023;
+	background-color: #bb2323;
 }
 
 .navLink {
