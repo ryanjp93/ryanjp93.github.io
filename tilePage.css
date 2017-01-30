@@ -58,7 +58,7 @@
 }
 
 .tile-TileNumber {
-	display: hidden;
+	display: none;
 }
 
 /* Chrome Scrollbars */

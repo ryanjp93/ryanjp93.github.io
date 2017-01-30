@@ -62,11 +62,13 @@ function changeActiveTab(index) {
 			}
 		}
 		
+		// Extra setup is only required on pages containing tiles
 		var isTilePage = index === 1 || index === 2;
 		if (!isTilePage) {
 			return;
 		}
 		
+		// Set up tile click behaviour
 		tiles = document.getElementsByClassName('tile-Tile');
 		numberOfTiles = tiles.length;
 		if (numberOfTiles > 0) {
@@ -79,8 +81,9 @@ function changeActiveTab(index) {
 
 function tileClick() {
 	clickedTile = this;
+	var tileIndex = clickedTile.firstElementChild.textContent; // Each tile's first child is a span containing the numerical position of the tile
 	
-	var tileIndex = clickedTile.firstElementChild.textContent; // each tile's first child is a span containing the numerical position of the tile
+	// Deselect clicked tile if it was already active
 	var isTileAlreadyActive = tileIndex === activeTileIndex;
 	if (isTileAlreadyActive) {
 		clickedTile.classList.remove(activeTileClass);
@@ -88,7 +91,12 @@ function tileClick() {
 		return;
 	};
 	
-	tiles[activeTileIndex].classList.remove(activeTileClass);
+	// Remove active tile styling from currently active tab
+	var activeTabExists = activeTileIndex > -1;
+	if (activeTabExists) {
+		tiles[activeTileIndex].classList.remove(activeTileClass);
+	}
+	
 	clickedTile.classList.add(activeTileClass);
 }
 
