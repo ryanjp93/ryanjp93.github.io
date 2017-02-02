@@ -16,7 +16,7 @@ body {
 	background-color: #bb2323;
 	box-shadow: 0 0 20px 0 rgb(0, 0, 0);
 	position: absolute;
-	top: 104px;
+	top: 58px;
 	bottom: 24px;
 	left: 8px;
 	right: 8px;
@@ -24,31 +24,30 @@ body {
 }
 
 .banner {
-	height: 60px;
+	height: 40px;
+	line-height: 34px;
 	text-align: center;
 	color: #bb2323;
 }
 
 .bannerText {
-	font-size: 3rem;
-	line-height: 60px;
+	font-size: 1.8rem;
 	text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
 }
 
 .nav {
-	font-size: 0.7rem;
-	height: 24px;
-	padding-left: 20px;
+	font-size: 0.6rem;
+	height: 18px;
+	text-align: center;
 }
 
 .navShadow {
-	padding: 20px 2px 0 2px;
 	display: inline-block;
 }
 
 .navButton {
 	display: inline-block;
-	padding: 0 8px;
+	padding: 0 4px;
 	background-color: #383838;
 	background-image:
 		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
@@ -79,7 +78,7 @@ body {
 }
 
 .navLink {
-	line-height: 24px;
+	line-height: 18px;
 	color: #EEE;
 }
 
@@ -140,7 +139,225 @@ body {
 	bottom: 15px
 }
 
-@media (min-height: 600px) {
+@media (min-width: 340px) {
+	.nav {
+		text-align: left;
+		padding-left: 20px;
+		height: 20px;
+	}
+	
+	.navLink {
+		line-height: 20px;
+	}
+	
+	.navShadow {
+		padding: 0 1px 0 1px;
+	}
+	
+	.screenContainer {
+		top: 60px;
+`   }
+}
+
+@media (min-width: 360px) {
+	.bannerText {
+		font-size: 2rem;
+	}
+	
+	.banner {
+		height: 44px;
+	}
+	
+	.nav {
+		font-size: 0.65rem;
+	}
+	
+	.navButton {
+		padding: 0 5px;
+	}
+	
+	.screenContainer {
+		top: 64px;
+`   }
+}
+
+@media (min-width: 400px) {
+	.bannerText {
+		font-size: 2.4rem;
+		line-height: 50px;
+	}
+	
+	.banner {
+		height: 52px;
+	}
+	
+	.nav {
+		font-size: 0.7rem;
+	}
+	
+	.navButton {
+		padding: 0 6px;
+	}
+	
+	.navShadow {
+		padding: 10px 2px 0 2px;
+	}
+	
+	.screenContainer {
+		top: 82px;
+	}
+}
+
+@media (min-width: 460px) {
+	.navButton {
+		padding: 0 10px;
+	}
+}
+
+@media (min-width: 500px) {
+	.bannerText {
+		font-size: 3rem;
+		line-height: 58px;
+	}
+	
+	.nav {
+		padding-left: 20px;
+		height: 24px;
+	}
+	
+	.navLink {
+		line-height: 24px;
+	}
+	
+	.navShadow {
+		padding: 20px 6px 0 6px;
+		overflow: hidden;
+	}
+	
+	.navButton {
+		box-shadow: 0 0 8px 0 rgb(0, 0, 0);
+		padding: 0 14px;
+	}
+	
+	.screenContainer {
+		top: 96px;
+	}
+}
+
+@media (min-width: 600px) {
+	.navShadow {
+		padding: 20px 12px 0 12px;
+	}
+	
+	.navButton {
+		box-shadow: 0 0 14px 0 rgb(0, 0, 0);
+	}
+}
+	
+@media (min-width: 700px) {
+	.bannerText {
+		font-size: 3.4rem;
+	}
+	
+	.nav {
+		font-size: 0.9rem;
+	}
+	
+	.navButton {
+		padding: 0 20px;
+	}
+}
+
+@media (min-width: 900px) {
+	.banner {
+		height: 60px;
+	}
+	
+	.bannerText {
+		font-size: 4rem;
+		line-height: 62px;
+	}
+	
+	.nav {
+		height: 28px;
+		font-size: 1rem;
+	}
+	
+	.navLink {
+		line-height: 28px;
+	}
+	
+	.navButton {
+		padding: 0 30px;
+	}
+	
+	.screenContainer {
+		top: 108px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.nav {
+		height: 32px;
+	}
+	
+	.navLink {
+		line-height: 32px;
+	}
+	
+	.navShadow {
+		padding: 20px 20px 0 20px;
+	}
+	
+	.navButton {
+		padding: 0 40px;
+	}
+	
+	.screenContainer {
+		top: 112px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.nav {
+		height: 36px;
+		margin: 20px 0 0 50px;
+		padding-left: 40px;
+		font-size: 1.2rem;
+	}
+	
+	.navLink {
+		line-height: 36px;
+	}
+	
+	.navShadow {
+		position: relative;
+		top: -20px;
+		left: -20px;
+	}
+	
+	.navButton {
+		border-top-left-radius: 8px;
+		border-top-right-radius: 8px;
+		box-shadow: 0 0 14px 0 rgb(0, 0, 0);
+	}
+	
+	.screenContainer {
+		top: 116px;
+		left: 50px;
+		right: 50px;
+	}
+	
+	.footer {
+		right: 20px;
+	}
+
+	.footerText {
+		margin-right: 30px;
+	}
+}
+
+@media (min-width: 1200px) and (min-height: 600px){
 	.banner {
 		height: 100px;
 	}
@@ -173,73 +390,12 @@ body {
 	}
 }
 
-@media (min-width: 500px) {
+@media (min-width: 1400px) {
 	.nav {
-		padding-left: 12px;
-	}
-	
-	.navShadow {
-		padding: 20px 12px 0 12px;
-		display: inline-block;
-		overflow: hidden;
-	}
-	
-	.navButton {
-		box-shadow: 0 0 14px 0 rgb(0, 0, 0);
-		padding: 0 14px;
-	}
-}
-
-@media (min-width: 700px) {
-	.bannerText {
-		font-size: 4rem;
-	}
-	
-	.navButton {
-		padding: 0 40px;
-	}
-}
-
-@media (min-width: 900px) {
-	.nav {
-		font-size: 1rem;
-	}
-	
-	.navShadow {
-		padding: 20px 20px 0 20px;
-	}
-}
-
-@media (min-width: 1200px) {
-	.screenContainer {
-		left: 50px;
-		right: 50px;
-	}
-	
-	.nav {
-		margin: 20px 0 0 50px;
-		padding-left: 40px;
 		font-size: 1.3rem;
-	}
-	
-	.navShadow {
-		position: relative;
-		top: -20px;
-		left: -20px;
 	}
 	
 	.navButton {
 		padding: 0 50px;
-		border-top-left-radius: 8px;
-		border-top-right-radius: 8px;
-		box-shadow: 0 0 14px 0 rgb(0, 0, 0);
-	}
-	
-	.footer {
-		right: 20px;
-	}
-
-	.footerText {
-		margin-right: 30px;
 	}
 }
