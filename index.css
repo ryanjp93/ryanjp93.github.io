@@ -32,7 +32,7 @@ body {
 
 .bannerText {
 	font-size: 1.8rem;
-	text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+	text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.3), 0 20px 20px rgba(0,0,0,.25);
 }
 
 .nav {
@@ -122,7 +122,8 @@ body {
 	background-size: 70px 120px;
 	position: absolute;
 	top: 0;
-	right: 30px;
+	right: 5%;
+	box-shadow: 0 0 6px 0 rgb(0, 0, 0);
 }
 
 .horizontalBorder {
@@ -136,7 +137,27 @@ body {
 		linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
 	background-size: 70px 120px;
 	position: absolute;
-	bottom: 15px
+	bottom: 2%;
+    box-shadow: 0 0 6px 0 rgb(0, 0, 0);
+}
+
+.squareBorder {
+	width: 36px;
+	height: 24px;
+	background-color: #383838;
+	background-image:
+		repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+		linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+		linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+	position: absolute;
+	right: 5%;
+	bottom: 2%;
+	margin-right: -9px;
+	margin-bottom: -6px;
+    box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+	border-radius: 8px;
+	transform: rotate(-45deg);
 }
 
 @media (min-width: 340px) {
@@ -242,6 +263,19 @@ body {
 	.screenContainer {
 		top: 96px;
 	}
+	
+	.verticalBorder {
+		right: 30px;
+	}
+
+	.horizontalBorder {
+		bottom: 15px
+	}
+	
+	.squareBorder {
+		right: 30px;
+		bottom: 15px
+	}
 }
 
 @media (min-width: 600px) {
@@ -318,12 +352,12 @@ body {
 	}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
 	.nav {
 		height: 36px;
 		margin: 20px 0 0 50px;
 		padding-left: 40px;
-		font-size: 1.2rem;
+		font-size: 1rem;
 	}
 	
 	.navLink {
@@ -357,7 +391,7 @@ body {
 	}
 }
 
-@media (min-width: 1200px) and (min-height: 600px){
+@media (min-width: 1000px) and (min-height: 600px){
 	.banner {
 		height: 100px;
 	}
@@ -368,6 +402,7 @@ body {
 	
 	.nav {
 		height: 36px;
+		font-size: 1rem;
 	}
 	
 	.navLink {
@@ -387,6 +422,12 @@ body {
 	.footerText {
 		line-height: 30px;
 		font-size: 1rem;
+	}
+
+	
+@media (min-width: 1200px) {
+	.nav {
+		font-size: 1.2rem;
 	}
 }
 

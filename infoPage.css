@@ -12,10 +12,9 @@
 
 .info-Banner {
 	position: absolute;
-	top: 50%;
-	left: 140px;
-	right: 140px;
-	padding-bottom: 130px;
+	top: 30%;
+	left: 38px;
+	right: 38px;
 	transform: translateY(-50%);
 }
 
@@ -35,24 +34,30 @@
 		linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
 		linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
 	background-size: 70px 120px;
-	padding: 0 4px;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 	position: relative;
-	top: -2px;
+	top: -1px;
 	left: 8px;
-    padding: 0 10px;
+    padding: 0 4px;
+	font-size: 0.7rem;
 }
 
 .info-PostContent {
-	font-size: 1.6rem;
-	padding: 20px;
+	font-size: 0.7rem;
+	padding: 6px;
 	color: #383838;
 	background-color: #EEE;
 	border-radius: 8px;
 	box-shadow: inset 0 0 20px 0 rgb(0, 0, 0);
 	border: 1px solid #383838;
 	text-align: center;
+}
+
+.info-PostFooterWrapper {
+	width: 100%;
+	text-align: right;
+	margin-top: -4px;
 }
 
 .info-PostFooter {
@@ -67,39 +72,175 @@
 	padding: 0 4px;
 	border-bottom-left-radius: 8px;
 	border-bottom-right-radius: 8px;
-	position: absolute;
-	right: 124px;
-    padding: 0 10px;
-	transform: translateX(50%);
-	margin-top: -1px;
-	line-height: 22px;
+	position: relative;
+	right: 8px;
+	line-height: 15px;
+	font-size: 0.6rem;
 }
 
 .info-Footer {
 	position: absolute;
 	text-align: center;
-	bottom: 80px;
+	bottom: 11%;
+	transform: translateY(-50%);
 	color: #EEE;
-	left: 70px;
-	right: 70px;
+	left: 34px;
+	right: 34px;
+	font-size: 0.5rem;
 }
 
-@media screen and (min-width: 1200px) {
-	.info-Content {
+@media (min-width: 360px) {
+	.info-Banner {
+		left: 46px;
+		right: 46px;
+	}
+}
+
+@media (min-width: 400px) {
+	.info-Banner {
+		left: 52px;
+		right: 52px;
+	}
+	
+	.info-PostTitle {
+		font-size: 0.8rem;
+		padding: 0 6px;
+	}
+	
+	.info-PostContent {
+		font-size: 0.9rem;
+		padding: 8px;
+	}
+	
+	.info-PostFooterWrapper {
+		margin-top: -3px;
+	}
+	
+	.info-PostFooter {
+		font-size: 0.7rem;
+		padding: 0 6px;
+	}
+	
+	.info-Footer {
+		left: 40px;
+		right: 40px;
+		font-size: 0.6rem;
+	}
+}
+	
+@media (min-width: 500px) {
+	.info-Banner {
+		left: 80px;
+		right: 80px;
+	}
+	
+	.info-PostContent {
+		font-size: 1rem;
+	}
+	
+	.info-PostFooterWrapper {
+		margin-top: -1px;
+	}
+	
+	.info-PostFooter {
+		font-size: 0.8rem;
+	}
+	
+	.info-Footer {
+		left: 52px;
+		right: 52px;
+		font-size: 0.7rem;
+	}
+}
+
+
+@media (min-width: 600px) {
+	.info-Banner {
+		left: 100px;
+		right: 100px;
+	}
+	
+	.info-Footer {
+		left: 60px;
+		right: 60px;
+		font-size: 0.8rem;
+	}
+}
+
+@media (min-width: 700px) and (min-height: 400px) {
+	.info-PostTitle {
+		font-size: 1rem;
+		padding: 0 8px;
+		top: -3px;
+	}
+	
+	.info-PostContent {
+		font-size: 1.4rem;
+		padding: 16px;
+	}
+	
+	.info-PostFooterWrapper {
+		margin-top: 2px;
+	}
+	
+	.info-PostFooter {
+		font-size: 1rem;
+		padding: 0 8px;
+	}
+	
+	.info-Footer {
+		left: 70px;
+		right: 70px;
+		font-size: 0.9rem;
+	}
+}
+
+@media (min-width: 900px) and (min-height: 350px) {
+	.info-Banner {
+		left: 120px;
+		right: 120px;
+	}
+	
+	.info-PostFooterWrapper {
+		margin-top: 2px;
+	}
+	
+	.info-PostFooter {
+		font-size: 1rem;
+		padding: 0 8px;
+	}
+	
+	.info-Footer {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 1000px) and (min-height: 400px) {
+	.info-Banner {
+		left: 140px;
+		right: 140px;
+	}
+	
+	.info-PostContent {
+		font-size: 1.6rem;
+		padding: 20px;
+	}
+}
+
+@media (min-width: 1100px) and (min-height: 450px) {
+	.info-Banner {
+		left: 15%;
+		right: 15%;
+	}
+	
+	.info-PostContent {
 		font-size: 2rem;
+		padding: 30px;
 	}
 	
 	.info-Footer {
 		font-size: 1.2rem;
 		margin-left: 80px;
 		margin-right: 80px;
-	}
-}
-
-
-@media screen and (min-height: 600px) {
-	.info-Content {
-		font-size: 2.6rem;
-		padding: 30px;
 	}
 }
