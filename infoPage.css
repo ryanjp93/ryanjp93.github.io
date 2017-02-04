@@ -320,3 +320,9 @@
 		margin-bottom: 30px;
 	}
 }
+
+@media (orientation: landscape) {
+	.info-Banner {
+		top: 30%;
+	}
+}

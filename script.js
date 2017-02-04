@@ -52,8 +52,6 @@ function changeActiveTab(index) {
 	// Manage page content
 	fade();
 	httpRequest(tabUrls[index], function(html) {
-		contentArea.innerHTML = html;
-		
 		// Clean up any tiles on the page
 		var numberOfTiles = tiles.length;
 		if (numberOfTiles > 0) {
@@ -61,6 +59,8 @@ function changeActiveTab(index) {
 				tiles.pop().removeEventListener("click", tileClick);
 			}
 		}
+		
+		contentArea.innerHTML = html;
 		
 		// Extra setup is only required on pages containing tiles
 		var isTilePage = index === 1 || index === 2;
