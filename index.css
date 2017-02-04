@@ -202,7 +202,7 @@ body {
 `   }
 }
 
-@media (min-width: 400px) {
+@media (min-width: 400px) and (min-height: 320px) {
 	.bannerText {
 		font-size: 2.4rem;
 		line-height: 50px;
@@ -229,13 +229,13 @@ body {
 	}
 }
 
-@media (min-width: 460px) {
+@media (min-width: 460px) and (min-height: 320px) {
 	.navButton {
 		padding: 0 10px;
 	}
 }
 
-@media (min-width: 500px) {
+@media (min-width: 500px) and (min-height: 320px) {
 	.bannerText {
 		font-size: 3rem;
 		line-height: 58px;
@@ -278,7 +278,7 @@ body {
 	}
 }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) and (min-height: 320px) {
 	.navShadow {
 		padding: 20px 12px 0 12px;
 	}
@@ -288,7 +288,7 @@ body {
 	}
 }
 	
-@media (min-width: 700px) {
+@media (min-width: 700px) and (min-height: 320px) {
 	.bannerText {
 		font-size: 3.4rem;
 	}
@@ -302,7 +302,7 @@ body {
 	}
 }
 
-@media (min-width: 900px) {
+@media (min-width: 900px) and (min-height: 400px) {
 	.banner {
 		height: 60px;
 	}
@@ -330,7 +330,7 @@ body {
 	}
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1000px) and (min-height: 400px) {
 	.nav {
 		height: 32px;
 	}
@@ -352,7 +352,7 @@ body {
 	}
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1000px) and (min-height: 400px) {
 	.nav {
 		height: 36px;
 		margin: 20px 0 0 50px;
@@ -425,13 +425,13 @@ body {
 	}
 
 	
-@media (min-width: 1200px) {
+@media (min-width: 1200px) and (min-height: 360px) {
 	.nav {
 		font-size: 1.2rem;
 	}
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1400px) and (min-height: 360px) {
 	.nav {
 		font-size: 1.3rem;
 	}
