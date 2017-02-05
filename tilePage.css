@@ -201,7 +201,7 @@
 		right: 34px;
 		bottom: 19px;
 		margin-bottom: 17px;
-		margin-right: -25px;
+		margin-right: -26px;
 	}
 	
 	.tile-CenteringContainer {
@@ -284,9 +284,9 @@
 	}
 	
 	.tile-Tile {
-		width: 400px;
-		height: 400px;
-		max-height: 400px;
+		width: 380px;
+		height: 380px;
+		max-height: 380px;
 		padding: 8px
 	}
 	
@@ -297,24 +297,20 @@
 	}
 	
 	.tile-TileTitle {
-		font-size: 1.6rem;
+		font-size: 1.5rem;
 		padding-top: 8px;
 		padding-bottom: 8px;
 	}
 	
 	.tile-TileSubtitle {
-		font-size: 1.1rem;
-	}
-	
-	.tile-TileDescription {
-		font-size: 1.1rem;
+		font-size: 1rem;
 	}
 }	
 
 /* Chrome Scrollbars */
 
 ::-webkit-scrollbar {
-	width: 12px; 
+	width: 16px; 
 } 
 
 ::-webkit-scrollbar-track { 
@@ -322,12 +318,12 @@
 } 
 
 ::-webkit-scrollbar-thumb { 
-	background-image: #383838; 
+	background-color: #383838; 
 	border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive { 
-	background-image: #383838; 
+	background-color: #383838; 
 }
  
   /* width < 1185 should move to different nav buttons */
