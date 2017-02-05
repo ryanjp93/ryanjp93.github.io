@@ -2,11 +2,12 @@
 	text-align: center;
 	overflow-y: scroll;
     position: absolute;
-    left: 20px;
-    right: 9px;
-    top: 20px;
-    bottom: 47px;
-	padding-right: 53px;
+    left: 4px;
+    right: 5%;
+    top: 4px;
+	bottom: 2%;
+    margin-bottom: 17px;
+    margin-right: -4%;
 	
 	/* Modern IE scrollbars */
 	scrollbar-3dlight-color: #383838;
@@ -18,15 +19,21 @@
 	scrollbar-shadow-color: #383838;
 }
 
+.tile-CenteringContainer {
+	height: 100%;
+	margin-right: 19px;
+}
+
 .tile-Tile {
 	background-color: #383838;
 	box-sizing: border-box;
 	position: relative;
-	display: inline-block;
+	display: inline-flex;
+    flex-direction: column;
 	vertical-align: top;
-	width: 320px;
-	height: 320px;
-	max-height: 320px;
+	width: 170px;
+	height: 170px;
+	max-height: 170px;
 	margin: 8px;
 	padding: 4px;
 	transition: width 1000ms ease-in-out, max-height 1000ms ease-in-out;
@@ -34,16 +41,9 @@
 	box-shadow: 0 0 8px 0 rgb(0, 0, 0);
 }
 
-.tile-TileLarge {
-	width: 600px;
-	height: 600px;
-	max-height: 600px;
-}
-
 .tile-Tile:hover {
 	color: #383838;
 	background-color: #EEE;
-	border: 1px solid #383838;
 }
 
 .tile-Tile.tile-Tile-active {
@@ -60,6 +60,140 @@
 
 .tile-TileNumber {
 	display: none;
+}
+
+.tile-TileTitle {
+	font-size: 0.7rem;
+	padding: 4px 2px;
+	text-align: center;
+}
+
+.tile-TileSubtitle {
+	font-size: 0.45rem;
+	padding-bottom: 4px;
+}
+
+.tile-TileImage {
+	margin: auto;
+	width: auto;
+	height: 75px;
+	max-width: 160px;
+	background-color: green;
+}
+
+.tile-TileDescription {
+	font-size: 0.6rem;
+	padding: 4px;
+}
+
+@media (min-width: 350px) and (min-height: 350px) {
+	.tile-Tile {
+		width: 220px;
+		height: 220px;
+		max-height: 220px;
+	}
+	
+	.tile-TileTitle {
+		font-size: 0.8rem;
+	}
+	
+	.tile-TileSubtitle {
+		font-size: 0.6rem;
+	}
+	
+	.tile-TileDescription {
+		font-size: 0.7rem;
+	}
+}
+	
+@media (min-width: 420px) and (min-height: 420px) {
+	.tile-Tile {
+		width: 270px;
+		height: 270px;
+		max-height: 270px;
+	}
+	
+	.tile-TileTitle {
+		font-size: 1rem;
+	}
+	
+	.tile-TileSubtitle {
+		font-size: 0.8rem;
+	}
+	
+	.tile-TileDescription {
+		font-size: 0.9rem;
+	}
+}
+
+@media (min-width: 500px) and (min-height: 320px) {
+	.tile-Container {
+		left: 8px;
+		top: 8px;
+		right: 34px;
+		bottom: 19px;
+		margin-bottom: 17px;
+		margin-right: -25px;
+	}
+	
+	.tile-CenteringContainer {
+		margin-right: 35px;
+	}
+}
+
+@media (min-width: 500px) and (min-height: 500px) {
+	.tile-Tile {
+		width: 320px;
+		height: 320px;
+		max-height: 320px;
+		padding: 6px
+	}
+	
+	.tile-TileTitle {
+		font-size: 1.3rem;
+	}
+	
+	.tile-TileSubtitle {
+		font-size: 0.9rem;
+	}
+	
+	.tile-TileDescription {
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 600px) and (min-height: 600px) {
+	.tile-Container {
+		left: 16px;
+		top: 16px;
+		bottom: 27px;
+	}
+	
+	.tile-CenteringContainer {
+		margin-right: 43px;
+	}
+
+	.tile-Tile {
+		margin: 16px;
+	}
+	
+	.tile-Tile.tile-TileLarge {
+		width: 40%;
+		height: 95%;
+		max-height: 95%;
+	}
+}
+
+@media (min-width: 900px) and (min-height: 700px) {
+	.tile-Container {
+		left: 24px;
+		top: 24px;
+		bottom: 35px;
+	}
+	
+	.tile-CenteringContainer {
+		margin-right: 51px;
+	}
 }
 
 /* Chrome Scrollbars */
