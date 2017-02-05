@@ -39,6 +39,8 @@
 	transition: width 1000ms ease-in-out, max-height 1000ms ease-in-out;
 	border-radius: 8px;
 	box-shadow: 0 0 8px 0 rgb(0, 0, 0);
+	color: #EEE;
+	cursor: pointer;
 }
 
 .tile-Tile:hover {
@@ -75,10 +77,64 @@
 
 .tile-TileImage {
 	margin: auto;
-	width: auto;
-	height: 75px;
-	max-width: 160px;
-	background-color: green;
+	width: 80px;
+	height: 80px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+    border-radius: 40px;
+	box-shadow: 0 0 14px;
+}
+
+.tile-TileImage0 {
+	background-image: url(assets/moniac-bw.png);
+}
+
+.tile-TileImage1 {
+	background-image: url(assets/dx11-bw.png);
+}
+
+.tile-TileImage2 {
+	background-image: url(assets/website-bw.png);
+}
+
+.tile-TileImage3 {
+	background-image: url(assets/c-bw.png);
+}
+
+.tile-TileImage4 {
+	background-image: url(assets/stats-bw.png);
+}
+
+.tile-TileImage5 {
+	background-image: url(assets/pw-bw.png);
+}
+
+.tile-TileImage6 {
+	background-image: url(assets/water-bw.png);
+}
+
+.tile-TileImage7 {
+	background-image: url(assets/ab-bw.png);
+}
+
+.tile-TileImage8 {
+	background-image: url(assets/fps-bw.png);
+}
+
+.tile-TileImage9 {
+	background-image: url(assets/chat-bw.png);
+}
+
+.tile-TileImage10 {
+	background-image: url(assets/work-bw.png);
+}
+
+.tile-TileImage11 {
+	background-image: url(assets/hush-bw.png);
+}
+
+.tile-TileImage12 {
+	background-image: url(assets/dx9-bw.png);
 }
 
 .tile-TileDescription {
@@ -91,6 +147,12 @@
 		width: 220px;
 		height: 220px;
 		max-height: 220px;
+	}
+	
+	.tile-TileImage {
+		width: 120px;
+		height: 120px;
+		border-radius: 60px;
 	}
 	
 	.tile-TileTitle {
@@ -111,6 +173,12 @@
 		width: 270px;
 		height: 270px;
 		max-height: 270px;
+	}
+	
+	.tile-TileImage {
+		width: 140px;
+		height: 140px;
+		border-radius: 70px;
 	}
 	
 	.tile-TileTitle {
@@ -149,8 +217,16 @@
 		padding: 6px
 	}
 	
+	.tile-TileImage {
+		width: 180px;
+		height: 180px;
+		border-radius: 90px;
+	}
+	
 	.tile-TileTitle {
 		font-size: 1.3rem;
+		padding-top: 6px;
+		padding-bottom: 6px;
 	}
 	
 	.tile-TileSubtitle {
@@ -196,6 +272,45 @@
 	}
 }
 
+@media (min-width: 1600px) and (min-height: 900px) {
+	.tile-Container {
+		left: 30px;
+		top: 30px;
+		bottom: 41px;
+	}
+	
+	.tile-CenteringContainer {
+		margin-right: 57px;
+	}
+	
+	.tile-Tile {
+		width: 400px;
+		height: 400px;
+		max-height: 400px;
+		padding: 8px
+	}
+	
+	.tile-TileImage {
+		width: 230px;
+		height: 230px;
+		border-radius: 115px;
+	}
+	
+	.tile-TileTitle {
+		font-size: 1.6rem;
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+	
+	.tile-TileSubtitle {
+		font-size: 1.1rem;
+	}
+	
+	.tile-TileDescription {
+		font-size: 1.1rem;
+	}
+}	
+
 /* Chrome Scrollbars */
 
 ::-webkit-scrollbar {
@@ -207,12 +322,12 @@
 } 
 
 ::-webkit-scrollbar-thumb { 
-	background: #383838; 
+	background-image: #383838; 
 	border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:window-inactive { 
-	background: #383838; 
+	background-image: #383838; 
 }
  
   /* width < 1185 should move to different nav buttons */
