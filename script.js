@@ -5,12 +5,13 @@ var tabUrls = ['home.html', 'featured.html', 'recent.html', 'contact.html'];
 
 var tiles = [];
 var activeTileIndex = -1;
-var activeTileClass = "tile-Tile-active";
+var activeTileClass = 'tile-Tile-active';
 var clickedTile;
+var clickedTileHTML;
 
 var activeTab;
 var activeTabIndex = -1;
-var activeTabClass = "navButton-active";
+var activeTabClass = 'navButton-active';
 changeActiveTab(0);
 
 /* Basic http request. */
@@ -21,7 +22,7 @@ function httpRequest(url, callback) {
             callback(xmlHttp.responseText);
 		}
     }
-    xmlHttp.open("GET", url, true); 
+    xmlHttp.open('GET', url, true); 
     xmlHttp.send(null);
 }
 
@@ -46,6 +47,7 @@ function changeActiveTab(index) {
 	if (activeTab) {
 		activeTab.classList.remove(activeTabClass);
 	}
+	
 	activeTab = tabs[index];
 	activeTab.classList.add(activeTabClass);
 	
@@ -56,7 +58,7 @@ function changeActiveTab(index) {
 		var numberOfTiles = tiles.length;
 		if (numberOfTiles > 0) {
 			for (var i = 0; i < numberOfTiles; i++) {
-				tiles[i].removeEventListener("click", tileClick);
+				tiles[i].removeEventListener('click', tileClick);
 			}
 			tiles = [];
 		}
@@ -74,7 +76,7 @@ function changeActiveTab(index) {
 		numberOfTiles = tiles.length;
 		if (numberOfTiles > 0) {
 			for (var i = 0; i < numberOfTiles; i++) {
-				tiles[i].addEventListener("click", tileClick);
+				tiles[i].addEventListener('click', tileClick);
 			}
 		}
 	});
@@ -89,16 +91,25 @@ function tileClick() {
 	if (isTileAlreadyActive) {
 		clickedTile.classList.remove(activeTileClass);
 		activeTileIndex = -1;
+		activeTile.innerHTML = clickedTileHTML;
 		return;
 	};
 	
 	// Remove active tile styling from currently active tab
 	var activeTabExists = activeTileIndex > -1;
 	if (activeTabExists) {
-		tiles[activeTileIndex].classList.remove(activeTileClass);
+		var activeTile = tiles[activeTileIndex];
+		activeTile.classList.remove(activeTileClass);
+		activeTile.innerHTML = clickedTileHTML;
 	}
 	
 	clickedTile.classList.add(activeTileClass);
+	activeTileIndex = tileIndex;
+	var prefix = activeTabIndex === 1 ? 'f' : '';
+	httpRequest('tiles/' + tileIndex + '.html', function(html) {
+		clickedTileHTML = clickedTile.innerHTML;
+		clickedTime.innerHTML = html;
+	});
 }
 
 for (var i = 0, count = tabs.length; i < count; i++) {
