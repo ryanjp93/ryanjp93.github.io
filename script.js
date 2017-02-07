@@ -108,7 +108,7 @@ function tileClick() {
 	var prefix = activeTabIndex === 1 ? 'f' : '';
 	httpRequest('tiles/' + tileIndex + '.html', function(html) {
 		clickedTileHTML = clickedTile.innerHTML;
-		clickedTime.innerHTML = html;
+		clickedTile.innerHTML = html;
 	});
 }
 
