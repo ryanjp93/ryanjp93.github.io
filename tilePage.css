@@ -19,6 +19,17 @@
 	scrollbar-shadow-color: #383838;
 }
 
+.tile-ContainerLarge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 27px;
+    text-align: center;
+    margin: auto;
+    height: 186px;
+}
+
 .tile-CenteringContainer {
 	height: 100%;
 	margin-right: 19px;
@@ -163,6 +174,10 @@
 }
 
 @media (min-width: 350px) and (min-height: 350px) {
+	.tile-ContainerLarge {
+		height: 236px;
+	}
+
 	.tile-Tile {
 		width: 220px;
 		height: 220px;
@@ -189,6 +204,10 @@
 }
 	
 @media (min-width: 420px) and (min-height: 420px) {
+	.tile-ContainerLarge {
+		height: 286px;
+	}
+	
 	.tile-Tile {
 		width: 270px;
 		height: 270px;
@@ -230,6 +249,10 @@
 }
 
 @media (min-width: 500px) and (min-height: 500px) {
+	.tile-ContainerLarge {
+		height: 336px;
+	}
+	
 	.tile-Tile {
 		width: 320px;
 		height: 320px;
@@ -273,10 +296,16 @@
 		margin: 16px;
 	}
 	
+	.tile-ContainerLarge {
+		height: 95%;
+	}
+	
 	.tile-Tile.tile-TileLarge {
 		width: 40%;
 		height: 95%;
 		max-height: 95%;
+		margin-top: 0;
+		margin-bottom: 0;
 	}
 	
 	.tile-TileLarge > .tile-TileImage {
