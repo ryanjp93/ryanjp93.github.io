@@ -105,8 +105,9 @@ function tileClick() {
 	
 	clickedTile.classList.add(activeTileClass);
 	activeTileIndex = tileIndex;
+	
 	var prefix = activeTabIndex === 1 ? 'f' : '';
-	httpRequest('tiles/' + tileIndex + '.html', function(html) {
+	httpRequest('/tiles/' + tileIndex + '.html', function(html) {
 		clickedTileHTML = clickedTile.innerHTML;
 		clickedTile.innerHTML = html;
 	});
