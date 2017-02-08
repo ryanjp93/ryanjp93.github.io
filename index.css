@@ -105,8 +105,8 @@ body {
 }
 
 .fade {
-	-webkit-transition:  opacity 200ms;
-	transition: opacity 200ms;
+	-webkit-transition:  opacity 500ms;
+	transition: opacity 500ms;
 	opacity: 1;
 }
 

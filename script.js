@@ -90,8 +90,8 @@ function tileClick() {
 	var isTileAlreadyActive = tileIndex === activeTileIndex;
 	if (isTileAlreadyActive) {
 		activeTileIndex = -1;
-		activeTile.classList.remove(activeTileClass);
-		activeTile.innerHTML = clickedTileHTML;
+		clickedTile.classList.remove(activeTileClass);
+		clickedTile.innerHTML = clickedTileHTML;
 		return;
 	};
 	
