@@ -22,12 +22,22 @@
 .tile-ContainerLarge {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 12px;
+    right: 7px;
     bottom: 27px;
     text-align: center;
     margin: auto;
     height: 186px;
+	overflow-y: scroll;
+	
+	/* Modern IE scrollbars */
+	scrollbar-3dlight-color: #383838;
+	scrollbar-arrow-color: #bb2323;
+	scrollbar-base-color: #383838;
+	scrollbar-darkshadow-color: #383838;
+	scrollbar-face-color: #383838;
+	scrollbar-highlight-color: #bb2323;
+	scrollbar-shadow-color: #383838;
 }
 
 .tile-CenteringContainer {
@@ -304,8 +314,6 @@
 		width: 40%;
 		height: 95%;
 		max-height: 95%;
-		margin-top: 0;
-		margin-bottom: 0;
 	}
 	
 	.tile-TileLarge > .tile-TileImage {
