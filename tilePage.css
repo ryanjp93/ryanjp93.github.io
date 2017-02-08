@@ -79,6 +79,7 @@
 	max-height: 100%;
 	margin: 0;
 	overflow-y: auto;
+    margin-left: 10px;
 }
 
 .tile-Tile.tile-TileLarge.tile-Tile-active {
