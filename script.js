@@ -89,8 +89,8 @@ function tileClick() {
 	// Deselect clicked tile if it was already active
 	var isTileAlreadyActive = tileIndex === activeTileIndex;
 	if (isTileAlreadyActive) {
-		clickedTile.classList.remove(activeTileClass);
 		activeTileIndex = -1;
+		activeTile.classList.remove(activeTileClass);
 		activeTile.innerHTML = clickedTileHTML;
 		return;
 	};
