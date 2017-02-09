@@ -8,6 +8,8 @@ var activeTileIndex = -1;
 var activeTileClass = 'tile-Tile-active';
 var clickedTile;
 var clickedTileHTML;
+var featuredImages = ['wip.png', 'wip.png'];
+var recentImages = ['moniac-bw.png', 'dx11-bw.png', 'website-bw.png', 'c-bw.png', 'stats-bw.png', 'pw-bw.png', 'water-bw.png', 'ab-bw.png', 'fps-bw.png', 'chat-bw.png', 'work-bw.png', 'hush-bw.png', 'dx9-bw.png'];
 
 var activeTab;
 var activeTabIndex = -1;
@@ -106,10 +108,27 @@ function tileClick() {
 	clickedTile.classList.add(activeTileClass);
 	activeTileIndex = tileIndex;
 	
-	var prefix = activeTabIndex === 1 ? 'f' : '';
+	var isFeaturedPage = activeTabIndex === 1;
+	var prefix = isFeaturedPage ? 'f' : '';
+	
 	httpRequest('/tiles/' + tileIndex + '.html', function(html) {
 		clickedTileHTML = clickedTile.innerHTML;
 		clickedTile.innerHTML = html;
+		
+		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
+		var imageElements = document.getElementsByClassName("tile-TileImage");
+		var imageCount = imageElements.length;
+		for (var i = 0; i < imageCount; i++) {
+			var currentImage = imageElements[i];
+			var imageToLoad = imagesToLoad[i];
+			
+			var backgroundImage = new Image();
+			backgroundImage.src = '/assets/' + currentImage;
+			backgroundImage.onload = function() {
+				currentImage.src = this.src;
+				currentImage.innerHTML = '';
+			};
+		}
 	});
 }
 

@@ -119,64 +119,29 @@
 	box-shadow: 0 0 14px;
 }
 
-.tile-TileImage0 {
-	background-image: url(assets/moniac-bw.png);
+.tile-Spinner {
+	width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.tile-TileImage1 {
-	background-image: url(assets/dx11-bw.png);
+.tile-Bounce1, .tile-Bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #EEE;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 3.0s infinite ease-in-out;
+  animation: sk-bounce 3.0s infinite ease-in-out;
 }
 
-.tile-TileImage2 {
-	background-image: url(assets/website-bw.png);
-}
-
-.tile-TileImage3 {
-	background-image: url(assets/c-bw.png);
-}
-
-.tile-TileImage4 {
-	background-image: url(assets/stats-bw.png);
-}
-
-.tile-TileImage5 {
-	background-image: url(assets/pw-bw.png);
-}
-
-.tile-TileImage6 {
-	background-image: url(assets/water-bw.png);
-}
-
-.tile-TileImage7 {
-	background-image: url(assets/ab-bw.png);
-}
-
-.tile-TileImage8 {
-	background-image: url(assets/fps-bw.png);
-}
-
-.tile-TileImage9 {
-	background-image: url(assets/chat-bw.png);
-}
-
-.tile-TileImage10 {
-	background-image: url(assets/work-bw.png);
-}
-
-.tile-TileImage11 {
-	background-image: url(assets/hush-bw.png);
-}
-
-.tile-TileImage12 {
-	background-image: url(assets/dx9-bw.png);
-}
-
-.tile-TileImageF0 {
-	background-image: url(assets/wip.png);
-}
-
-.tile-TileImageF1 {
-	background-image: url(assets/wip.png);
+.tile-Bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
 }
 
 .tile-TileDescription {
@@ -444,6 +409,22 @@
 		padding-bottom: 8px;
 	}
 }	
+
+/* Animations */
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
 
 /* Chrome Scrollbars */
 
