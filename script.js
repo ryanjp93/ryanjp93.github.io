@@ -125,7 +125,7 @@ function tileClick() {
 			var backgroundImage = new Image();
 			backgroundImage.src = '/assets/' + currentImage;
 			backgroundImage.onload = function() {
-				currentImage.src = this.src;
+				currentImage.backgroundImage = this;
 				currentImage.innerHTML = '';
 			};
 		}
