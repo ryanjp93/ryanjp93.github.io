@@ -73,6 +73,21 @@ function changeActiveTab(index) {
 			return;
 		}
 		
+		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
+		var imageElements = document.getElementsByClassName("tile-TileImage");
+		var imageCount = imageElements.length;
+		for (var i = 0; i < imageCount; i++) {
+			var currentImageElement = imageElements[i];
+			var imageToLoad = imagesToLoad[i];
+			
+			var backgroundImage = new Image();
+			backgroundImage.src = '/assets/' + imageToLoad;
+			backgroundImage.onload = function(actualCurrentImageElement) {
+				actualCurrentImageElement.backgroundImage = this;
+				actualCurrentImageElement.innerHTML = '';
+			}(currentImageElement);
+		}
+		
 		// Set up tile click behaviour
 		tiles = document.getElementsByClassName('tile-Tile');
 		numberOfTiles = tiles.length;
@@ -114,21 +129,6 @@ function tileClick() {
 	httpRequest('/tiles/' + tileIndex + '.html', function(html) {
 		clickedTileHTML = clickedTile.innerHTML;
 		clickedTile.innerHTML = html;
-		
-		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
-		var imageElements = document.getElementsByClassName("tile-TileImage");
-		var imageCount = imageElements.length;
-		for (var i = 0; i < imageCount; i++) {
-			var currentImage = imageElements[i];
-			var imageToLoad = imagesToLoad[i];
-			
-			var backgroundImage = new Image();
-			backgroundImage.src = '/assets/' + currentImage;
-			backgroundImage.onload = function() {
-				currentImage.backgroundImage = this;
-				currentImage.innerHTML = '';
-			};
-		}
 	});
 }
 
