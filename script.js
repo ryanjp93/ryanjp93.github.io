@@ -73,6 +73,7 @@ function changeActiveTab(index) {
 			return;
 		}
 		
+		var isFeaturedPage = activeTabIndex === 1;
 		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
 		var imageElements = document.getElementsByClassName("tile-TileImage");
 		var imageCount = imageElements.length;
