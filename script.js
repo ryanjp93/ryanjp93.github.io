@@ -82,11 +82,12 @@ function changeActiveTab(index) {
 			var imageToLoad = imagesToLoad[i];
 			
 			var backgroundImage = new Image();
-			backgroundImage.src = '/assets/' + imageToLoad;
-			backgroundImage.onload = function(actualCurrentImageElement) {
-				actualCurrentImageElement.backgroundImage = this;
+			backgroundImage.classList.add("tile-TileImage");
+			backgroundImage.onload = function(actualCurrentImageElement, actualBackgroundImage) {
 				actualCurrentImageElement.innerHTML = '';
-			}(currentImageElement);
+				actualCurrentImageElement.appendChild(backgroundImage);
+			}(currentImageElement, actualBackgroundImage);
+			backgroundImage.src = '/assets/' + imageToLoad;
 		}
 		
 		// Set up tile click behaviour
