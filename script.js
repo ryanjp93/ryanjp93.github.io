@@ -92,7 +92,7 @@ function changeActiveTab(index) {
 					var actualCurrentImageElement = imageElements[index];
 					actualCurrentImageElement.innerHTML = '';
 					actualCurrentImageElement.appendChild(backgroundImages[index]);
-					backgroundImages.splice(index, 1);
+					delete backgroundImages[index];
 				}
 				backgroundImage.src = '/assets/' + imageToLoad;
 				backgroundImages.push(backgroundImage);
