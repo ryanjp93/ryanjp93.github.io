@@ -16,6 +16,9 @@ var activeTabIndex = -1;
 var activeTabClass = 'navButton-active';
 changeActiveTab(0);
 
+var timeoutHandle;
+var intervalHandle;
+
 /* Basic http request. */
 function httpRequest(url, callback) {
 	var xmlHttp = new XMLHttpRequest();
@@ -138,6 +141,27 @@ function tileClick() {
 		clickedTileHTML = clickedTile.innerHTML;
 		clickedTile.innerHTML = html;
 	});
+	
+	// After a second the tile will be fully expanded, so begin scrolling it into view
+	var scrollElement = document.getElementsByClassName("tile-Container")[0];
+	timeoutHandle = setTimeout(function() {
+		intervalHandle = setInterval(function() {
+			var differenceY = scrollElement.scrollTop - clickedTile.scrollTop;
+			if (differenceY >= -10) {
+				clearInterval(intervalHandle);
+			}
+			else if (differenceY >= -100) {
+				scrollElement.scrollTo(clickedTile.scrollTop - 10);
+			}
+			else {
+				scrollElement.scrollTo(scrollElement.scrollTop + 100);
+			}
+		}, 50);
+		
+		if (this.timeout) {
+			clearTimeout(timeoutHandle);
+		}
+	}, 1000);
 }
 
 function loadImage(index) {
