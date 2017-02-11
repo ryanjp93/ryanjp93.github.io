@@ -75,18 +75,19 @@ function changeActiveTab(index) {
 		
 		var isFeaturedPage = activeTabIndex === 1;
 		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
-		var imageElements = document.getElementsByClassName("tile-TileImage");
+		var imageElements = document.getElementsByClassName('tile-TileImage');
 		var imageCount = imageElements.length;
 		for (var i = 0; i < imageCount; i++) {
 			var currentImageElement = imageElements[i];
 			var imageToLoad = imagesToLoad[i];
 			
 			var backgroundImage = new Image();
-			backgroundImage.classList.add("tile-TileImage");
-			backgroundImage.onload = function(actualCurrentImageElement, actualBackgroundImage) {
+			backgroundImage.classList.add('tile-LoadedImage');
+			backgroundImage.onload = function(index, actualBackgroundImage) {
+				var actualCurrentImageElement = imageElements[i];
 				actualCurrentImageElement.innerHTML = '';
 				actualCurrentImageElement.appendChild(actualBackgroundImage);
-			}(currentImageElement, backgroundImage);
+			}(i, backgroundImage);
 			backgroundImage.src = '/assets/' + imageToLoad;
 		}
 		

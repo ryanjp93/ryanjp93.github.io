@@ -119,6 +119,12 @@
 	box-shadow: 0 0 14px;
 }
 
+.tile-LoadedImage {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
 .tile-Spinner {
 	width: 100%;
     height: 100%;
