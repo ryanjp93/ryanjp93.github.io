@@ -152,13 +152,13 @@ function tileClick() {
 			if (differenceY >= -10) {
 				clearInterval(intervalHandle);
 			}
-			else if (differenceY >= -100) {
+			else if (differenceY >= -30) {
 				scrollElement.scrollTop = clickedTile.offsetTop - 10;
 			}
 			else {
-				scrollElement.scrollTop = scrollElement.scrollTop + 100;
+				scrollElement.scrollTop = scrollElement.scrollTop + 30;
 			}
-		}, 50);
+		}, 30);
 		
 		if (this.timeout) {
 			clearTimeout(timeoutHandle);
