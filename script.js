@@ -149,14 +149,29 @@ function tileClick() {
 	timeoutHandle = setTimeout(function() {
 		intervalHandle = setInterval(function() {
 			var differenceY = scrollElement.scrollTop - clickedTile.offsetTop;
-			if (differenceY >= -10) {
-				clearInterval(intervalHandle);
-			}
-			else if (differenceY >= -30) {
-				scrollElement.scrollTop = clickedTile.offsetTop - 10;
+			var shouldScrollDown = difference < 0;
+			var scrollComplete = differenceY >= -10;
+			if (shouldScrollDown) {
+				if (scrollComplete) {
+					clearInterval(intervalHandle);
+				}
+				else if (differenceY >= -30) {
+					scrollElement.scrollTop = clickedTile.offsetTop - 10;
+				}
+				else {
+					scrollElement.scrollTop = scrollElement.scrollTop + 30;
+				}
 			}
 			else {
-				scrollElement.scrollTop = scrollElement.scrollTop + 30;
+				if (scrollComplete) {
+					clearInterval(intervalHandle);
+				}
+				else if (differenceY <= 30) {
+					scrollElement.scrollTop = clickedTile.offsetTop - 10;
+				}
+				else {
+					scrollElement.scrollTop = scrollElement.scrollTop - 30;
+				}
 			}
 		}, 30);
 		
