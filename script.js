@@ -16,6 +16,7 @@ var activeTabIndex = -1;
 var activeTabClass = 'navButton-active';
 changeActiveTab(0);
 
+var scrollElement;
 var timeoutHandle;
 var intervalHandle;
 
@@ -77,6 +78,8 @@ function changeActiveTab(index) {
 		}
 		
 		var isFeaturedPage = activeTabIndex === 1;
+		var scrollElement = isFeaturedPage ? document.getElementsByClassName("tile-ContainerLarge")[0] : document.getElementsByClassName("tile-Container")[0];
+		
 		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
 		var imageElements = document.getElementsByClassName('tile-TileImage');
 		var backgroundImages = [];
@@ -143,18 +146,17 @@ function tileClick() {
 	});
 	
 	// After a second the tile will be fully expanded, so begin scrolling it into view
-	var scrollElement = document.getElementsByClassName("tile-Container")[0];
 	timeoutHandle = setTimeout(function() {
 		intervalHandle = setInterval(function() {
-			var differenceY = scrollElement.scrollTop - clickedTile.scrollTop;
+			var differenceY = scrollElement.scrollTop - clickedTile.offsetTop;
 			if (differenceY >= -10) {
 				clearInterval(intervalHandle);
 			}
 			else if (differenceY >= -100) {
-				scrollElement.scrollTo(clickedTile.scrollTop - 10);
+				scrollElement.scrollTop = clickedTile.offsetTop - 10;
 			}
 			else {
-				scrollElement.scrollTo(scrollElement.scrollTop + 100);
+				scrollElement.scrollTop = scrollElement.scrollTop + 100;
 			}
 		}, 50);
 		
