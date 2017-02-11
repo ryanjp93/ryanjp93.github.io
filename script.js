@@ -150,7 +150,7 @@ function tileClick() {
 		intervalHandle = setInterval(function() {
 			var differenceY = scrollElement.scrollTop - clickedTile.offsetTop;
 			var shouldScrollDown = differenceY < 0;
-			var scrollComplete = differenceY >= -10 : differenceY < 10;
+			var scrollComplete = shouldScrollDown ? differenceY >= -10 : differenceY < 10;
 			if (shouldScrollDown) {
 				if (scrollComplete) {
 					clearInterval(intervalHandle);
