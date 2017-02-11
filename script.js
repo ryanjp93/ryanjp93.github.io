@@ -93,7 +93,7 @@ function changeActiveTab(index) {
 				}
 				backgroundImage.src = '/assets/' + imageToLoad;
 				backgroundImages.push(backgroundImage);
-			}(i);
+			})(i);
 		}
 		
 		// Set up tile click behaviour
