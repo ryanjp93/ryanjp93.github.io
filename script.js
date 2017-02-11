@@ -149,7 +149,7 @@ function tileClick() {
 	timeoutHandle = setTimeout(function() {
 		intervalHandle = setInterval(function() {
 			var differenceY = scrollElement.scrollTop - clickedTile.offsetTop;
-			var shouldScrollDown = difference < 0;
+			var shouldScrollDown = differenceY < 0;
 			var scrollComplete = differenceY >= -10;
 			if (shouldScrollDown) {
 				if (scrollComplete) {
