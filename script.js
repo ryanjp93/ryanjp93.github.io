@@ -78,7 +78,7 @@ function changeActiveTab(index) {
 		}
 		
 		var isFeaturedPage = activeTabIndex === 1;
-		var scrollElement = isFeaturedPage ? document.getElementsByClassName("tile-ContainerLarge")[0] : document.getElementsByClassName("tile-Container")[0];
+		scrollElement = isFeaturedPage ? document.getElementsByClassName("tile-ContainerLarge")[0] : document.getElementsByClassName("tile-Container")[0];
 		
 		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
 		var imageElements = document.getElementsByClassName('tile-TileImage');
