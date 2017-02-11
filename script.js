@@ -85,8 +85,8 @@ function changeActiveTab(index) {
 			backgroundImage.classList.add("tile-TileImage");
 			backgroundImage.onload = function(actualCurrentImageElement, actualBackgroundImage) {
 				actualCurrentImageElement.innerHTML = '';
-				actualCurrentImageElement.appendChild(backgroundImage);
-			}(currentImageElement, actualBackgroundImage);
+				actualCurrentImageElement.appendChild(actualBackgroundImage);
+			}(currentImageElement, backgroundImage);
 			backgroundImage.src = '/assets/' + imageToLoad;
 		}
 		
