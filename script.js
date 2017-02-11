@@ -76,19 +76,24 @@ function changeActiveTab(index) {
 		var isFeaturedPage = activeTabIndex === 1;
 		var imagesToLoad = isFeaturedPage ? featuredImages : recentImages;
 		var imageElements = document.getElementsByClassName('tile-TileImage');
+		var backgroundImages = [];
 		var imageCount = imageElements.length;
 		for (var i = 0; i < imageCount; i++) {
-			var currentImageElement = imageElements[i];
-			var imageToLoad = imagesToLoad[i];
-			
-			var backgroundImage = new Image();
-			backgroundImage.classList.add('tile-LoadedImage');
-			backgroundImage.onload = function(index, actualBackgroundImage) {
-				var actualCurrentImageElement = imageElements[i];
-				actualCurrentImageElement.innerHTML = '';
-				actualCurrentImageElement.appendChild(actualBackgroundImage);
-			}(i, backgroundImage);
-			backgroundImage.src = '/assets/' + imageToLoad;
+			(function(index) {
+				var currentImageElement = imageElements[i];
+				var imageToLoad = imagesToLoad[i];
+				
+				var backgroundImage = new Image();
+				backgroundImage.classList.add('tile-LoadedImage');
+				backgroundImage.onload = function() {
+					var actualCurrentImageElement = imageElements[index];
+					actualCurrentImageElement.innerHTML = '';
+					actualCurrentImageElement.appendChild(backgroundImages[index]);
+					backgroundImagers.splice(index, 1);
+				}
+				backgroundImage.src = '/assets/' + imageToLoad;
+				backgroundImages.push(backgroundImage);
+			}(i);
 		}
 		
 		// Set up tile click behaviour
@@ -133,6 +138,9 @@ function tileClick() {
 		clickedTileHTML = clickedTile.innerHTML;
 		clickedTile.innerHTML = html;
 	});
+}
+
+function loadImage(index) {
 }
 
 for (var i = 0, count = tabs.length; i < count; i++) {
