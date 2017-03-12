@@ -283,7 +283,7 @@
 	}
 	
 	.tile-Tile.tile-TileLarge {
-		width: 40%;
+		width: 80%;
 		height: 95%;
 		max-height: 95%;
 	}
@@ -366,6 +366,10 @@
 }
 
 @media (min-width: 1100px) and (min-height: 900px) {
+	.tile-Tile.tile-TileLarge {
+		width: 40%;
+	}
+	
 	.tile-TileLarge > .tile-TileImage {
 		width: 280px;
 		height: 280px;

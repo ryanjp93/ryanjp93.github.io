@@ -18,7 +18,7 @@
 }
 
 .info-Post {
-	width: 190px;
+	width: 60%;
 	margin: 3px auto;
 }
 
@@ -95,7 +95,6 @@
 	}
 	
 	.info-Post {
-		width: 200px;
 		margin-top: 6px;
 		margin-bottom: 6px;
 	}
@@ -105,10 +104,6 @@
 	.info-Banner {
 		left: 52px;
 		right: 52px;
-	}
-	
-	.info-Post {
-		width: 210px;
 	}
 	
 	.info-Banner > .info-PostTitle {
@@ -153,10 +148,6 @@
 		right: 80px;
 	}
 	
-	.info-Post {
-		width: 260px;
-	}
-	
 	.info-Banner > .info-PostContent {
 		font-size: 1rem;
 	}
@@ -197,7 +188,6 @@
 
 @media (min-width: 700px) and (min-height: 400px) {
 	.info-Post {
-		width: 330px;
 		margin-top: 12px;
 		margin-bottom: 12px;
 	}
@@ -248,10 +238,6 @@
 		right: 120px;
 	}
 	
-	.info-Post {
-		width: 360px;
-	}
-	
 	.info-PostFooterWrapper {
 		margin-top: 2px;
 	}
@@ -289,10 +275,6 @@
 	.info-Banner {
 		left: 15%;
 		right: 15%;
-	}
-	
-	.info-Post {
-		width: 40%;
 	}
 	
 	.info-Banner > .info-PostContent {
