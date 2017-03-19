@@ -66,8 +66,8 @@ function changeActiveTab(index) {
 	fade();
 	httpRequest(Constant.TAB_URLS[index], function(html) {
 		// Clean up any tiles on the page
-		for (var tile of tiles) {
-			tile.removeEventListener('click', tileClick);
+		for (var i = 0; i < tiles.length; i++) {
+			tiles[i].removeEventListener('click', tileClick);
 		}
 		tiles = [];
 		
@@ -86,8 +86,7 @@ function changeActiveTab(index) {
 		var imagesToLoad = isFeaturedPage ? Constant.FEATURED_IMAGE_FILENAMES : Constant.RECENT_IMAGE_FILENAMES;
 		var imageElements = document.getElementsByClassName('tile-TileImage');
 		var backgroundImages = [];
-		var imageCount = imageElements.length;
-		for (var i = 0; i < imageCount; i++) {
+		for (var i = 0; i < imageElemnets.length; i++) {
 			(function(index) {
 				var backgroundImage = new Image();
 				backgroundImage.classList.add('tile-LoadedImage');
@@ -104,8 +103,8 @@ function changeActiveTab(index) {
 		
 		// Set up tile click behaviour
 		tiles = document.getElementsByClassName('tile-Tile');
-		for (var tile of tiles) {
-			tile.addEventListener('click', tileClick);
+		for (var i = 0; i < tiles.length; i++) {
+			tiles[i].addEventListener('click', tileClick);
 		}
 	});
 }
@@ -197,8 +196,8 @@ function openTile(tile, tileIndex) {
 }
 
 // Program Start
-for (var tab of tabs) {
-	tab.addEventListener('click', function() {
+for (var i = 0; i < tabs.length; i++) {
+	tabs[i].addEventListener('click', function() {
 		changeActiveTab(parseInt(this.id));
 	});
 }
