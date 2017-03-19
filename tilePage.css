@@ -1,13 +1,11 @@
 .tile-Container {
 	text-align: center;
-	overflow-y: scroll;
+	overflow-y: auto;
     	position: absolute;
-    	left: 4px;
-    	right: 5%;
-    	top: 4px;
-	bottom: 2%;
-    	margin-bottom: 17px;
-    	margin-right: -4%;
+    	left: 0;
+    	right: -5%; /* For scrollbar, see centering container for vertical border's offset */
+    	top: 10px;
+	bottom: 22px; /* Horizontal border offset + 10px padding */
 	
 	/* Modern IE scrollbars */
 	scrollbar-3dlight-color: #383838;
@@ -42,7 +40,7 @@
 
 .tile-CenteringContainer {
 	height: 100%;
-	margin-right: 19px;
+	margin-right: 18px; /* Vertical border offset */
 }
 
 .tile-Tile {
@@ -217,16 +215,8 @@
 
 @media (min-width: 500px) and (min-height: 320px) {
 	.tile-Container {
-		left: 8px;
-		top: 8px;
-		right: 34px;
-		bottom: 19px;
-		margin-bottom: 17px;
-		margin-right: -26px;
-	}
-	
-	.tile-CenteringContainer {
-		margin-right: 35px;
+		right: 7px;
+		bottom: 37px;
 	}
 }
 
@@ -264,16 +254,6 @@
 }
 
 @media (min-width: 600px) and (min-height: 600px) {
-	.tile-Container {
-		left: 16px;
-		top: 16px;
-		bottom: 27px;
-	}
-	
-	.tile-CenteringContainer {
-		margin-right: 43px;
-	}
-
 	.tile-Tile {
 		margin: 16px;
 	}
@@ -333,16 +313,6 @@
 }
 
 @media (min-width: 900px) and (min-height: 700px) {
-	.tile-Container {
-		left: 24px;
-		top: 24px;
-		bottom: 35px;
-	}
-	
-	.tile-CenteringContainer {
-		margin-right: 51px;
-	}
-	
 	.tile-TileLarge > .tile-TileImage {
 		width: 210px;
 		height: 210px;
@@ -390,16 +360,6 @@
 }
 
 @media (min-width: 1600px) and (min-height: 900px) {
-	.tile-Container {
-		left: 30px;
-		top: 30px;
-		bottom: 41px;
-	}
-	
-	.tile-CenteringContainer {
-		margin-right: 57px;
-	}
-	
 	.tile-Tile {
 		width: 380px;
 		height: 380px;

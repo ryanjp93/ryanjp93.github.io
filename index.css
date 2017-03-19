@@ -5,10 +5,10 @@ body {
 
 .mainBackground {
 	position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+	top: 0;
+    	bottom: 0;
+    	left: 0;
+    	right: 0;
 	background: repeating-linear-gradient(-45deg, #EEE, #EEE 10px, #DDD 10px, #DDD 20px);
 }
 
@@ -83,8 +83,11 @@ body {
 }
 
 .content {
-	width: 100%;
-	height: 100%;
+	width: 95%;
+	height: 98%;
+	padding-right: 18px;
+	padding-bottom: 12px;
+	position: relative;
 	opacity: 0;
 }
 
@@ -263,7 +266,15 @@ body {
 	.screenContainer {
 		top: 96px;
 	}
+
 	
+	.content {
+		width: 100%;
+		height: 100%;
+		padding-right: 48px;
+		padding-bottom: 27px;
+	}
+
 	.verticalBorder {
 		right: 30px;
 	}
@@ -271,7 +282,7 @@ body {
 	.horizontalBorder {
 		bottom: 15px
 	}
-	
+
 	.squareBorder {
 		right: 30px;
 		bottom: 15px
@@ -423,7 +434,7 @@ body {
 		line-height: 30px;
 		font-size: 1rem;
 	}
-
+}
 	
 @media (min-width: 1200px) and (min-height: 360px) {
 	.nav {
