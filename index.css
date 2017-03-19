@@ -13,7 +13,7 @@ body {
 }
 
 .screenContainer {
-	background-color: #bb2323;
+	background-color: #b22222;
 	box-shadow: 0 0 20px 0 rgb(0, 0, 0);
 	position: absolute;
 	top: 58px;
@@ -27,7 +27,7 @@ body {
 	height: 40px;
 	line-height: 34px;
 	text-align: center;
-	color: #bb2323;
+	color: #b22222;
 }
 
 .bannerText {
@@ -62,19 +62,19 @@ body {
 }
 
 .navButton:hover {
-	background-color: #bb2323;
+	background-color: #b22222;
 }
 
 .navButton-active {
 	background: 0;
-	background-color: #bb2323;
+	background-color: #b22222;
 	cursor: default;
 	z-index: 2;
 	position: relative;
 }
 
 .navButton-active:hover{
-	background-color: #bb2323;
+	background-color: #b22222;
 }
 
 .navLink {

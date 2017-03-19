@@ -86,7 +86,7 @@ function changeActiveTab(index) {
 		var imagesToLoad = isFeaturedPage ? Constant.FEATURED_IMAGE_FILENAMES : Constant.RECENT_IMAGE_FILENAMES;
 		var imageElements = document.getElementsByClassName('tile-TileImage');
 		var backgroundImages = [];
-		for (var i = 0; i < imageElemnets.length; i++) {
+		for (var i = 0; i < imageElements.length; i++) {
 			(function(index) {
 				var backgroundImage = new Image();
 				backgroundImage.classList.add('tile-LoadedImage');
