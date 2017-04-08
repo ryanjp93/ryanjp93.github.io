@@ -1,205 +1,208 @@
-/* Script left intentionally not minified */
-
-// Values which should not be changed
-function Constant() {}
-Constant.LOCAL_SERVER = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-Constant.ASSETS_DIRECTORY = Constant.LOCAL_SERVER ? '/website-3.0/assets/' : '/assets/';
-Constant.TILES_DIRECTORY = Constant.LOCAL_SERVER ? '/website-3.0/tiles/' : '/tiles/';
-Constant.FEATURED_PAGE_INDEX = 1;
-Constant.RECENT_PAGE_INDEX = 2;
-Constant.TAB_URLS = ['home.html', 'featured.html', 'recent.html', 'contact.html'];
-Constant.ACTIVE_TAB_CLASS = 'navButton-active';
-Constant.ACTIVE_TILE_CLASS = 'tile-Tile-active';
-Constant.FEATURED_IMAGE_FILENAMES = ['wip.png', 'wip.png'];
-Constant.RECENT_IMAGE_FILENAMES = ['moniac-bw.png', 'dx11-bw.png', 'website-bw.png', 'c-bw.png', 'stats-bw.png', 'pw-bw.png', 'water-bw.png', 'ab-bw.png', 'fps-bw.png', 'chat-bw.png', 'work-bw.png', 'hush-bw.png', 'dx9-bw.png'];
-Constant.FEATURED_FILENAME_PREFIX = 'f';
-
-var contentArea = document.getElementsByClassName('content')[0];
-var tabs = document.getElementsByClassName('navButton');
-
-var tiles = [];
-var scrollElement;
-
-var timeoutHandle;
-var intervalHandle;
-
-/* Basic http request. */
-function httpRequest(url, callback) {
-	var xmlHttp = new XMLHttpRequest();
-   	xmlHttp.onreadystatechange = function() { 
-        	if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-        	    	callback(xmlHttp.responseText);
-		}
-    	}
-    	xmlHttp.open('GET', url, true); 
-    	xmlHttp.send(null);
-}
-
-/* Fades in the page content by toggling an opacity change after a delay and animating it with a transition. */
-function fade() {
-	contentArea.className = 'content';
-	
-	setTimeout(function() { 
-		contentArea.className = 'content fade';
-	}, 100);
-}
-
-/* Switches to the given tab by changing classes. */
-var activeTab;
-var activeTabIndex = -1;
-function changeActiveTab(index) {
-	var isTabAlreadyActive = index === activeTabIndex;
-	if (isTabAlreadyActive) {
-		return; // Don't bother switching to a tab we are already on
-	}
-	activeTabIndex = index;
-	
-	// Manage tab styling
-	if (activeTab) {
-		activeTab.classList.remove(Constant.ACTIVE_TAB_CLASS);
-	}
-	
-	activeTab = tabs[index];
-	activeTab.classList.add(Constant.ACTIVE_TAB_CLASS);
-	
-	// Manage page content
-	fade();
-	httpRequest(Constant.TAB_URLS[index], function(html) {
-		// Clean up any tiles on the page
-		for (var i = 0; i < tiles.length; i++) {
-			tiles[i].removeEventListener('click', tileClick);
-		}
-		tiles = [];
-		
-		contentArea.innerHTML = html;
-		
-		// Extra setup is only required on pages containing tiles
-		var isTilePage = index === Constant.FEATURED_PAGE_INDEX || index === Constant.RECENT_PAGE_INDEX;
-		if (!isTilePage) {
-			return;
-		}
-		
-		var isFeaturedPage = activeTabIndex === Constant.FEATURED_PAGE_INDEX;
-		scrollElement = isFeaturedPage ? document.getElementsByClassName("tile-ContainerLarge")[0] : document.getElementsByClassName("tile-Container")[0];
-		
-		// Each tile has a loading css animation which plays until its image is loaded. Create a background image and set up load behaviour.
-		var imagesToLoad = isFeaturedPage ? Constant.FEATURED_IMAGE_FILENAMES : Constant.RECENT_IMAGE_FILENAMES;
-		var imageElements = document.getElementsByClassName('tile-TileImage');
-		var backgroundImages = [];
-		for (var i = 0; i < imageElements.length; i++) {
-			(function(index) {
-				var backgroundImage = new Image();
-				backgroundImage.classList.add('tile-LoadedImage');
-				backgroundImage.onload = function() {
-					var currentParent = imageElements[index];
-					currentParent.innerHTML = ''; // Clear the loading animation
-					currentParent.appendChild(backgroundImages[index]); // Image has now finished loading so append it
-					delete backgroundImages[index]; // Remvoe the image from memory
-				}
-				backgroundImage.src = Constant.ASSETS_DIRECTORY + imagesToLoad[i];
-				backgroundImages.push(backgroundImage);
-			})(i)
-		}
-		
-		// Set up tile click behaviour
-		tiles = document.getElementsByClassName('tile-Tile');
-		for (var i = 0; i < tiles.length; i++) {
-			tiles[i].addEventListener('click', tileClick);
-		}
-	});
-}
-
-var activeTileIndex = -1;
-var clickedTile;
-var clickedTileHTML;
-function tileClick() {
-	clickedTile = this;
-	var tileIndex = clickedTile.firstElementChild.textContent; // Each tile's first child is a span containing the numerical position of the tile
-	
-	// Deselect clicked tile if it was already active
-	var isTileAlreadyActive = tileIndex === activeTileIndex;
-	if (isTileAlreadyActive) {
-		activeTileIndex = -1;
-		closeTile(this);
-		return;
-	};
-	
-	// Remove active tile styling from currently active tile
-	var activeTileExists = activeTileIndex > -1;
-	if (activeTileExists) {
-		var activeTile = tiles[activeTileIndex];
-		closeTile(activeTile);
-	}
-	
-	openTile(this, tileIndex);
-}
-
-function closeTile(tile) {
-	clickedTile.classList.remove(Constant.ACTIVE_TILE_CLASS);
-	clickedTile.innerHTML = clickedTileHTML;
-
-	if (intervalHandle) {
-		clearInterval(intervalHandle);
-	}
-
-	if (timeoutHandle) {
-		clearTimeout(timeoutHandle);
-	}
-}
-
-function openTile(tile, tileIndex) {
-	tile.classList.add(Constant.ACTIVE_TILE_CLASS);
-	activeTileIndex = tileIndex;
-	
-	var isFeaturedPage = activeTabIndex === Constant.FEATURED_PAGE_INDEX;
-	var prefix = isFeaturedPage ? Constant.FEATURED_FILENAME_PREFIX : '';
-	
-	httpRequest(Constant.TILES_DIRECTORY + tileIndex + '.html', function(html) {
-		clickedTileHTML = tile.innerHTML;
-		tile.innerHTML = html;
-	});
-	
-	// After a second the tile will be fully expanded, so begin scrolling it into view
-	timeoutHandle = setTimeout(function() {
-		intervalHandle = setInterval(function() {
-			var differenceY = scrollElement.scrollTop - tile.offsetTop;
-			var shouldScrollDown = differenceY < 0;
-			var scrollCompvare = shouldScrollDown ? differenceY >= -10 : differenceY < 10;
-			if (shouldScrollDown) {
-				if (scrollCompvare) {
-					clearInterval(intervalHandle);
-				}
-				else if (differenceY >= -30) {
-					scrollElement.scrollTop = tile.offsetTop - 10;
-				}
-				else {
-					scrollElement.scrollTop = scrollElement.scrollTop + 30;
-				}
-			}
-			else {
-				if (scrollCompvare) {
-					clearInterval(intervalHandle);
-				}
-				else if (differenceY <= 30) {
-					scrollElement.scrollTop = tile.offsetTop - 10;
-				}
-				else {
-					scrollElement.scrollTop = scrollElement.scrollTop - 30;
-				}
-			}
-		}, 30);
-		
-		if (this.timeout) {
-			clearTimeout(timeoutHandle);
-		}
-	}, 1000);
-}
-
-// Program Start
-for (var i = 0; i < tabs.length; i++) {
-	tabs[i].addEventListener('click', function() {
-		changeActiveTab(parseInt(this.id));
-	});
-}
-
-changeActiveTab(0);
+var Website = (function () {
+    function Website() {
+        this.contentArea = document.getElementsByClassName("index-PageContent")[0];
+        this.tabs = document.getElementsByClassName("index-NavButton");
+        this.activeTabIndex = -1;
+        this.activeTileIndex = -1;
+    }
+    /* Basic http request. */
+    Website.prototype.httpRequest = function (url, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                callback(xmlHttp.responseText);
+            }
+        };
+        xmlHttp.open("GET", url, true);
+        xmlHttp.send(null);
+    };
+    /* Fades in the page content by toggling an opacity change after a delay and animating it with a transition. */
+    Website.prototype.fade = function () {
+        var _this = this;
+        this.contentArea.classList.remove(Website.FADE_CLASS);
+        setTimeout(function () {
+            _this.contentArea.classList.add(Website.FADE_CLASS);
+        }, 100);
+    };
+    /* Switches to the tab represented by the given index. */
+    Website.prototype.changeActiveTab = function (index) {
+        var _this = this;
+        var isTabAlreadyActive = index === this.activeTabIndex;
+        if (isTabAlreadyActive) {
+            return; // Don"t bother switching to a tab we are already on
+        }
+        this.activeTabIndex = index;
+        // If a tab is already selcted, remove its styling here
+        var activeTab = this.activeTab;
+        if (activeTab) {
+            activeTab.classList.remove(Website.ACTIVE_TAB_CLASS);
+        }
+        activeTab = this.activeTab = this.tabs[index];
+        activeTab.classList.add(Website.ACTIVE_TAB_CLASS);
+        // Load page content
+        this.fade();
+        this.httpRequest(Website.TAB_URLS[index], function (tabHTML) {
+            // Clean up any tiles from the previous page
+            var tiles = _this.tiles;
+            if (tiles) {
+                var tileCount = tiles.length;
+                for (var i = 0; i < tileCount; i++) {
+                    tiles[i].removeEventListener("click", function (e) { return _this.tileClick(e); });
+                }
+            }
+            _this.contentArea.innerHTML = tabHTML;
+            // Extra setup is only required on pages containing tiles
+            var isTilePage = index === Website.FEATURED_PAGE_INDEX || index === Website.RECENT_PAGE_INDEX;
+            if (isTilePage) {
+                _this.loadTilePage();
+            }
+        });
+    };
+    /* Tile page require extra setup as the content and images require loading. */
+    Website.prototype.loadTilePage = function () {
+        var _this = this;
+        var scrollElement = this.scrollElement = document.getElementsByClassName("tile-CenteringContainer")[0];
+        var isFeaturedPage = this.activeTabIndex === Website.FEATURED_PAGE_INDEX;
+        var tileNames = isFeaturedPage ? Website.FEATURED_TILE_NAMES : Website.RECENT_TILE_NAMES;
+        var tiles = this.tiles = document.getElementsByClassName("tile-Tile");
+        var tileCount = tileNames.length;
+        var _loop_1 = function (i) {
+            this_1.httpRequest("tiles/" + tileNames[i] + "-close.html", function (tileHTML) {
+                var tileElement = tiles[i];
+                tileElement.innerHTML = tileHTML;
+                tileElement.firstElementChild.textContent = i.toString();
+                // Each tile has a loading css animation which plays until its image is loaded. Create a background image and set up load behaviour.
+                var imageElement = tileElement.getElementsByClassName("tile-Image")[0];
+                var backgroundImage = new Image();
+                backgroundImage.classList.add("tile-LoadedImage");
+                backgroundImage.onload = function () {
+                    imageElement.innerHTML = ""; // Clear the loading animation
+                    imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
+                };
+                backgroundImage.src = Website.ASSETS_DIRECTORY + tileNames[i] + "-bw.png";
+                tileElement.addEventListener("click", function (e) { return _this.tileClick(e); });
+            });
+        };
+        var this_1 = this;
+        for (var i = 0; i < tileCount; i++) {
+            _loop_1(i);
+        }
+    };
+    /* Moves up the dom until a tile is found and return it. */
+    Website.prototype.findTileElement = function (element) {
+        var isTileElement = element.classList.contains("tile-Tile");
+        return isTileElement ? element : this.findTileElement(element.parentElement);
+    };
+    /* Handle click events on tiles by expanding them. */
+    Website.prototype.tileClick = function (e) {
+        var clickedTile = this.findTileElement(e.target);
+        var clickedTileIndex = Number(clickedTile.firstElementChild.textContent); // Each tile"s first child is a span containing the numerical position of the tile
+        var activeTileIndex = this.activeTileIndex;
+        // Deselect clicked tile if it was already active
+        var isTileAlreadyActive = clickedTileIndex === activeTileIndex;
+        if (isTileAlreadyActive) {
+            activeTileIndex = -1;
+            this.closeTile(clickedTile);
+            return;
+        }
+        ;
+        // Remove active tile styling from currently active tile
+        var activeTileExists = activeTileIndex > -1;
+        if (activeTileExists) {
+            var activeTile = this.tiles[activeTileIndex];
+            this.closeTile(activeTile);
+        }
+        this.openTile(clickedTile, clickedTileIndex);
+    };
+    /* Close the given tile. */
+    Website.prototype.closeTile = function (tile) {
+        tile.classList.remove(Website.ACTIVE_TILE_CLASS);
+        tile.innerHTML = this.activeTileClosedHTML;
+        if (this.intervalHandle) {
+            clearInterval(this.intervalHandle);
+        }
+        if (this.timeoutHandle) {
+            clearTimeout(this.timeoutHandle);
+        }
+    };
+    Website.prototype.openTile = function (tile, tileIndex) {
+        var _this = this;
+        tile.classList.add(Website.ACTIVE_TILE_CLASS);
+        this.activeTileIndex = tileIndex;
+        var isFeaturedPage = this.activeTabIndex === Website.FEATURED_PAGE_INDEX;
+        var tileNameArray = isFeaturedPage ? Website.FEATURED_TILE_NAMES : Website.RECENT_TILE_NAMES;
+        var tileFullPath = Website.TILES_DIRECTORY + tileNameArray[tileIndex] + "-open.html";
+        this.httpRequest(tileFullPath, function (html) {
+            _this.activeTileClosedHTML = tile.innerHTML;
+            var tileIndexElement = tile.firstElementChild;
+            tile.innerHTML = "";
+            tile.appendChild(tileIndexElement);
+            tile.innerHTML += html;
+        });
+        // After a second the tile will be fully expanded, so begin scrolling it into view
+        this.timeoutHandle = setTimeout(function () {
+            _this.intervalHandle = setInterval(function () {
+                var differenceY = _this.scrollElement.scrollTop - tile.offsetTop;
+                var shouldScrollDown = differenceY < 0;
+                var scrollComplete = shouldScrollDown ? differenceY >= -Website.SCROLL_FINE_STEP : differenceY < Website.SCROLL_FINE_STEP;
+                if (shouldScrollDown) {
+                    if (scrollComplete) {
+                        clearInterval(_this.intervalHandle);
+                    }
+                    else if (differenceY >= -Website.SCROLL_STEP) {
+                        _this.scrollElement.scrollTop = tile.offsetTop - Website.SCROLL_FINE_STEP;
+                    }
+                    else {
+                        _this.scrollElement.scrollTop = _this.scrollElement.scrollTop + Website.SCROLL_STEP;
+                    }
+                }
+                else {
+                    if (scrollComplete) {
+                        clearInterval(_this.intervalHandle);
+                    }
+                    else if (differenceY <= Website.SCROLL_STEP) {
+                        _this.scrollElement.scrollTop = tile.offsetTop - Website.SCROLL_FINE_STEP;
+                    }
+                    else {
+                        _this.scrollElement.scrollTop = _this.scrollElement.scrollTop - Website.SCROLL_STEP;
+                    }
+                }
+            }, 30);
+            if (_this.timeoutHandle) {
+                clearTimeout(_this.timeoutHandle);
+            }
+        }, 1000);
+    };
+    // Program Start
+    Website.prototype.Main = function () {
+        var _this = this;
+        var tabs = this.tabs;
+        var tabsCount = tabs.length;
+        for (var i = 0; i < tabsCount; i++) {
+            tabs[i].addEventListener("click", function (e) {
+                var target = e.target;
+                var isParentSelected = target.classList.contains("index-NavButton");
+                var indexElement = isParentSelected ? target.firstElementChild : target.previousElementSibling;
+                var index = Number(indexElement.textContent);
+                _this.changeActiveTab(index);
+            });
+        }
+        this.changeActiveTab(0);
+    };
+    return Website;
+}());
+Website.LOCAL_SERVER = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+Website.ASSETS_DIRECTORY = Website.LOCAL_SERVER ? "/website-3.0/assets/" : "/assets/";
+Website.TILES_DIRECTORY = Website.LOCAL_SERVER ? "/website-3.0/tiles/" : "/tiles/";
+Website.FEATURED_PAGE_INDEX = 1;
+Website.RECENT_PAGE_INDEX = 2;
+Website.TAB_URLS = ["home.html", "featured.html", "recent.html", "contact.html"];
+Website.ACTIVE_TAB_CLASS = "index-NavButton-active";
+Website.ACTIVE_TILE_CLASS = "tile-Tile-active";
+Website.FADE_CLASS = "fade";
+Website.FEATURED_TILE_NAMES = ["moniacweb", "b365"];
+Website.RECENT_TILE_NAMES = ["website2017", "moniac", "dx11", "website", "stats", "water", "ab", "fps", "placement", "hush", "dx9"];
+Website.SCROLL_STEP = 30;
+Website.SCROLL_FINE_STEP = 10;
+var website = new Website();
+website.Main();

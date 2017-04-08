@@ -1,0 +1,55 @@
+<div class="open-Wrapper">	
+	<header class="open-Title">High Quality Water Shader</header>
+	<p class="open-Subtitle">HLSL, Shaders</p>
+	<p class="open-Description">
+		<span class="bold">Programming Language:</span> HLSL<br>
+		<span class="bold">Tools:</span> Custom Engine (used for rendering, see DirectX11 Render Core)<br>
+		<span class="bold">Year:</span> 2015<br>
+		<span class="bold">Team Size:</span> Solo<br>
+		<span class="bold">Reason:</span> University<br>
+	</p>
+	<p class="open-Description">
+		<span class="bold">Overview<br></span>
+		The aim of this project was to produce realistic looking water using the High-Level Shader Language (HLSL).<br>
+		<br>
+		Below is a breakdown of how it is created (images correspond with each step number):<br>
+		1) Before the program is run, the water is a flat colourless plane.<br>
+		2) The plane is given a colour which ranges between dark blue (deep waves) and light blue (shallow waves). However, the wave at this point is still flat.<br>
+		3) Two Gerstner Waves are combined and used to displace the plane's vertices, which causes it to move in a manner similar to real water.<br>
+		4) Using the newly generated normals from the vertex displacement, a reflection is applied on the water from the skybox around it.<br>
+		5) Lighting is taken into account and in this case that is in the form of the moon which circles around the ocean in the sky, causing shadows and lit areas.<br>
+		6) Refraction and Fresnel reflection equations are applied to the final water colours to make the water react with lighting and reflections in a more natural way.<br>
+		7) Finally, High-Dynamic-Range (HDR) lighting is applied by reading hidden values stored in the skybox texture.<br>
+		8/9) Because the water colours are generated dynamically from the skybox, if the skybox is changed then the water colour adjusts to it automatically.
+	</p>
+	<div class="gallery">
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+		<div class="galleryFrame">
+		</div>
+	</div>
+	<p class="open-Description">
+		<span class="bold">Comments<br></span>
+		This project became quite the learning experience as I rewrote the shader entirely at least five times before I was pleased with the water's appearance. The biggest problem encountered 
+		on this project was with the maths. Learning to think with respect to 3x3 matrices and calculating how a reflection is affected by the position and direction of the viewer and then by
+	       	a normal value from an object and soon made every step of this project hard. However, because I spent so long researching shader concepts, since completing this project I have found
+	       	shaders to be fairly fun and straightforward to work with.
+	</p>
+	<div class="open-VideoWrapper">
+		<iframe class="open-Video" width="1280" height="720" src="https://www.youtube.com/embed/N78xnpxIxB0" frameborder="0" allowfullscreen="true"></iframe>
+	</div>
+</div>
