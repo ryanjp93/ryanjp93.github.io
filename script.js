@@ -101,7 +101,7 @@ var Website = (function () {
         // Deselect clicked tile if it was already active
         var isTileAlreadyActive = clickedTileIndex === activeTileIndex;
         if (isTileAlreadyActive) {
-            activeTileIndex = -1;
+            this.activeTileIndex = -1;
             this.closeTile(clickedTile);
             return;
         }
@@ -116,7 +116,15 @@ var Website = (function () {
     };
     /* Close the given tile. */
     Website.prototype.closeTile = function (tile) {
+        var _this = this;
         tile.classList.remove(Website.ACTIVE_TILE_CLASS);
+        // CLean up any image event listeners
+        var imageElements = this.imageElements;
+        var imageCount = imageElements.length;
+        for (var i = 0; i < imageCount; i++) {
+            imageElements[i].removeEventListener("click", function (e) { return _this.imageClick(e); });
+        }
+        this.gallery.addEventListener("click", function (e) { return e.stopImmediatePropagation(); });
         tile.innerHTML = this.activeTileClosedHTML;
         if (this.intervalHandle) {
             clearInterval(this.intervalHandle);
@@ -138,8 +146,10 @@ var Website = (function () {
             tile.innerHTML = "";
             tile.appendChild(tileIndexElement);
             tile.innerHTML += html;
+            var gallery = _this.gallery = tile.getElementsByClassName("open-Gallery")[0];
+            gallery.addEventListener("click", function (e) { return e.stopImmediatePropagation(); });
             // Each image on the tile has a loading animation which plays until the image is loaded. Create a background image and set up load behaviour.
-            var imageElements = tile.getElementsByClassName("open-Image");
+            var imageElements = _this.imageElements = gallery.getElementsByClassName("open-Image");
             var imageCount = imageElements.length;
             var _loop_2 = function (i) {
                 var imageElement = imageElements[i];
@@ -151,6 +161,7 @@ var Website = (function () {
                     imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
                 };
                 backgroundImage.src = Website.ASSETS_DIRECTORY + imageName;
+                imageElement.addEventListener("click", function (e) { return _this.imageClick(e); });
             };
             for (var i = 0; i < imageCount; i++) {
                 _loop_2(i);
@@ -190,6 +201,28 @@ var Website = (function () {
             }
         }, 1000);
     };
+    /* Marks the clicked image as active if it wasn't already, deselecting the previous active image if it exists. */
+    Website.prototype.imageClick = function (e) {
+        e.stopImmediatePropagation();
+        var clickedImage = e.target;
+        var childClicked = clickedImage.classList.contains("open-LoadedImage");
+        if (childClicked) {
+            clickedImage = clickedImage.parentElement;
+        }
+        var activeImage = this.activeImage;
+        if (activeImage) {
+            activeImage.classList.remove(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+            activeImage.firstElementChild.classList.remove(Website.ACTIVE_IMAGE_CLASS);
+            this.activeImage = null;
+            var imageAlreadyActive = activeImage === clickedImage;
+            if (imageAlreadyActive) {
+                return;
+            }
+        }
+        this.activeImage = clickedImage;
+        clickedImage.classList.add(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+        clickedImage.firstElementChild.classList.add(Website.ACTIVE_IMAGE_CLASS);
+    };
     // Program Start
     Website.prototype.Main = function () {
         var _this = this;
@@ -221,5 +254,7 @@ Website.FEATURED_TILE_NAMES = ["moniacweb", "b365"];
 Website.RECENT_TILE_NAMES = ["website2017", "moniac", "dx11", "website", "stats", "water", "ab", "fps", "placement", "hush", "dx9"];
 Website.SCROLL_STEP = 30;
 Website.SCROLL_FINE_STEP = 10;
+Website.ACTIVE_IMAGE_WRAPPER_CLASS = "open-Image-active";
+Website.ACTIVE_IMAGE_CLASS = "open-LoadedImage-active";
 var website = new Website();
 website.Main();

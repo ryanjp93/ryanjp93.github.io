@@ -12,6 +12,8 @@ class Website {
 	private static RECENT_TILE_NAMES = ["website2017", "moniac", "dx11", "website", "stats", "water", "ab", "fps", "placement", "hush", "dx9"];
 	private static SCROLL_STEP = 30;
 	private static SCROLL_FINE_STEP = 10;
+	private static ACTIVE_IMAGE_WRAPPER_CLASS = "open-Image-active";
+	private static ACTIVE_IMAGE_CLASS = "open-LoadedImage-active";
 
 	private contentArea = document.getElementsByClassName("index-PageContent")[0];
 	private tabs = document.getElementsByClassName("index-NavButton");
@@ -27,7 +29,11 @@ class Website {
 
 	private activeTileIndex = -1;
 	private activeTileClosedHTML: string;
-	
+
+	private gallery: Element;
+	private imageElements: NodeList;
+	private activeImage: Element;
+
 	constructor() {}
 
 	/* Basic http request. */
@@ -140,7 +146,7 @@ class Website {
 		// Deselect clicked tile if it was already active
 		const isTileAlreadyActive = clickedTileIndex === activeTileIndex;
 		if (isTileAlreadyActive) {
-			activeTileIndex = -1;
+			this.activeTileIndex = -1;
 			this.closeTile(clickedTile);
 			return;
 		};
@@ -158,6 +164,16 @@ class Website {
 	/* Close the given tile. */
 	private closeTile(tile: Element): void {
 		tile.classList.remove(Website.ACTIVE_TILE_CLASS);
+
+		// CLean up any image event listeners
+		const imageElements = this.imageElements;
+		const imageCount = imageElements.length;
+		for (let i = 0; i < imageCount; i++) {
+			imageElements[i].removeEventListener("click", (e: Event) => this.imageClick(e));
+		}
+
+		this.gallery.addEventListener("click", (e: Event) => e.stopImmediatePropagation());
+
 		tile.innerHTML = this.activeTileClosedHTML;
 	
 		if (this.intervalHandle) {
@@ -185,8 +201,11 @@ class Website {
 			tile.appendChild(tileIndexElement);
 			tile.innerHTML += html;
 
+			const gallery = this.gallery = tile.getElementsByClassName("open-Gallery")[0];
+			gallery.addEventListener("click", (e: Event) => e.stopImmediatePropagation());
+
 			// Each image on the tile has a loading animation which plays until the image is loaded. Create a background image and set up load behaviour.
-			const imageElements = tile.getElementsByClassName("open-Image");
+			const imageElements = this.imageElements = gallery.getElementsByClassName("open-Image");
 			const imageCount = imageElements.length
 			for (let i = 0; i < imageCount; i++) {
 				const imageElement = imageElements[i];
@@ -199,6 +218,8 @@ class Website {
 					imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
 				}
 				backgroundImage.src = Website.ASSETS_DIRECTORY + imageName;
+				
+				imageElement.addEventListener("click", (e: Event) => this.imageClick(e));
 			}
 		});
 		
@@ -236,6 +257,35 @@ class Website {
 				clearTimeout(this.timeoutHandle);
 			}
 		}, 1000);
+	}
+
+	/* Marks the clicked image as active if it wasn't already, deselecting the previous active image if it exists. */
+	private imageClick(e: Event): void {
+		e.stopImmediatePropagation();
+
+		let clickedImage = e.target as Element;
+
+		const childClicked = clickedImage.classList.contains("open-LoadedImage");
+		if (childClicked) {
+			clickedImage = clickedImage.parentElement;
+		}
+
+		const activeImage = this.activeImage;
+		if (activeImage) {
+			activeImage.classList.remove(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+			activeImage.firstElementChild.classList.remove(Website.ACTIVE_IMAGE_CLASS);
+			this.activeImage = null;
+			
+			const imageAlreadyActive = activeImage === clickedImage;
+			if (imageAlreadyActive) {
+				return;
+			}
+
+		}
+
+		this.activeImage = clickedImage;
+		clickedImage.classList.add(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+		clickedImage.firstElementChild.classList.add(Website.ACTIVE_IMAGE_CLASS);
 	}
 
 	// Program Start
