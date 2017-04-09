@@ -78,6 +78,11 @@
 	padding-bottom: 4px;
 }
 
+.tile-LargeImageWrapper {
+	flex: auto;
+	display: inherit;
+}
+
 .tile-Image {
 	margin: auto;
 	width: 80px;
@@ -130,12 +135,16 @@
 		top: 2%;
 		left: 2%;
 		right: 2%;
-		bottom: 52%;
+		bottom: 51%;
 		margin: 0;
+		width: auto;
+		height: auto;
+		max-width: initial;
+		max-height: initial;
 	}
 	
 	.tile-Tile.tile-TileLarge + .tile-Tile.tile-TileLarge {
-		top: 52%;
+		top: 51%;
 		bottom: 2%;
 	}
 }
@@ -145,13 +154,17 @@
 		position: absolute;
 		top: 2%;
 		left: 2%;
-		right: 52%;
+		right: 51%;
 		bottom: 2%;
 		margin: 0;
+		width: auto;
+		height: auto;
+		max-width: initial;
+		max-height: initial;
 	}
 	
 	.tile-Tile.tile-TileLarge + .tile-Tile.tile-TileLarge {
-		left: 52%;
+		left: 51%;
 		right: 2%;
 	}
 }
@@ -354,6 +367,12 @@
 		width: 230px;
 		height: 230px;
 		border-radius: 115px;
+	}
+	
+	.tile-TileLarge > .tile-Image {
+		width: 350px;
+		height: 350px;
+		border-radius: 175px;
 	}
 	
 	.tile-Title {
