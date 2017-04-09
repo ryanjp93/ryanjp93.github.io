@@ -27,18 +27,19 @@
 
 .open-Image {	
    	display: inline-block;
-    	background-color: #b22222;
-    	position: relative;
-    	width: 30%;
-    	height: 0;
-    	padding-bottom: 30%;
-    	margin: 1%;
-    	transition: width 1000ms ease-in-out, max-height 1000ms ease-in-out;
-    	border-radius: 8px;
-    	vertical-align: top;
-    	overflow: hidden;
-    	box-shadow: 0 0 20px 0 rgb(0, 0, 0);
-	border: 1px solid #383838;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 16px;
+    transition: width 1000ms ease-in-out, max-height 1000ms ease-in-out;
+    border-radius: 8px;
+    vertical-align: top;
+    overflow: hidden;
+    box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+}
+
+.open-Image:hover {
+	width: 300px;
 }
 
 .open-LoadedImage {
@@ -53,10 +54,6 @@
     	position: relative;
     	margin-left: 10%;
     	margin-top: 10%;
-}
-
-.open-Image:hover {
-	background-color: green;
 }
 
 .open-VideoWrapper {

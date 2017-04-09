@@ -1,6 +1,6 @@
 .tile-Container {
 	text-align: center;
-	overflow-y: scroll;
+	overflow-y: auto;
     	position: absolute;
     	left: 0;
     	right: -5%; /* For scrollbar, see centering container for vertical border's offset */
@@ -138,9 +138,8 @@
 
 @media (orientation: landscape) {
 	.tile-Tile.tile-TileLarge {
-		width: 43%;
-		height: 100%;
-		max-height: 100%;
+		position: absolute;
+		margin: 0;
 	}
 }
 
@@ -241,6 +240,8 @@
 		width: 160px;
 		height: 160px;
 		border-radius: 80px;
+		margin-top: 16px;
+		margin-bottom: 16px;
 	}
 	
 	.tile-TileLarge > .tile-Title {
