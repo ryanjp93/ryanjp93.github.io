@@ -19,13 +19,11 @@
 
 .tile-CenteringContainer {
 	height: 100%;
-	margin-right: 18px; /* Vertical border offset */
+	margin-right: 26px; /* Vertical border offset */
 }
 
 .tile-CenteringContainer.tile-CenteringContainerLarge {
-	display: table;
-	width: 100%;
-	padding-right: 18px; /* Vertical border offset */
+	padding-right: 42px;
 }
 
 .tile-Tile {
@@ -128,18 +126,33 @@
 
 @media (orientation: portrait) {
 	.tile-Tile.tile-TileLarge {
-		width: 85%;
-		height: 48%;
-		max-height: 48%;
-		margin-top: 9px;
-		margin-bottom: 9px;
+		position: absolute;
+		top: 1%;
+		left: 1%;
+		right: 1%;
+		bottom: 49%;
+		margin: 0;
+	}
+	
+	.tile-Tile.tile-TileLarge + .tile-Tile.tile-TileLarge {
+		top: 51%;
+		bottom: 1%;
 	}
 }
 
 @media (orientation: landscape) {
 	.tile-Tile.tile-TileLarge {
 		position: absolute;
+		top: 1%;
+		left: 1%;
+		right: 49%;
+		bottom: 1%;
 		margin: 0;
+	}
+	
+	.tile-Tile.tile-TileLarge + .tile-Tile.tile-TileLarge {
+		left: 51%;
+		right: 1%;
 	}
 }
 
