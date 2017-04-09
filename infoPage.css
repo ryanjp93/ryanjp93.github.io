@@ -267,6 +267,13 @@
 	}
 }
 
+@media (min-width: 1200px) and (min-height: 900px) {
+	.info-Post {
+		margin-top: 5%;
+		margin-bottom: 5%;
+	}
+}
+
 @media (orientation: landscape) {
 	.info-Banner {
 		top: 30%;

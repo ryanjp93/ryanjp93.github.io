@@ -184,6 +184,22 @@ class Website {
 			tile.innerHTML = "";
 			tile.appendChild(tileIndexElement);
 			tile.innerHTML += html;
+
+			// Each image on the tile has a loading animation which plays until the image is loaded. Create a background image and set up load behaviour.
+			const imageElements = tile.getElementsByClassName("open-Image");
+			const imageCount = imageElements.length
+			for (let i = 0; i < imageCount; i++) {
+				const imageElement = imageElements[i];
+				const imageName = imageElement.firstElementChild.textContent;
+
+				const backgroundImage = new Image();
+				backgroundImage.classList.add("open-LoadedImage");
+				backgroundImage.onload = () => {
+					imageElement.innerHTML = ""; // Clear the loading animation
+					imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
+				}
+				backgroundImage.src = Website.ASSETS_DIRECTORY + imageName;
+			}
 		});
 		
 		// After a second the tile will be fully expanded, so begin scrolling it into view

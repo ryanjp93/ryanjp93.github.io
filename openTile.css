@@ -21,7 +21,42 @@
 	padding: 8px;
 }
 
-.open-VideoContainer {
+.open-Gallery {
+	text-align: center;
+}
+
+.open-Image {	
+   	display: inline-block;
+    	background-color: #b22222;
+    	position: relative;
+    	width: 30%;
+    	height: 0;
+    	padding-bottom: 30%;
+    	margin: 1%;
+    	transition: width 1000ms ease-in-out, max-height 1000ms ease-in-out;
+    	border-radius: 8px;
+    	vertical-align: top;
+    	overflow: hidden;
+    	box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+	border: 1px solid #383838;
+}
+
+.open-LoadedImage {
+       	width: 125%;
+   	margin-left: -23%;
+   	margin-top: -7%;
+}
+
+.open-Spinner {
+     	width: 80%;
+    	padding-bottom: 80%;
+    	position: relative;
+    	margin-left: 10%;
+    	margin-top: 10%;
+}
+
+.open-Image:hover {
+	background-color: green;
 }
 
 .open-VideoWrapper {

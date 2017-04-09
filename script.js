@@ -138,6 +138,23 @@ var Website = (function () {
             tile.innerHTML = "";
             tile.appendChild(tileIndexElement);
             tile.innerHTML += html;
+            // Each image on the tile has a loading animation which plays until the image is loaded. Create a background image and set up load behaviour.
+            var imageElements = tile.getElementsByClassName("open-Image");
+            var imageCount = imageElements.length;
+            var _loop_2 = function (i) {
+                var imageElement = imageElements[i];
+                var imageName = imageElement.firstElementChild.textContent;
+                var backgroundImage = new Image();
+                backgroundImage.classList.add("open-LoadedImage");
+                backgroundImage.onload = function () {
+                    imageElement.innerHTML = ""; // Clear the loading animation
+                    imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
+                };
+                backgroundImage.src = Website.ASSETS_DIRECTORY + imageName;
+            };
+            for (var i = 0; i < imageCount; i++) {
+                _loop_2(i);
+            }
         });
         // After a second the tile will be fully expanded, so begin scrolling it into view
         this.timeoutHandle = setTimeout(function () {
