@@ -45,6 +45,7 @@
 .open-Image-active {
 	width: 80%;
 	height: auto;
+	max-width: 600px;
 }
 
 .open-Image.open-Image-active:hover {
@@ -55,6 +56,12 @@
        	width: 125%;
    	margin-left: -23%;
    	margin-top: -7%;
+}
+
+.open-Image-active > .open-LoadedImage {
+       	width: 100%;
+   	margin-left: 0;
+   	margin-top: 0;
 }
 
 .open-LoadedImage-active {
