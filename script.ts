@@ -34,7 +34,6 @@ class Website {
 
 	private gallery: Element;
 	private imageElements: NodeList;
-	private activeImage: Element;
 
 	constructor() {}
 
@@ -252,7 +251,7 @@ class Website {
 		}, Website.SCROLL_DELAY);
 	}
 
-	/* Marks the clicked image as active if it wasn't already, deselecting the previous active image if it exists. */
+	/* Toggles expansion on clicked image. */
 	private imageClick(e: Event): void {
 		e.stopImmediatePropagation();
 
@@ -263,22 +262,14 @@ class Website {
 			clickedImage = clickedImage.parentElement;
 		}
 
-		const activeImage = this.activeImage;
-		if (activeImage) {
-			activeImage.classList.remove(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
-			activeImage.firstElementChild.classList.remove(Website.ACTIVE_IMAGE_CLASS);
-			this.activeImage = null;
-			
-			const imageAlreadyActive = activeImage === clickedImage;
-			if (imageAlreadyActive) {
-				return;
-			}
-
+		if (clickedImage.classList.contains(Website.ACTIVE_IMAGE_WRAPPER_CLASS)) {
+			clickedImage.classList.remove(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+			clickedImage.firstElementChild.classList.remove(Website.ACTIVE_IMAGE_CLASS);
 		}
-
-		this.activeImage = clickedImage;
-		clickedImage.classList.add(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
-		clickedImage.firstElementChild.classList.add(Website.ACTIVE_IMAGE_CLASS);
+		else {
+			clickedImage.classList.add(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+			clickedImage.firstElementChild.classList.add(Website.ACTIVE_IMAGE_CLASS);
+		}
 	}
 
 	// Program Start

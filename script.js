@@ -192,7 +192,7 @@ var Website = (function () {
             }
         }, Website.SCROLL_DELAY);
     };
-    /* Marks the clicked image as active if it wasn't already, deselecting the previous active image if it exists. */
+    /* Toggles expansion on clicked image. */
     Website.prototype.imageClick = function (e) {
         e.stopImmediatePropagation();
         var clickedImage = e.target;
@@ -200,19 +200,14 @@ var Website = (function () {
         if (childClicked) {
             clickedImage = clickedImage.parentElement;
         }
-        var activeImage = this.activeImage;
-        if (activeImage) {
-            activeImage.classList.remove(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
-            activeImage.firstElementChild.classList.remove(Website.ACTIVE_IMAGE_CLASS);
-            this.activeImage = null;
-            var imageAlreadyActive = activeImage === clickedImage;
-            if (imageAlreadyActive) {
-                return;
-            }
+        if (clickedImage.classList.contains(Website.ACTIVE_IMAGE_WRAPPER_CLASS)) {
+            clickedImage.classList.remove(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+            clickedImage.firstElementChild.classList.remove(Website.ACTIVE_IMAGE_CLASS);
         }
-        this.activeImage = clickedImage;
-        clickedImage.classList.add(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
-        clickedImage.firstElementChild.classList.add(Website.ACTIVE_IMAGE_CLASS);
+        else {
+            clickedImage.classList.add(Website.ACTIVE_IMAGE_WRAPPER_CLASS);
+            clickedImage.firstElementChild.classList.add(Website.ACTIVE_IMAGE_CLASS);
+        }
     };
     // Program Start
     Website.prototype.Main = function () {
