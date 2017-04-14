@@ -168,38 +168,29 @@ var Website = (function () {
             }
         });
         // After a second the tile will be fully expanded, so begin scrolling it into view
+        var scrollContainer = this.scrollElement.parentElement;
         this.timeoutHandle = setTimeout(function () {
             _this.intervalHandle = setInterval(function () {
-                var differenceY = _this.scrollElement.scrollTop - tile.offsetTop;
-                var shouldScrollDown = differenceY < 0;
-                var scrollComplete = shouldScrollDown ? differenceY >= -Website.SCROLL_FINE_STEP : differenceY < Website.SCROLL_FINE_STEP;
-                if (shouldScrollDown) {
-                    if (scrollComplete) {
-                        clearInterval(_this.intervalHandle);
-                    }
-                    else if (differenceY >= -Website.SCROLL_STEP) {
-                        _this.scrollElement.scrollTop = tile.offsetTop - Website.SCROLL_FINE_STEP;
-                    }
-                    else {
-                        _this.scrollElement.scrollTop = _this.scrollElement.scrollTop + Website.SCROLL_STEP;
-                    }
+                var differenceY = scrollContainer.scrollTop - tile.offsetTop;
+                var scrollComplete = differenceY === 0;
+                if (scrollComplete) {
+                    clearInterval(_this.intervalHandle);
                 }
                 else {
-                    if (scrollComplete) {
-                        clearInterval(_this.intervalHandle);
-                    }
-                    else if (differenceY <= Website.SCROLL_STEP) {
-                        _this.scrollElement.scrollTop = tile.offsetTop - Website.SCROLL_FINE_STEP;
+                    var shouldScrollDown = differenceY < 0;
+                    var shouldSnap = shouldScrollDown ? differenceY >= -Website.SCROLL_STEP : differenceY <= Website.SCROLL_STEP;
+                    if (shouldSnap) {
+                        scrollContainer.scrollTop = tile.offsetTop;
                     }
                     else {
-                        _this.scrollElement.scrollTop = _this.scrollElement.scrollTop - Website.SCROLL_STEP;
+                        scrollContainer.scrollTop += shouldScrollDown ? Website.SCROLL_STEP : -Website.SCROLL_STEP;
                     }
                 }
-            }, 30);
+            }, Website.SCROLL_INTERVAL);
             if (_this.timeoutHandle) {
                 clearTimeout(_this.timeoutHandle);
             }
-        }, 1000);
+        }, Website.SCROLL_DELAY);
     };
     /* Marks the clicked image as active if it wasn't already, deselecting the previous active image if it exists. */
     Website.prototype.imageClick = function (e) {
@@ -254,6 +245,8 @@ Website.FEATURED_TILE_NAMES = ["moniacweb", "b365"];
 Website.RECENT_TILE_NAMES = ["website2017", "moniac", "dx11", "website", "stats", "water", "ab", "fps", "placement", "hush", "dx9"];
 Website.SCROLL_STEP = 30;
 Website.SCROLL_FINE_STEP = 10;
+Website.SCROLL_INTERVAL = 30;
+Website.SCROLL_DELAY = 1000; // The time waited for a tile open/close animation to finish before beginning autoscroll
 Website.ACTIVE_IMAGE_WRAPPER_CLASS = "open-Image-active";
 Website.ACTIVE_IMAGE_CLASS = "open-LoadedImage-active";
 var website = new Website();

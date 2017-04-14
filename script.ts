@@ -12,6 +12,8 @@ class Website {
 	private static RECENT_TILE_NAMES = ["website2017", "moniac", "dx11", "website", "stats", "water", "ab", "fps", "placement", "hush", "dx9"];
 	private static SCROLL_STEP = 30;
 	private static SCROLL_FINE_STEP = 10;
+	private static SCROLL_INTERVAL = 30;
+	private static SCROLL_DELAY = 1000; // The time waited for a tile open/close animation to finish before beginning autoscroll
 	private static ACTIVE_IMAGE_WRAPPER_CLASS = "open-Image-active";
 	private static ACTIVE_IMAGE_CLASS = "open-LoadedImage-active";
 
@@ -224,39 +226,30 @@ class Website {
 		});
 		
 		// After a second the tile will be fully expanded, so begin scrolling it into view
+		const scrollContainer = this.scrollElement.parentElement;
 		this.timeoutHandle = setTimeout(() => {
 			this.intervalHandle = setInterval(() => {
-				const differenceY = this.scrollElement.scrollTop - tile.offsetTop;
-				const shouldScrollDown = differenceY < 0;
-				const scrollComplete = shouldScrollDown ? differenceY >= -Website.SCROLL_FINE_STEP : differenceY < Website.SCROLL_FINE_STEP;
-				if (shouldScrollDown) {
-					if (scrollComplete) {
-						clearInterval(this.intervalHandle);
-					}
-					else if (differenceY >= -Website.SCROLL_STEP) {
-						this.scrollElement.scrollTop = tile.offsetTop - Website.SCROLL_FINE_STEP;
-					}
-					else {
-						this.scrollElement.scrollTop = this.scrollElement.scrollTop + Website.SCROLL_STEP;
-					}
+				const differenceY = scrollContainer.scrollTop - tile.offsetTop;
+				const scrollComplete = differenceY === 0;
+				if (scrollComplete) {
+					clearInterval(this.intervalHandle);
 				}
 				else {
-					if (scrollComplete) {
-						clearInterval(this.intervalHandle);
-					}
-					else if (differenceY <= Website.SCROLL_STEP) {
-						this.scrollElement.scrollTop = tile.offsetTop - Website.SCROLL_FINE_STEP;
+					const shouldScrollDown = differenceY < 0;
+					const shouldSnap = shouldScrollDown ? differenceY >= -Website.SCROLL_STEP : differenceY <= Website.SCROLL_STEP;
+					if (shouldSnap) {
+						scrollContainer.scrollTop = tile.offsetTop;
 					}
 					else {
-						this.scrollElement.scrollTop = this.scrollElement.scrollTop - Website.SCROLL_STEP;
+						scrollContainer.scrollTop += shouldScrollDown ? Website.SCROLL_STEP : -Website.SCROLL_STEP;
 					}
 				}
-			}, 30);
+			}, Website.SCROLL_INTERVAL);
 			
 			if (this.timeoutHandle) {
 				clearTimeout(this.timeoutHandle);
 			}
-		}, 1000);
+		}, Website.SCROLL_DELAY);
 	}
 
 	/* Marks the clicked image as active if it wasn't already, deselecting the previous active image if it exists. */
