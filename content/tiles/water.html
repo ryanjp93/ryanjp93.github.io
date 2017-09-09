@@ -1,0 +1,104 @@
+<div class="openWrapper">	
+	<header class="openTitle">High Quality Water Shader</header>
+	<p class="openSubtitle">HLSL, Shaders</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> HLSL<br/>
+		<span class="bold">Tools:</span> Custom Engine (used for rendering, see DirectX11 Render Core)<br/>
+		<span class="bold">Year:</span> 2015<br/>
+		<span class="bold">Team Size:</span> Solo<br/>
+		<span class="bold">Reason:</span> University<br/>
+	</p>
+	<p class="openDescription">
+		<span class="bold">Overview<br/></span>
+		The aim of this project was to produce realistic looking water using the High-Level Shader Language (HLSL). All of the calculations occur in real-time and are layered
+		on top of each other to produce a complicated effect</span>
+	</p>
+	<div class="openVideoBackground">
+		<video class="openVideo" controls>
+  			<source src="content/videos/water.mp4" type="video/mp4">
+			HTML5 video is not supported in your browser.
+		</video>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Breakdown<br/></span>
+		The images below correspond to each step number...<br/>
+		1) Before the program is run, the water is a flat colourless plane.<br/>
+		2) The plane is given a colour which ranges between dark blue (deep waves) and light blue (shallow waves). However, the wave at this point is still flat.<br/>
+		3) Using a complicated algorithm, Gerstner Waves are combined and used to displace the plane's vertices. This causes it to move in a manner similar to real water.<br/>
+		4) Using the newly generated normals from the vertex displacement, a reflection is applied on the water from the skybox around it.<br/>
+		5) Simple lighting is taken into account and in this case that is in the form of the moon which circles around the ocean in the sky, causing shadows and lit areas.<br/>
+		6) Refraction and Fresnel reflection equations are applied to the final water colours to make the water react with lighting and reflections in a more natural way.<br/>
+		7) Finally, High-Dynamic-Range (HDR) lighting is applied by reading hidden values stored in the alpha channel of the skybox texture.<br/>
+		8/9) Because the water colours are generated dynamically from the skybox, if the skybox is changed then the water colour adjusts to it automatically.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">water.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-0.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-1.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-2.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-3.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-4.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-5.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+				</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-6.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">water-7.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Comments<br/></span>
+		This project became quite the learning experience as I rewrote the shader entirely at least five times before I was pleased with the water's appearance. In all, the maths
+		was the hardest part of the project as every step had some kind of long algorithm attached to it.
+	</p>
+</div>

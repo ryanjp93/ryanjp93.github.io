@@ -1,0 +1,67 @@
+<div class="openWrapper">	
+	<p class="openTitle">DirectX11 Render Core</p>
+	<p class="openSubtitle">C++, HLSL, DirectX11, Shaders, Graphics</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> C++ (core), HLSL (shaders)<br/>
+		<span class="bold">Tools:</span>  DirectX11<br/>
+		<span class="bold">Year:</span>  2015<br/>
+		<span class="bold">Team Size:</span>  Solo<br/>
+		<span class="bold">Reason:</span>  University -> Personal Interest<br/>
+	</p>
+	<p class="openDescription">
+		<span class="bold">Overview<br/></span>
+		This project attempts to create a render core capable of creating scenes with a variety of impressive graphical effects, most notably using shaders. The core is programmed in C++ using 
+		Microsoft's DirectX11 SDK and the shaders are programmed in High-Level Shader Language (HLSL). The core contains a number of generic shaders for effects such as reflections, bump mapping 
+		and lighting. It also contains some more impressive specific shaders for effects such as skyboxes, terrain generation and water. While these shaders make up the majority of the project
+		focus, a great deal of time was also invested in decoupling the core as much as possible to offer a more modular design where adding a new effect is as simple as dropping in a shader file
+		and linking the parts of the core that it requires.
+	</p>
+	<div class="openVideoBackground">
+		<video class="openVideo" controls>
+  			<source src="content/videos/dx11.mp4" type="video/mp4">
+			HTML5 video is not supported in your browser.
+		</video>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Effect Breakdown<br/></span>
+		- <span class="bold">Skybox</span>: A textured cube which is always drawn behind everything else in the world, creating the illusion of sky. Achieved by disabling the z bugger and culling for the
+		object.<br/>
+		- <span class="bold">Lighting</span>: Fairly standard stuff- uses ambient, diffuse and specular to highlight and shade parts of an object to better represent their shape. See the water tile
+		for a breakdown of the more complicated lighting that occurs on the water.<br/>
+		- <span class="bold">Environment/reflection mapping</span>: Takes the point of view and line of sight to a point on an object. The angle at which this line intersects the object is calculated
+		to determine the point on the environment (i.e. the skybox) which should be shown on the original object.<br/>
+		- <span class="bold">Bump/normal mapping</span>: A texture containing new surface normals for an object is used when calculating lighting and reflections to give in the impression of "bumps"
+		or detail on an object. In reality it is just a trick of the lights and no vertex manipulation occurs.<br/>
+		- <span class="bold">Terrain generation</span>: Similar to bump mapping in the way it works. However, the texture (known as a height map) is used to offset vertices rather than calculate lighting.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">dx11-scene.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">dx11-reflection.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">dx11-bumpmap.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Comments<br/></span>
+		Prior to working on this project I had already worked on two rendering cores in C++ with DirectX9 as part of university and another in JavaScript with WebGL while on work placement. This core,
+		however, is completely unrelated to both of those. Although this was a university project, most of my work on the core itself was not required as part of the course and not worth extra
+		credit. I did it purely out of a personal interest in learning how to make a render core from scratch, starting with a completely blank project and taking time to consider how it should be
+		structured. The main difficulties for this project were in the binding of shader resources and finding alternatives to deprecated DirectX tools.
+	</p>
+</div>

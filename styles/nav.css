@@ -1,0 +1,109 @@
+.nav {
+	margin-left: 10px;
+}
+
+.tabWrapper {
+	display: inline-block;
+	padding-top: 20px;
+	padding-right: 12px;
+	padding-left: 12px;
+	overflow: hidden;
+}
+
+.tab {
+	display: inline-block;
+	font-size: 16px;
+	line-height: 28px;
+	padding-left: 14px;
+	padding-right: 14px;
+	color: #eee;
+	background-color: #383838;
+	cursor: pointer;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	box-shadow: 0 0 20px 0 rgb(0, 0, 0);	
+    	background-image: url("content/images/cubes.png");
+    	background-size: 40px;
+}
+
+.tab:hover {
+	background-color: #27ae60;
+}
+
+.tab-active {
+	background: 0;
+	cursor: default;
+	z-index: 1;
+	position: relative;
+	background-color: #27ae60;
+   	background-image: url("content/images/paper.png");
+    	text-shadow: 2px 0 0 #383838, -2px 0 0 #383838, 0 2px 0 #383838, 0 -2px 0 #383838, 1px 1px #383838, -1px -1px 0 #383838, 1px -1px 0 #383838, -1px 1px 0 #383838;
+}
+
+.tab-active:hover{
+	background-color: #27ae60;
+}
+
+.tabText {
+	display: none;
+	padding-left: 3px;
+}
+
+@media (min-width: 370px) {
+	.tab {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+}
+
+@media (min-width: 480px) {
+	.nav {
+		margin-left: 30px;
+	}	
+}
+
+@media (min-width: 600px) {
+	.tabText {
+		display: inline;
+	}
+}
+
+@media (min-width: 800px) {
+	.tabWrapper {
+		padding-left: 18px;
+		padding-right: 18px;
+	}
+	
+	.tab {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.nav {
+		margin-left: 40px;
+	}
+
+	.tabWrapper {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	
+	.tab {
+		font-size: 18px;
+		line-height: 32px;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.tab {
+		font-size: 21px;
+		line-height: 36px;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+}

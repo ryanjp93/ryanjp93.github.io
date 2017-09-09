@@ -1,0 +1,201 @@
+<div class="openWrapper">
+	<p class="openTitle">Bet365</p>
+	<p class="openSubtitle">TypeScript, HTML, CSS, Flash, IE8, Web</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> TypeScript<br/>
+		<span class="bold">Tools:</span> HTML, CSS, Legacy Systems<br/>
+		<span class="bold">Year:</span> 2016-2017<br/>
+		<span class="bold">Team Size:</span> 2-20<br/>
+		<span class="bold">Reason:</span> Work<br/>
+	</p>
+	<p class="openDescription">
+		<span class="bold">Overview<br/></span>
+		I worked at Bet365 in central Manchester for a year as a Junior Developer on a newly created eight (growing to twenty) man agile team during the company's biggest development project to date. This 
+		project, known internally as the HTML5 project, involved converting the entire Flash based Bet365 website to use TypeScript. Due to the sheer amount of features on the site and the volume of data dealt with,
+		this took just over a year to complete.
+	</p>
+	<p class="openDescription">
+		<span class="bold">Company Background<br/></span>
+		Bet365 is a large business which employs over two thousand people, a large portion of which are developers. Based in Stoke, it is the biggest private employer in the area and sponsors the Stoke City
+		football team. Recently the company opened a new branch in central Manchester which employs another several hundred people. Bet365 is the biggest online gambling site and holds an Alexa rank 
+		of 199 at the time of writing, additionally it places in the top 50 websites in India. The site supports hundreds of sports from thousands of leagues around the world, from which it receives an extremely
+		large amount of data such as odds, stats and position data every second. For many years, the Bet365 website was written entirely in Flash due to shortcomings in support from older browsers (notably Internet 
+		Explorer 6) for some of the site's features. When Google announced that Chrome would start displaying warning messages on Flash websites from December 2016, the company began its HTML5 project. 
+		This project was a huge success and, according to internal testing, made the site the fastest by quite a margin compared to competitors.
+	</p>
+	<p class="openDescription">
+		<span class="bold">My Work<br/></span>
+		During my time at Bet365 I worked primarily on the overarching HTML5 project. This project was split into several hundred work items comprising of the entire functionality of the previous Flash site. For small
+		projects, this work was typically one component to one project (e.g. a popup or button) which would essentially be a solo piece of work. For the larger projects it was often a related group of components
+		under one project (e.g. streaming functionality) and in these cases the team would distribute the smaller component work in a sprint meeting. The typical workflow for working on a solo project was: receive task
+		overview with designs from design team, iron out details with team leader, program and style component, browser test component, submit for peer review, submit for code QA, submit to design for further testing.
+		From this point on the component would go through numerous phases of testing outside of the development team before eventually being rolled out to live. During downtime, I was free to pick whichever bugs or 
+		features I wanted to work from from a large pool of unallocated work items. Once the HTML5 project went live at the end of 2016, our team's work became more experimental in nature with some of the projects 
+		involving research or discussion as opposed to working from pre-written specifications. Throughout the year I became trusted in my knowledge of CSS in particular, as the team lacked a specialist after their 
+		contract expired a soon after I joined, as well as TypeScript, being one of the few people on the project to have a background in it.
+	</p>
+	<p class="openDescription">
+		<span class="bold">Match Lives<br/></span>
+		My first main project after joining the company involved working on the company's "Match Live" components. Match Lives are video-like SVG animations which read in data from external providers to simulate a game
+		in progress by displaying detailed match statistics and pin-point events in real time. These componetns had been completed many years prior but were all written entirely in Flash. To port them over, the
+		animation engine had to be remade, the data had to be hooked up to the new sources and a large number of adjustments had to be made to the CSS. The task was divided up into sports, with everyone given a few
+		that they were entirely responsible for. The first sport I worked on was ice hockey. Ice Hockey had an extra complexity which had not been picked up in the design phase in that the match live component, like many
+		of the others, contained a timeline. Unlike the others however, the ice hockey timeline had a great deal of extra functionality in that its fill colour changes depending on the mode of the game and highlighting
+		it displays a layered tooltip. Ultimately I was given free reign on implementing this timeline provided that it matched the specification.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">b365-ml-1.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-ml-2.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		Much later in the year I was asked to form a two man team to design a proof of concept for bringing the Match Live components to Internet Explorer 8. A decision made at the start of the initial port was that they
+		would remain using Flash until after the HTML site had gone live to save time where it was considered overly complicated to port the animation engine due to the browser's shortcomings. I was asked to work on this
+		project specifically due to my experience in writing CSS compliant with older browsers and because I had been involved in the original Match Live project. This proof of concept was presented at the main Stoke 
+		branch and very well received as we had delivered an unexpected amount of the original features intact (we were expected to cut things that were deemed too difficult to reproduce in IE8). Because of this, our two
+		man team was assigned the entire project.
+	</p>
+	<p class="openDescription">
+		<span class="bold">Reality Check and Inactivity Popups</span><br/>
+		As part of a legal obligation in some countries, gambling websites must help users who suffer from addiction. One of the ways Bet365 aimed to do that was with reality checks. Reality checks are essentially user
+		defined time-outs which display a popup when the timer expires. My work on this project was fairly minimal, simply creating the popup and hooking it up to the existing time-out system.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">b365-rc.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Media Streaming Buttons<br/></span>
+		One of my solo projects during the year was to create a set of buttons for each sport to show whether there is a video stream, Match Live or audio stream available. The specification for this behaviour had
+		changed from the Flash buttons and so it was made from scratch as opposed to a port. The original rules given to me were as follows: <br/>
+		- If only a video stream is available, show a video button.<br/>
+		- If only a Match Live is available, show a Match Live button.<br/>
+		- If only an audio stream is available, show nothing.<br/>
+		- If a video stream and a Match Live is available, show only a video button.<br/>
+		- Highlight button if stream is active or moused over
+		<br/>
+		After development was complete, the rules were changed because the system was needlessly complicated and so the current version on the website simply shows whatever is available. The primary difficulty in this
+		project came from needing to hook the buttons up to the streaming API, responsible for keeping track of available and active streams, which had not been fully written at the time.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">b365-media-buttons.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Audio Streaming Pod<br/></span>
+		I was involved in a project to port over a rather complicated audio steaming feature from the original Flash site. This project was split into three main parts: an audio pod component which sits on the home page
+		of the website, a volume control panel which sits on the in-play page of the website, and the streaming logic which hooks up to main media streaming API. At the start of the project I was given a set of designs 
+		from the design team on how they wanted the components to look and act. Creating these was a straightforward task which I broke down into several steps: create a generic volume slider (since both components had
+		different ones), hook up the stop/start button and generate the available streams popup. The streaming side of the project turned out to be the difficult part as the streaming system on the website has a lot of
+		rules such as defaulting to certain types of streams based on game popularity and allowing a user to listen to audio from on stream while watching video from another simultaneously. Additionally there is a lock
+		feature which allows a user to change the active page without the audio automatically switching to the new one, a setting which also needs to be remembered the next time they log in.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">b365-audio-1.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-audio-2.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Push Notification Project<br/></span>
+		One of the bigger projects I was involved in after the end of the HTML5 project was the push notifications project, a project encompassing several phases with the ultimate goal of allowing a user to receive 
+		various types of notifications as events occur in games they are subscribed to. During the first phase, a clickable avatar icon was added to the top corner of the page and clicking on it opens up a popup. 
+		This popup hosts the account management settings and has a great deal of complexity where it communicates with several services to send and receive balance, locale and user settings. As with my other projects,
+		I was responsible for all of the popup's styling and a large chunk of the functionality.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">b365-account-1.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-account-2.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		The second phase of this project involved working on various popups scattered around the site. These popups allow a user to subscribe to fixtures and receive notifications of their choice on specific game
+		events. Additionally, a larger popup is placed at the tournament level to allow them to manage all of their subscriptions as a group. This system is a lot more complicated than it appears as pre-game,
+		in-game and tournament-level notification subscriptions are all considered to be different things and the way they interact is case by case and very tangled. The tournament-level popup was one of my
+		largest solo pieces of work while at the company as, in addition to the complicated subscription management, it interacts with a number of services to request information on fixtures and teams.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">b365-alerts-1.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-alerts-3.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-alerts-4.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-alerts-5.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">b365-alerts-2.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Comments<br/></span>
+		My time at Bet365 was extremely positive, I consistently met deadlines and received a great deal of praise for my work. My skills also improved dramatically over the year- particularly with CSS, TypeScript and
+		optimization in both. Working on such a large scale project with a good team of people was a great experience. 
+	</p>
+</div>

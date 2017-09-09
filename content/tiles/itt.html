@@ -1,0 +1,118 @@
+<div class="openWrapper">
+	<p class="openTitle">IntactTactic Website</p>
+	<p class="openSubtitle">TypeScript, HTML, CSS, Web</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> TypeScript<br/>
+		<span class="bold">Tools:</span> HTML, CSS, Third Party Services<br/>
+		<span class="bold">Year:</span> 2017<br/>
+		<span class="bold">Team Size:</span> Solo<br/>
+		<span class="bold">Reason:</span> Request (unprofessional- from a friend)<br/>
+	</p>
+	<p class="openDescription">
+		<span class="bold">Design Specification<br/></span>
+		The client for <a href="www.intacttactic.co.uk" target="_blank">this website</a> is a <a class="downloadLink" href="http://twitter.com/IntactTactic" target="_blank">Twitter user</a> and blogger with 1500 followers
+		and reader numbers ranging between 300 and 2000 depending on the type of blog post. They requested a site to replace their existing WordPress one which had a number of shortcomings such as a
+		bad mobile version and a very simplistic overall design. Although I was given free reign on design, a set of requirements were produced through questioning and taking the client's audience 
+		statistics into account:
+	</p>
+	<p class="openDescription">
+		- <span class="bold">Mobile/responsive focus:</span> around 65% of the user base are on mobile<br/>
+		- <span class="bold">Performant:</span> mobile users tend to have performance constraints and slower speeds<br/>
+		- <span class="bold">Direct linking:</span> necessary to promote posts on twitter<br/>
+		- <span class="bold">Searching:</span> the client expects to eventually have a large number of posts<br/>
+		- <span class="bold">Twitter feed:</span> Twitter is the foundation of the user base and so it should be interlinked<br/>
+		- <span class="bold">Analytics and user statistics:</span> The WordPress site had this, to not have it would be a downgrade<br/>
+		- <span class="bold">Ads:</span> the client is working on increasing their user base, ads would cover hosting costs<br/>
+	</p>
+	<p class="openDescription">
+		In terms of visuals, I decided that an edgy, clean look would complement the client's modern, stat-focused blogging style. I also limited the colour range to three main colours that I felt fit this theme.
+		Due to the user base being Twitter focused, I also took two elements of its design and incorporated them into the site. Firstly, the top bar which fixes itself to the top of the screen as 
+		the page is scrolled and secondly, the fixed background on the client's Twitter feed. This was also worked into the lock screen style landing page that the site now has.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">itt-desktop-view-landing.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">itt-desktop-view.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Site Responsiveness<br/></span>
+		Like the other sites showcased on this portfolio, this site utilises a number of responsive design traits such as media query breakpoints and table/flexbox styling. Building around mobile proved
+		to be a good decision, as the site's main content styling remains essentially unchanged across all devices. The Twitter feed is hidden on devices smaller than an iPad and the ads are shuffled 
+		around to different places instead. To better accommodate phone users, the main menu bar shown on the landing page also snaps to the top of the screen when the user scrolls past it. The smallest
+		supported device is the iPhone 5, one of which is shown below (on real hardware).
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">itt-mob-view.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Lazy Loading Adverts and Twitter<br/></span>
+		A slightly unusual complexity in this site lies in the page ads, as ads typically do not play nice with media breakpoints. The ads themselves do not resize and are always loaded at a fixed 
+		size. This would mean that desktop ads have little chance of fitting on a mobile screen and mobile ads would look very out of place on a desktop screen. Loading in eight different ads (two for
+		mobile, two for large mobile, two for tablet and two for desktop) and simply hiding or unhiding them based on the browser window size would not be acceptable as it would slow down the initial 
+		loading time for mobile users. I therefore decided that a lazy loading approach would be best- load only the two relevant ads and listen for resize events to swap in new ones. While this was
+	        easy to implement for the Twitter feed (as it does not show on small devices), it was surprisingly difficult for the ads as some of them use a document.write call. Document.write is a function
+	        that will only ever fire before a page is loaded, any use after that point will be ignored. Given that I wanted the adds to load as requested, this meant I had to partially rewrite the ad scripts.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">itt-mob-ad-view.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">itt-tablet-portrait-ad-view.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">itt-tablet-large-portrait-ad-view.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">itt-tablet-large-landscape-ad-view.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Fixed Background Image<br/></span>
+		While visually impressive, the fixed background brought its fair share of problems. On iOS there is a bug in the way background-size: cover is handled when used with background-attachment: fixed
+		to do with the way it reads the size of the document body. This bug causes the background to become stretched out and unrecognisable. To fix it, I put the background on a pseudo-element 
+		attached to the document body itself and fixing its position. While this solved the bug, I was not happy with the scroll lag it seemed to have generated. I eventually discovered two reasons for 
+		this, the first being an unrelated scroll event listener which was constantly changing a CSS property, and the second being that when a fixed background is scrolled, it causes
+		a repaint on every scroll event. After some research, I found that setting will-change: transform on the element tells the browser to allocate it its own layer, reducing the impact of constant paints.
+	</p>
+	<p class="openDescription">
+		<span class="bold">Performance and Optimization<br/></span>
+		In addition to the work on reducing the number of ad requests and the number of scroll paints, I used a number of other small optimizations. Whenever a request is made for a post or image, they
+	       	are cached temporarily in case the user navigates to a page or runs a search which includes the same post or image. At the point the page is loaded, it checks this cache before making any requests
+		and can make loading times appear instant, even on mobile. Fewer requests also means a lower data impact of using the site for mobile users. The final and most simple optimization was to ensure 
+		that all of thee site assets were web optimized and minified.
+	</p>
+</div>

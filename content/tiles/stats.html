@@ -1,0 +1,56 @@
+<div class="openWrapper">
+	<header class="openTitle">Football Stat Crawler</header>
+	<p class="openSubtitle">JavaScript, Python, Nightmare.js, Web Crawler</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> JavaScript (data gathering), Python (run script, spreadsheet manipulation)<br/>
+		<span class="bold">Tools:</span> Nightmare.js<br/>
+		<span class="bold">Year:</span> 2016<br/>
+		<span class="bold">Team Size:</span> Solo<br/>
+		<span class="bold">Reason:</span> Request (unprofessional- from a friend)<br/>
+	</p>
+	<p class="openDescription">
+		<span class="bold">Overview<br/></span>
+		Detailed statistics from football games are not easy to find without buying an expensive <a class="downloadLink" href="http://www.optasports.com/" target="_blank">Opta</a> subscription.
+		The aim of this project was to find a way to interpret an SVG element hosted on a specific <a class="downloadLink" href="http://www.squawka.com/match-results" target="_blank">website</a> 
+		to determine how many shots each team had in different zones of the pitch and automatically write this information to the given spreadsheet for every match that week.
+	</p>
+	<p class="openDescription">
+		<span class="bold">Program Breakdown<br/></span>
+		<span class="bold">Run script</span>: Ties the program together, responsible for starting the components sequentially and reporting problems to the console. Also retries connections should
+		they drop. Capable of taking in some parameters to specify how many games to strip and spreadsheet position data. Written in Python.<br/>
+		<span class="bold">Browser automation</span>: Navigates to the page in a virtual browser and simulates clicks to a few buttons to make the necessary information load using Nighmare.js. Once
+	        this is finished it treats the page like a normal web page, calling functions such as getElementsByClassName and reading in element positions to strip the relevant information. Written in
+		JavaScript.<br/>
+		<span class="bold">Spreadsheet manipulation</span>: Compiles the JSON data output by the automation part, makes sense of it and writes it to the given spreadsheet.<br/>
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">stats-automation.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">stats-run.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">stats-spreadsheet.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Comments<br/></span>
+		Prior to starting this project I had expected to face most of the challenge in trying to interpret the SVG data. However, since the website had used simple CSS selectors it was straightforward to 
+		gather the information. Instead, the difficulty came from finding a browser automation library. I had initially planned to use Phantom.js but after encountering a number of problems I found that 
+		the Nightmare.js library, which sits on top of Phantom.js, was much easier to use. Another unexpected issue came from the requests to the website occasionally stalling, likely due to the website
+		not loading in time after automated mouse clicks. The spreadsheet manipulation was also unexpectedly straightforward due to Pythons's xlrd package.
+	</p>
+</div>

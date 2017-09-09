@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"target": "es5",
+		"outFile": "script.js"
+	},
+	"files": [
+		"content.ts",
+		"tile.ts",
+		"nav.ts",
+		"script.ts"
+	]
+}	

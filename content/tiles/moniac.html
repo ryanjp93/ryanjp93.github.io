@@ -1,0 +1,97 @@
+<div class="openWrapper">
+	<p class="openTitle">Phillips Hydraulic Computer</p>
+	<p class="openSubtitle">C#, WPF, SharpDX, Software, GUI, MVVM</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> C#<br/>
+		<span class="bold">Tools:</span> WPF, SharpDX<br/>
+		<span class="bold">Year:</span> 2013 - 2015<br/>
+		<span class="bold">Team Size:</span> Solo<br/>
+		<span class="bold">Reason:</span> University (dissertation)<br/>
+	</p>
+	<div class="openVideoBackground">
+		<video class="openVideo" controls>
+  			<source src="content/videos/moniac.mp4" type="video/mp4">
+			HTML5 video is not supported in your browser.
+		</video>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Background<br/></span>
+		The original Phillips Machine, or Monetary National Income Analogue Computer (MONIAC), was a hydraulic representation of cash flow within the UK economy in the early 20th
+		century. The machine was used to represent the circular flow of income, shown by the economic equation Aggregate Demand = Consumer Expenditure + Investment + Government
+		Spending + (Exports - Imports), or Y = C + I + G + (X - M), which is an important equation in determining an economy's output. While these machines were originally
+		restricted to military and government use, with the rise of digital computing and fall of Keynesian Economics, they no longer see use outside of museums and universities.
+		As a dissertation, the aim of this project was to digitally reproduce the original, with as many of the original features as possible.
+	</p>
+	<p class="openDescription">
+		<span class="bold">The Circular Flow of Income<br/></span>
+		The basic flow of the original machine has water (cash) enters at the top of the machine (as income), where it flows downward through the various pipes and tanks (sectors
+		of the economy) until it arrives at the bottom (as national output) and is pumped back to the top of the machine (completing the circular flow). The machine uses
+		a complicated system of strings, weights and pulleys to enable a user to manipulate this model with economic factors such as interest rates and taxes to see how the
+		economy would be affected as a whole.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">moniac-bill-phillips.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">moniac-blueprint.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Overview<br/></span>
+		The project is programmed in C# and split into three main parts: the GUI part, the graphics part and the unit tests. In addition to the standard C# libraries, the GUI part
+		uses Windows Presentation Foundation (WPF) and the graphics part uses the SharpDX Toolkit. While each of these parts generally work separately, the GUI hosts the simulation's
+		window, which can be considered the output of the graphics part. In order to make this interaction simpler, the model-view-viewmodel (MVVM) design pattern is used to keep the
+		two as separate as possible outside of the window hosting. While running, stats are continually logged to a chart and highlighting any part of the machine produces a description
+		of the targeted area.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">moniac-home.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">moniac-simulation.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">moniac-simulation-tooltip.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">moniac-logging.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Comments<br/></span>
+		I originally decided on this topic for my dissertation because it offered me the chance to combine economics, which was my favourite subject at A Level, and programming, which was
+		my university focus. Understanding the original machine and planning how to adapt each part, such as the water flow, would make up the majority of this project's difficulty.
+	</p>
+	<p class="openDescription">
+		The project was well received, winning a "Best Overall Performance" award and being one of twelve dissertations published to the University of Huddersfield's 2016 Fields
+		journal. This can be downloaded <a class="downloadLink" href="http://eprints.hud.ac.uk/26730/" target="_blank">here</a> and contains more detail on the project, an installer for
+		the software can also be found <a class="downloadLink" href="https://onedrive.live.com/redir?resid=54DE7EFF7828975F!722&authkey=!AFuZ2AgSJoCGIis&ithint=file%2czip"
+		target="_blank">here</a>.
+	</p>
+</div>

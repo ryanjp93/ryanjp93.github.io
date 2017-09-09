@@ -1,0 +1,81 @@
+<div class="openWrapper">
+	<header class="openTitle">DirectX9 Render Core</header>
+	<p class="openSubtitle">C++, DirectX9, Graphics</p>
+	<p class="openDescription">
+		<span class="bold">Programming Language:</span> C++<br/>
+		<span class="bold">Tools:</span> DirectX9<br/>
+		<span class="bold">Year:</span> 2012<br/>
+		<span class="bold">Team Size:</span> Solo<br/>
+		<span class="bold">Reason:</span> University<br/>
+	</p>
+	<p class="openDescription">
+		<span class="bold">Overview<br/></span>
+		This render core is created using C++ with Microsoft's DirectX9 SDK. It features a number of effects which are considered dated by today's standards but visually impressive regardless.
+		This is the oldest project on this site and is improved on in every aspect by the DirectX11 Render Core.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">dx9.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">dx9-1.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">dx9-3.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Feature Breakdown<br/></span>
+		- <span class="bold">Lighting</span>: The environment is lit using a directional light which hits the ground at an angle to simulate the sun. This light is also responsible for casting the main
+		shadows in the scene. There is also a point light which follows the player around and is orange in colour, aiming to simulate a lantern. Finally, there is a plane flying around in the sky which
+		shoots a spotlight at the ground from below it.<br/>
+		- <span class="bold">Skybox</span>: A textured cube which is always drawn behind everything else in the world, creating the illusion of sky. Achieved by disabling the z bugger and culling for the
+		object.<br/>
+		- <span class="bold">Particle effects</span>: It is possible to turn on rain or snow weather effects in the options. These work by creating hundreds of small objects (particles) which move around
+		- <span class="bold">Collision detection</span>: Using a technique called ray casting, the first person camera checks for collisions with objects and walls and
+		prevents the player from walking through them. The terrain the player walks on has a number of hills and slopes, rays are continually cast downwards to keep the player walking inline
+		with the terrain (as opposed to falling through it or hovering over it).<br/>
+		through the sky. Each mapped with a simple texture which is white for snow and blue for rain. Snow will typically move randomly (except upwards), whereas rain will always move downwards at an angle.<br/>
+		- <span class="bold">Alpha transparency</span>: Uses alpha blending and testing to correctly render the leaves on the trees (which are flat textures) without causing clipping issues.<br/>
+		- <span class="bold">Render quality</span>: The core utilizes anti-aliasing and texture filtering to smooth the edges of objects in the scene.<br/>
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">dx9-2.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">dx9-aa.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">dx9-alpha.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
+	<p class="openDescription">
+		<span class="bold">Comments<br/></span>
+		This project looks like it could be part of a game released ten years ago, which is not bad considering it was used to help me get to grips with graphics programming and 3D maths.
+	</p>
+</div>
