@@ -242,10 +242,6 @@ var Nav = (function () {
         this.webTab = this.tabs[2];
         this.appsTab = this.tabs[3];
         this.content = new Content();
-        if (Browser.IS_IOS) {
-            var nav = document.getElementsByClassName("nav")[0];
-            nav.classList.add("nav-fixed");
-        }
         for (var i = 0; i < this.tabs.length; i++) {
             this.tabs[i].addEventListener("click", function (e) {
                 var targetElement = e.target;
