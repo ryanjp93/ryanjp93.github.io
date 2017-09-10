@@ -2,6 +2,10 @@
 	margin-left: 10px;
 }
 
+.nav-fixed {
+	height: 48px;
+}
+
 .tabWrapper {
 	display: inline-block;
 	padding-top: 20px;

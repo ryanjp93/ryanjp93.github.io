@@ -9,6 +9,11 @@ class Nav {
 	private content = new Content();
 
 	constructor() {
+		if (Browser.IS_IOS) {
+			const nav = document.getElementsByClassName("nav")[0];
+			nav.classList.add("nav-fixed");
+		}
+		
 		for (let i = 0; i < this.tabs.length; i++) {
 			this.tabs[i].addEventListener("click", (e: Event) => {
 				let targetElement = e.target as HTMLElement;
