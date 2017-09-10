@@ -13,6 +13,8 @@ var Content = (function () {
     function Content() {
         this.element = document.getElementsByClassName("content")[0];
         if (Browser.IS_IE11) {
+            var foreground = document.getElementsByClassName("foreground")[0];
+            foreground.classList.add("foreground-fixed");
             this.element.classList.add("content-fixed");
         }
     }

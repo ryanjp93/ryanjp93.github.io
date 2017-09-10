@@ -32,6 +32,9 @@ class Content {
 	
 	constructor() {
 		if (Browser.IS_IE11) {
+			const foreground = document.getElementsByClassName("foreground")[0];
+			foreground.classList.add("foreground-fixed");
+			
 			this.element.classList.add("content-fixed");
 		}
 	}

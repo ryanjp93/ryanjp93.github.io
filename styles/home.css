@@ -7,7 +7,7 @@
     	margin-right: auto;
 }
 
-.content-fixedWidth > .welcomeHeader {
+.content-fixed > .welcomeHeader {
 	width: 90%;
 }
 
@@ -224,7 +224,7 @@
 	    	max-width: 80%;
 	}	
 
-	.content-fixedWidth > .welcomeHeader {
+	.content-fixed > .welcomeHeader {
 		width: 80%;
 	}
 	

@@ -119,3 +119,9 @@ body {
 		left: 50px;
 	}
 }
+
+@media (min-width: 1720px) {
+	.foreground-fixed {
+		width: 1620px;
+	}
+}
