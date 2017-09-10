@@ -9,10 +9,9 @@ class Content {
 
 	private static readonly FADE_CLASS = "fade";
 	
-	private static readonly SCROLL_STEP = 60;
-	private static readonly SCROLL_FINE_STEP = 20;
-	private static readonly SCROLL_INTERVAL = 30;
-	private static readonly SCROLL_DELAY = 1000; // The time waited for a tile open/close animation to finish before beginning autoscroll
+	private static readonly SCROLL_STEP = 80;
+	private static readonly SCROLL_INTERVAL = 20;
+	private static readonly SCROLL_DELAY = 500; // The time waited for a tile open/close animation to finish before beginning autoscroll
 	
 	private element = document.getElementsByClassName("content")[0];
 	private tilesWrapper: Element;
@@ -120,20 +119,19 @@ class Content {
 	public scrollToActiveTile(): void {
 		if (this.intervalHandle) {
 			clearInterval(this.intervalHandle);
-		}
+		}	
 		
-		setTimeout(() => {	
+		setTimeout(() => {
+			if (!this.activeTile || !this.activeTile.getElement()) {
+				return;
+			}
+
 			const activeTileElement = this.activeTile.getElement() as HTMLElement;
-			const tileStyle = window.getComputedStyle(activeTileElement);
-
-			const marginTop = parseInt(tileStyle.marginTop) / 2;
-			let targetTop = activeTileElement.offsetTop - marginTop;
-			//	if (marginTop > 8) {
-			//	const paddingTop = parseInt(tileStyle.paddingTop);
-			//	targetTop = targetTop + paddingTop;
-			//}
-
 			const scrollContainer = this.element;
+			
+			const tileStyle = window.getComputedStyle(activeTileElement);
+			const marginTop = parseInt(tileStyle.marginTop) / 2;
+			const targetTop = activeTileElement.offsetTop - marginTop;
 		
 			// After a second the tile will be fully expanded, so begin scrolling it into view
 			this.intervalHandle = setInterval(() => {

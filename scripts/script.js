@@ -92,15 +92,14 @@ var Content = (function () {
             clearInterval(this.intervalHandle);
         }
         setTimeout(function () {
+            if (!_this.activeTile || !_this.activeTile.getElement()) {
+                return;
+            }
             var activeTileElement = _this.activeTile.getElement();
+            var scrollContainer = _this.element;
             var tileStyle = window.getComputedStyle(activeTileElement);
             var marginTop = parseInt(tileStyle.marginTop) / 2;
             var targetTop = activeTileElement.offsetTop - marginTop;
-            //	if (marginTop > 8) {
-            //	const paddingTop = parseInt(tileStyle.paddingTop);
-            //	targetTop = targetTop + paddingTop;
-            //}
-            var scrollContainer = _this.element;
             // After a second the tile will be fully expanded, so begin scrolling it into view
             _this.intervalHandle = setInterval(function () {
                 var differenceY = scrollContainer.scrollTop - targetTop;
@@ -128,10 +127,9 @@ var Content = (function () {
     Content.LOCAL_SERVER = location.hostname === "localhost" || location.hostname === "127.0.0.1";
     Content.CONTENT_DIRECTORY = Content.LOCAL_SERVER ? "/website-3.0/content/" : "/content/";
     Content.FADE_CLASS = "fade";
-    Content.SCROLL_STEP = 60;
-    Content.SCROLL_FINE_STEP = 20;
-    Content.SCROLL_INTERVAL = 30;
-    Content.SCROLL_DELAY = 1000; // The time waited for a tile open/close animation to finish before beginning autoscroll
+    Content.SCROLL_STEP = 80;
+    Content.SCROLL_INTERVAL = 20;
+    Content.SCROLL_DELAY = 500; // The time waited for a tile open/close animation to finish before beginning autoscroll
     return Content;
 }());
 var Tile = (function () {
@@ -157,7 +155,12 @@ var Tile = (function () {
                 _this.previewHTML = _this.element.innerHTML;
             };
             backgroundImage.src = Tile.IMAGES_DIRECTORY + tileName + "-bw.png";
-            element.addEventListener("click", function () { return _this.content.setActiveTile(_this); });
+            element.addEventListener("click", function (e) {
+                if (e.target.nodeName === "A") {
+                    return; // If the user clicked a link, keep the tile open
+                }
+                _this.content.setActiveTile(_this);
+            });
             content.announceTileLoad();
         });
     }
@@ -204,6 +207,7 @@ var Tile = (function () {
                 imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
                 imageElement.addEventListener("click", function (e) {
                     e.stopPropagation();
+                    window.open(backgroundImage.src, '_blank');
                 });
             };
             backgroundImage.src = Tile.IMAGES_DIRECTORY + imageName;

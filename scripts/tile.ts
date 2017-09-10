@@ -39,11 +39,17 @@ class Tile {
 				backgroundImage.classList.add("tileLoadedImage");
 				imageElement.innerHTML = ""; // Clear the loading animation
 				imageElement.appendChild(backgroundImage); // Image has now finished loading so append it
-				this.previewHTML = this.element.innerHTML;
+				this.previewHTML = this.element.innerHTML	
 			}
 			backgroundImage.src = Tile.IMAGES_DIRECTORY + tileName + "-bw.png";
 			
-			element.addEventListener("click", () => this.content.setActiveTile(this));
+			element.addEventListener("click", (e) => {
+				if ((e.target as HTMLElement).nodeName === "A") {
+					return;	// If the user clicked a link, keep the tile open
+				}
+				
+				this.content.setActiveTile(this);
+			});
 
 			content.announceTileLoad();
 		});
@@ -98,6 +104,7 @@ class Tile {
 				
 				imageElement.addEventListener("click", (e) => {
 					e.stopPropagation();
+					window.open(backgroundImage.src, '_blank');
 				});
 			}
 			backgroundImage.src = Tile.IMAGES_DIRECTORY + imageName;
@@ -111,7 +118,7 @@ class Tile {
 			});
 		}
 
-		this.content.scrollToActiveTile();	
+		this.content.scrollToActiveTile();
 	}	
 
 	private loadPreview(html: string): void { 
