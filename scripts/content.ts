@@ -31,7 +31,7 @@ class Content {
 	private intervalHandle: number;
 	
 	constructor() {
-		if (Browser.IS_EDGE) {
+		if (Browser.IS_IE11) {
 			this.element.classList.add("content-fixed");
 		}
 	}

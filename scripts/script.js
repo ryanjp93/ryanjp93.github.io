@@ -6,12 +6,13 @@ var Browser = (function () {
     Browser.IS_IOS = /iPad|iPhone|iPod/.test(window.navigator.userAgent) && !window.MSStream;
     Browser.IS_IOS_CHROME = window.navigator.userAgent.match("CriOS");
     Browser.IS_CHROME = window.chrome !== null && window.chrome !== undefined && window.navigator.vendor === "Google Inc." && !Browser.IS_OPERA && !Browser.IS_EDGE;
+    Browser.IS_IE11 = !!window.MSInputMethodContext && !!document.documentMode;
     return Browser;
 }());
 var Content = (function () {
     function Content() {
         this.element = document.getElementsByClassName("content")[0];
-        if (Browser.IS_EDGE) {
+        if (Browser.IS_IE11) {
             this.element.classList.add("content-fixed");
         }
     }
