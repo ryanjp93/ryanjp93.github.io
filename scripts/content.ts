@@ -144,6 +144,7 @@ class Content {
 					const shouldSnap = shouldScrollDown ? differenceY >= -Content.SCROLL_STEP : differenceY <= Content.SCROLL_STEP;
 					if (shouldSnap) {
 						scrollContainer.scrollTop = targetTop;
+						clearInterval(this.intervalHandle);
 					} else {
 						scrollContainer.scrollTop += shouldScrollDown ? Content.SCROLL_STEP : -Content.SCROLL_STEP;
 					}

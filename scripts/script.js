@@ -112,6 +112,7 @@ var Content = (function () {
                     var shouldSnap = shouldScrollDown ? differenceY >= -Content.SCROLL_STEP : differenceY <= Content.SCROLL_STEP;
                     if (shouldSnap) {
                         scrollContainer.scrollTop = targetTop;
+                        clearInterval(_this.intervalHandle);
                     }
                     else {
                         scrollContainer.scrollTop += shouldScrollDown ? Content.SCROLL_STEP : -Content.SCROLL_STEP;
@@ -222,9 +223,7 @@ var Tile = (function () {
                 e.stopPropagation();
             });
         }
-        if (!Browser.IS_IE11) {
-            this.content.scrollToActiveTile();
-        }
+        this.content.scrollToActiveTile();
     };
     Tile.prototype.loadPreview = function (html) {
         var element = this.element;
