@@ -222,7 +222,9 @@ var Tile = (function () {
                 e.stopPropagation();
             });
         }
-        this.content.scrollToActiveTile();
+        if (!Browser.IS_IE11) {
+            this.content.scrollToActiveTile();
+        }
     };
     Tile.prototype.loadPreview = function (html) {
         var element = this.element;

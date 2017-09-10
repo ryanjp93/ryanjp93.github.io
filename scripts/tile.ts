@@ -118,7 +118,9 @@ class Tile {
 			});
 		}
 
-		this.content.scrollToActiveTile();
+		if (!Browser.IS_IE11) {
+			this.content.scrollToActiveTile();
+		}
 	}	
 
 	private loadPreview(html: string): void { 
