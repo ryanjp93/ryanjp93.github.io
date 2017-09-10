@@ -7,6 +7,7 @@ body {
 	font-family: 'latoregular';
 	font-size: 0;
 	color: #383838;
+	overflow: hidden;
 }
 
 .background {
