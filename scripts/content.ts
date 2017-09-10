@@ -30,7 +30,11 @@ class Content {
 
 	private intervalHandle: number;
 	
-	constructor() {}
+	constructor() {
+		if (Browser.IS_EDGE) {
+			this.element.classList.add("content-fixed");
+		}
+	}
 
 	public getTileWrapper(): Element {
 		return this.tilesWrapper;

@@ -5,6 +5,7 @@
 		"outFile": "script.js"
 	},
 	"files": [
+		"browser.ts",
 		"content.ts",
 		"tile.ts",
 		"nav.ts",

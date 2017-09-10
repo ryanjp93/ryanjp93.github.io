@@ -1,6 +1,19 @@
+var Browser = (function () {
+    function Browser() {
+    }
+    Browser.IS_OPERA = window.navigator.userAgent.indexOf("OPR") > -1;
+    Browser.IS_EDGE = window.navigator.userAgent.indexOf("Edge") > -1;
+    Browser.IS_IOS = /iPad|iPhone|iPod/.test(window.navigator.userAgent) && !window.MSStream;
+    Browser.IS_IOS_CHROME = window.navigator.userAgent.match("CriOS");
+    Browser.IS_CHROME = window.chrome !== null && window.chrome !== undefined && window.navigator.vendor === "Google Inc." && !Browser.IS_OPERA && !Browser.IS_EDGE;
+    return Browser;
+}());
 var Content = (function () {
     function Content() {
         this.element = document.getElementsByClassName("content")[0];
+        if (Browser.IS_EDGE) {
+            this.element.classList.add("content-fixed");
+        }
     }
     Content.prototype.getTileWrapper = function () {
         return this.tilesWrapper;

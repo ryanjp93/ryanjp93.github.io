@@ -20,11 +20,11 @@
 	
 	/* Modern IE scrollbars */
 	scrollbar-3dlight-color: #383838;
-	scrollbar-arrow-color: #b22222;
+	scrollbar-arrow-color: transparent;
 	scrollbar-base-color: #383838;
 	scrollbar-darkshadow-color: #383838;
 	scrollbar-face-color: #383838;
-	scrollbar-highlight-color: #b22222;
+	scrollbar-highlight-color: transparent;
 	scrollbar-shadow-color: #383838;
 }
 

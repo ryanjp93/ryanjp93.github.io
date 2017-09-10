@@ -7,6 +7,10 @@
     	margin-right: auto;
 }
 
+.content-fixedWidth > .welcomeHeader {
+	width: 90%;
+}
+
 .headerTopWrapper {
 	text-align: left;
 }
@@ -219,6 +223,10 @@
 	.welcomeHeader {
 	    	max-width: 80%;
 	}	
+
+	.content-fixedWidth > .welcomeHeader {
+		width: 80%;
+	}
 	
 	.headerTop {
 		font-size: 16px;
