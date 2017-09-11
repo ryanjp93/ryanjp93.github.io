@@ -77,9 +77,13 @@
 	font-size: 13px;
 	padding-left: 2px;
 	padding-right: 2px;
-	padding-bottom: 6px;
+	margin-bottom: 6px;
 	text-align: center;
 	color: #eee;
+}
+
+.contact {
+	height: 39px;
 }
 
 .contactGroup {
@@ -115,12 +119,20 @@
 }
 
 @media (min-width: 360px) {
+	.contact {
+		height: 41px;
+	}
+	
 	.cutin {
 		font-size: 12px;
 	}
 }
 
 @media (min-width: 400px) {
+	.contact {
+		height: 46px;
+	}
+	
 	.cutin {
 		font-size: 13px;
 		padding: 6px;
@@ -153,7 +165,7 @@
 	}
 
 	.subtitle {
-		padding-bottom: 16px;
+		margin-bottom: 16px;
 	}
 }
 
@@ -172,13 +184,13 @@
 
 	.subtitle {
 		font-size: 14px;
-		padding-left: 4px;
-		padding-right: 4px;
-		padding-bottom: 8px;
+		margin-left: 4px;
+		margin-right: 4px;
+		margin-bottom: 8px;
 	}
 
 	.contact {
-		border-spacing: 5px;
+		height: 42px;
 	}
 
 	.contactText {
@@ -204,7 +216,7 @@
 	}
 
 	.contact {
-		border-spacing: 8px;
+		height: 50px;
 	}
 
 	.contactText {
@@ -244,7 +256,7 @@
 	}
 
 	.contact {
-		border-spacing: 40px;
+		height: 71px;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -266,7 +278,11 @@
 		padding-left: 60px;
 		padding-right: 60px;
 	}
-	
+
+	.contact {
+		height: 82px;
+	}
+
 	.cutin {
 		font-size: 21px;
     		padding: 16px 28px;
