@@ -19,9 +19,14 @@
     	background-image: url("content/images/cubes.png");
 }
 
+
 .tile:hover {
 	color: #383838;
 	background-color: #EEE;
+}
+
+.tile.tile-noTransition {
+	transition: none;
 }
 
 .tile.tile-active {

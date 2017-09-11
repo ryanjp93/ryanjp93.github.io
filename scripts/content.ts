@@ -32,8 +32,13 @@ class Content {
 	private intervalHandle: number;
 	
 	constructor() {
-		// IE11 has issues dealing with max sizes on flex containers, fixed sizes used instead in these cases
-		if (Browser.IS_IE11) {
+		const iosVersion = Browser.GetIOSVersion()[0];
+		if (!Browser.IS_IOS_CHROME && iosVersion !== 0 && iosVersion < 10) {
+			const contentWrapper = document.getElementsByClassName("contentWrapper")[0];
+			contentWrapper.classList.add("contentWrapper-shifted");
+		}
+		else if (Browser.IS_IE11) {
+			// IE11 has issues dealing with max sizes on flex containers, fixed sizes used instead in these cases
 			const foreground = document.getElementsByClassName("foreground")[0];
 			foreground.classList.add("foreground-fixed");
 			
@@ -96,8 +101,15 @@ class Content {
 			this.tilesLoaded = 0;
 			this.tilesToLoad = this.pageData.length;
 
+			// iOS versions 10, 10.1 and 10.2 have a bug which causes transition csss to play backwards. Fixed in iOS 10.3
+			let disableTransitions = false;
+			const iosVersion = Browser.GetIOSVersion();
+			if (!Browser.IS_IOS_CHROME && iosVersion[0] === 10 && (iosVersion[1] === 0 || iosVersion[1] === 1 || iosVersion[1] === 2)) {
+				disableTransitions = true;
+			}
+
 			for (let i = 0; i < this.pageData.length; i++) {
-				new Tile(this, this.pageData[i], this.isBigTilePage);
+				new Tile(this, this.pageData[i], this.isBigTilePage, disableTransitions);
 			};
 		} else {
 			if (this.homePageHTML) {

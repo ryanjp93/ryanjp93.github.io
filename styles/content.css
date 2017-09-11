@@ -8,6 +8,10 @@
    	background-image: url("content/images/paper.png");
 }
 
+.contentWrapper-shifted {
+	margin-top: 8px;
+}
+
 .content {
 	position: absolute;
     	top: 9%;

@@ -15,7 +15,7 @@ class Tile {
 	private tileHTML: string;
 	private previewHTML: string;
 	
-	constructor(content: Content, tileName: string, isBigTilePage: boolean) {
+	constructor(content: Content, tileName: string, isBigTilePage: boolean, disableTransitions: boolean) {
 		this.content = content;
 		this.tileName = tileName;
 
@@ -24,6 +24,10 @@ class Tile {
 
 		if (isBigTilePage) {
 			element.classList.add("tile-large");
+		}
+
+		if (disableTransitions) {
+			element.classList.add("tile-noTransitions");
 		}
 
 		content.getTileWrapper().appendChild(element);	

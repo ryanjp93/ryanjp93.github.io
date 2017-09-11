@@ -1,6 +1,14 @@
 var Browser = (function () {
     function Browser() {
     }
+    Browser.GetIOSVersion = function () {
+        if (!Browser.IS_IOS) {
+            return [0, 0, 0];
+        }
+        var rawVersion = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+        console.log(rawVersion);
+        return [parseInt(rawVersion[1], 10), parseInt(rawVersion[2], 10), parseInt(rawVersion[3] || "0", 10)];
+    };
     Browser.IS_OPERA = window.navigator.userAgent.indexOf("OPR") > -1;
     Browser.IS_EDGE = window.navigator.userAgent.indexOf("Edge") > -1;
     Browser.IS_IOS = /iPad|iPhone|iPod/.test(window.navigator.userAgent) && !window.MSStream;
@@ -12,8 +20,13 @@ var Browser = (function () {
 var Content = (function () {
     function Content() {
         this.element = document.getElementsByClassName("content")[0];
-        // IE11 has issues dealing with max sizes on flex containers, fixed sizes used instead in these cases
-        if (Browser.IS_IE11) {
+        var iosVersion = Browser.GetIOSVersion()[0];
+        if (!Browser.IS_IOS_CHROME && iosVersion !== 0 && iosVersion < 10) {
+            var contentWrapper = document.getElementsByClassName("contentWrapper")[0];
+            contentWrapper.classList.add("contentWrapper-shifted");
+        }
+        else if (Browser.IS_IE11) {
+            // IE11 has issues dealing with max sizes on flex containers, fixed sizes used instead in these cases
             var foreground = document.getElementsByClassName("foreground")[0];
             foreground.classList.add("foreground-fixed");
             this.element.classList.add("content-fixed");
@@ -64,8 +77,14 @@ var Content = (function () {
             this.element.appendChild(this.tilesWrapper);
             this.tilesLoaded = 0;
             this.tilesToLoad = this.pageData.length;
+            // iOS versions 10, 10.1 and 10.2 have a bug which causes transition csss to play backwards. Fixed in iOS 10.3
+            var disableTransitions = false;
+            var iosVersion = Browser.GetIOSVersion();
+            if (!Browser.IS_IOS_CHROME && iosVersion[0] === 10 && (iosVersion[1] === 0 || iosVersion[1] === 1 || iosVersion[1] === 2)) {
+                disableTransitions = true;
+            }
             for (var i = 0; i < this.pageData.length; i++) {
-                new Tile(this, this.pageData[i], this.isBigTilePage);
+                new Tile(this, this.pageData[i], this.isBigTilePage, disableTransitions);
             }
             ;
         }
@@ -137,7 +156,7 @@ var Content = (function () {
     return Content;
 }());
 var Tile = (function () {
-    function Tile(content, tileName, isBigTilePage) {
+    function Tile(content, tileName, isBigTilePage, disableTransitions) {
         var _this = this;
         this.content = content;
         this.tileName = tileName;
@@ -145,6 +164,9 @@ var Tile = (function () {
         element.classList.add("tile");
         if (isBigTilePage) {
             element.classList.add("tile-large");
+        }
+        if (disableTransitions) {
+            element.classList.add("tile-noTransitions");
         }
         content.getTileWrapper().appendChild(element);
         Website.HttpRequest(Tile.PREVIEWS_DIRECTORY + tileName + ".html", function (html) {
