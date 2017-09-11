@@ -71,6 +71,7 @@
     	background-color: #383838;
     	background-size: 40px;
     	background-image: url("content/images/cubes.png");
+	min-height: 100px;
 }
 
 .subtitle {
@@ -80,10 +81,6 @@
 	margin-bottom: 6px;
 	text-align: center;
 	color: #eee;
-}
-
-.contact {
-	height: 39px;
 }
 
 .contactGroup {
@@ -119,20 +116,12 @@
 }
 
 @media (min-width: 360px) {
-	.contact {
-		height: 41px;
-	}
-	
 	.cutin {
 		font-size: 12px;
 	}
 }
 
 @media (min-width: 400px) {
-	.contact {
-		height: 46px;
-	}
-	
 	.cutin {
 		font-size: 13px;
 		padding: 6px;
@@ -187,10 +176,6 @@
 		margin-left: 4px;
 		margin-right: 4px;
 		margin-bottom: 8px;
-	}
-
-	.contact {
-		height: 42px;
 	}
 
 	.contactText {
@@ -256,7 +241,6 @@
 	}
 
 	.contact {
-		height: 71px;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -277,10 +261,6 @@
 	.headerMiddle {
 		padding-left: 60px;
 		padding-right: 60px;
-	}
-
-	.contact {
-		height: 82px;
 	}
 
 	.cutin {
