@@ -8,7 +8,9 @@ class Content {
 	public static readonly CONTENT_DIRECTORY = Content.LOCAL_SERVER ? "/website-3.0/content/" : "/content/";
 
 	private static readonly FADE_CLASS = "fade";
-	
+	private static readonly TILE_PAGE_CLASS = "content-tilePage";
+	private static readonly FADE_DELAY = 100; // Fade will usually just occur on load, but for cached content there needs to be a slight delay
+
 	private static readonly SCROLL_STEP = 80;
 	private static readonly SCROLL_INTERVAL = 20;
 	private static readonly SCROLL_DELAY = 500; // The time waited for a tile open/close animation to finish before beginning autoscroll
@@ -30,6 +32,7 @@ class Content {
 	private intervalHandle: number;
 	
 	constructor() {
+		// IE11 has issues dealing with max sizes on flex containers, fixed sizes used instead in these cases
 		if (Browser.IS_IE11) {
 			const foreground = document.getElementsByClassName("foreground")[0];
 			foreground.classList.add("foreground-fixed");
@@ -84,7 +87,7 @@ class Content {
 		this.element.classList.remove(Content.FADE_CLASS);
 
 		if (this.isTilePage) {
-			this.element.classList.add("content-tilePage");
+			this.element.classList.add(Content.TILE_PAGE_CLASS);
 
 			this.tilesWrapper = document.createElement("div");
 			this.tilesWrapper.classList.add("tilesWrapper");
@@ -101,15 +104,15 @@ class Content {
 				this.element.innerHTML = this.homePageHTML;
 
 				setTimeout(() => {
-					this.element.classList.remove("content-tilePage");
+					this.element.classList.remove(Content.TILE_PAGE_CLASS);
 					this.element.classList.add(Content.FADE_CLASS); // Fade in content
-				}, 100);
+				}, Content.FADE_DELAY);
 			} else {
 				Website.HttpRequest(this.pageData[0], (tabHTML: string) => {
 					this.homePageHTML = tabHTML;
 					this.element.innerHTML = tabHTML;
 				
-					this.element.classList.remove("content-tilePage");
+					this.element.classList.remove(Content.TILE_PAGE_CLASS);
 					this.element.classList.add(Content.FADE_CLASS); // Fade in content
 				});
 			}

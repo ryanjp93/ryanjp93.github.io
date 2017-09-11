@@ -1,4 +1,6 @@
 class Nav {
+	private static readonly ACTIVE_TAB_CLASS = "tab-active";
+	
 	private tabs = document.getElementsByClassName("tab");
 	private homeTab = this.tabs[0];
 	private bestTab = this.tabs[1];
@@ -29,10 +31,10 @@ class Nav {
 		}
 		
 		if (this.activeTab) {
-			this.activeTab.classList.remove("tab-active");
+			this.activeTab.classList.remove(Nav.ACTIVE_TAB_CLASS);
 		}
 
-		clickedTab.classList.add("tab-active");
+		clickedTab.classList.add(Nav.ACTIVE_TAB_CLASS);
 		this.activeTab = clickedTab;
 
 		let pageData: string[] = [];

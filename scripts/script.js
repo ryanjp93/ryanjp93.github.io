@@ -12,6 +12,7 @@ var Browser = (function () {
 var Content = (function () {
     function Content() {
         this.element = document.getElementsByClassName("content")[0];
+        // IE11 has issues dealing with max sizes on flex containers, fixed sizes used instead in these cases
         if (Browser.IS_IE11) {
             var foreground = document.getElementsByClassName("foreground")[0];
             foreground.classList.add("foreground-fixed");
@@ -57,7 +58,7 @@ var Content = (function () {
         this.element.innerHTML = "";
         this.element.classList.remove(Content.FADE_CLASS);
         if (this.isTilePage) {
-            this.element.classList.add("content-tilePage");
+            this.element.classList.add(Content.TILE_PAGE_CLASS);
             this.tilesWrapper = document.createElement("div");
             this.tilesWrapper.classList.add("tilesWrapper");
             this.element.appendChild(this.tilesWrapper);
@@ -72,15 +73,15 @@ var Content = (function () {
             if (this.homePageHTML) {
                 this.element.innerHTML = this.homePageHTML;
                 setTimeout(function () {
-                    _this.element.classList.remove("content-tilePage");
+                    _this.element.classList.remove(Content.TILE_PAGE_CLASS);
                     _this.element.classList.add(Content.FADE_CLASS); // Fade in content
-                }, 100);
+                }, Content.FADE_DELAY);
             }
             else {
                 Website.HttpRequest(this.pageData[0], function (tabHTML) {
                     _this.homePageHTML = tabHTML;
                     _this.element.innerHTML = tabHTML;
-                    _this.element.classList.remove("content-tilePage");
+                    _this.element.classList.remove(Content.TILE_PAGE_CLASS);
                     _this.element.classList.add(Content.FADE_CLASS); // Fade in content
                 });
             }
@@ -128,6 +129,8 @@ var Content = (function () {
     Content.LOCAL_SERVER = location.hostname === "localhost" || location.hostname === "127.0.0.1";
     Content.CONTENT_DIRECTORY = Content.LOCAL_SERVER ? "/website-3.0/content/" : "/content/";
     Content.FADE_CLASS = "fade";
+    Content.TILE_PAGE_CLASS = "content-tilePage";
+    Content.FADE_DELAY = 100; // Fade will usually just occur on load, but for cached content there needs to be a slight delay
     Content.SCROLL_STEP = 80;
     Content.SCROLL_INTERVAL = 20;
     Content.SCROLL_DELAY = 500; // The time waited for a tile open/close animation to finish before beginning autoscroll
@@ -263,9 +266,9 @@ var Nav = (function () {
             return;
         }
         if (this.activeTab) {
-            this.activeTab.classList.remove("tab-active");
+            this.activeTab.classList.remove(Nav.ACTIVE_TAB_CLASS);
         }
-        clickedTab.classList.add("tab-active");
+        clickedTab.classList.add(Nav.ACTIVE_TAB_CLASS);
         this.activeTab = clickedTab;
         var pageData = [];
         var isTilePage = false;
@@ -289,6 +292,7 @@ var Nav = (function () {
         this.content.setPageData(pageData, isTilePage, isBigTilePage);
         this.content.load();
     };
+    Nav.ACTIVE_TAB_CLASS = "tab-active";
     return Nav;
 }());
 var Website = (function () {

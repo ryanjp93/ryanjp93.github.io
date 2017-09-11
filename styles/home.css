@@ -82,17 +82,14 @@
 	color: #eee;
 }
 
-.contact {
-	display: flex;
-	width: 100%;
-}
-
 .contactGroup {
+	display: inline-block;
 	width: 32%;
 }
 
 .contactSpacer {
-	width: 3%;
+	display: inline-block;
+	width: 2%;
 }
 
 .contactText {
