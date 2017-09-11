@@ -104,7 +104,7 @@ class Content {
 			// iOS versions 10, 10.1 and 10.2 have a bug which causes transition csss to play backwards. Fixed in iOS 10.3
 			let disableTransitions = false;
 			const iosVersion = Browser.GetIOSVersion();
-			if (!Browser.IS_IOS_CHROME && iosVersion[0] === 10 && (iosVersion[1] === 0 || iosVersion[1] === 1 || iosVersion[1] === 2)) {
+			if (Browser.IS_IOS && !Browser.IS_IOS_CHROME && !(iosVersion[0] === 10 && iosVersion[1] === 3)) {
 				disableTransitions = true;
 			}
 
