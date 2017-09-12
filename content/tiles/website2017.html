@@ -10,18 +10,84 @@
 	</p>
 	<p class="openDescription">
 		<span class="bold">Overview<br/></span>
-		Coming Soon
+		The original version of this website was created in 2015 but primarily used the skills that I had picked up on placement several years prior. While it is functionally acceptable, I was not particularly 
+		confident with CSS at the time, which can be seen in the rather simple and lacking design. My goal this time around was to rewrite the portfolio from scratch, keeping lessons learned in mind from 
+		the previous iteration and ensuring that it was improved in just about every way.
 	</p>
 	<p class="openDescription">
-		<span class="bold">Responsiveness<br/></span>
-		Coming Soon
+		<span class="bold">Design<br/></span>
+		There were two main things I had in mind when I designed the site this time around. Firstly, the responsive design had become difficult to maintain last time but is nonetheless important and secondly
+		the original site was no longer a good representation of my skills but I liked its basic design idea. I therefore worked with the idea that I should make the site more visually impressive, while keeping
+		it functionally no more complicated than the original. The biggest influence this had on the design was in the scrapping of the left hand side nav panel on wider views as it is now kept at the top of the 
+		page at all times. In terms of aesthetics, I wanted to tie into the idea that a user is looking at my portfolio, so the theme of the website is a folder that might be seen in a school. As with my other 
+		work, I limited myself to three main colours, this time with no real significance beyond that I like them together.
 	</p>
+	<p class="openDescription">
+		<span class="bold">Simplified Responsiveness<br/></span>
+		The original website was designed with responsiveness in mind and was definitely successful in its goal of adapting to a large number of screen sizes and device types. However, it was also very complicated
+		to work with for a number of reasons. One such reason is due to the number of media queries. Fortunately I was able to reduce the number of them by a fair amount by working with content breakpoints (fixing 
+		content as it begins to overflow or look strange) rather than specific device or resolution breakpoints (fixing content so that it looks good at x resolution). As previously mentioned, having the navigation
+		panel stay at the top of the page rather than moving to the left for desktop played a big part in helping to simplify this aswell. Another simplification was in picking a smallest supported device (320x480
+		iPhone 5) and a largest supported device (1920x1080 monitor, though the site scales infinitely) in addition to a set of oldest supported browsers (latest FF and Chrome, IE11 and Edge, Safari running iOS 9+) rather 
+		than trying to support everything. Another reason the site had become difficult to maintain before was due to a lot of CSS taking objects out of the document flow through extensive use of absolute positioning 
+		and floated elements. This time around floats were removed altogether and absolute positioning is only used where strictly necessary.
+	</p>
+	<div class="openImageWrapper">
+		<div class="openImage">
+			<span class="hidden">website2017-desktop-home.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">website2017-mobile-portrait-home.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">website2017-mobile-landscape-home.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">website2017-desktop-tiles.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">website2017-mobile-portrait-tiles.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+		<div class="openImage">
+			<span class="hidden">website2017-mobile-landscape-tiles.png</span>
+			<div class="openSpinner">
+				<div class="openBounce1"></div>
+				<div class="openBounce2"></div>
+			</div>	
+		</div>
+	</div>
 	<p class="openDescription">
 		<span class="bold">Performance<br/></span>
-		Coming Soon
-	</p>
-	<p class="openDescription">
-		<span class="bold">Comments<br/></span>
-		Coming Soon
+		Outside of design, likely the area in the most dire need of improvement was the performance. While it didn't struggle before, it was quite inefficient in that the assets weren't minified and no attempt was
+		made to cache content received through http requests. The area of the website that most suffered from this poor optimization was the tile page. The large filesizes meant that preview images
+		weren't loaded quickly on mobile. After minifying the assets, I improved this by implementing loading icons for all images on the website to give more feedback to the user. Within the tiles themselves 
+		I have made improvements to the scrolling so that the tiles are painted on their own seperate layer (huge performance improvement in Chrome in particular) and replaced the embedded YouTube videos with HTML5 videos.
+		Additionally, tiles are now only fetched once via http request as they are used and then kept cached. For example:<br/>
+		1) User navigates to tile page - http request for all tile previews<br/>
+		2) User selects a tile - single http request for selected tile content<br/>
+		3) User closes tile - the tile's preview exists in the cache, so no http request is sent<br/>
+		4) User selects same tile - the tile's content exists in the cache, so no http request is sent<br/>
+		Due to the website being a single page website, if a user were to change pages and then return back to the same page, no http request would be sent for the tile previews the second time as they would still
+		be kept cached.
 	</p>
 </div>
