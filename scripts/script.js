@@ -1,4 +1,4 @@
-var Browser = (function () {
+var Browser = /** @class */ (function () {
     function Browser() {
     }
     Browser.GetIOSVersion = function () {
@@ -17,7 +17,7 @@ var Browser = (function () {
     Browser.IS_IE11 = !!window.MSInputMethodContext && !!document.documentMode;
     return Browser;
 }());
-var Content = (function () {
+var Content = /** @class */ (function () {
     function Content() {
         this.element = document.getElementsByClassName("content")[0];
         var iosVersion = Browser.GetIOSVersion()[0];
@@ -155,7 +155,7 @@ var Content = (function () {
     Content.SCROLL_DELAY = 500; // The time waited for a tile open/close animation to finish before beginning autoscroll
     return Content;
 }());
-var Tile = (function () {
+var Tile = /** @class */ (function () {
     function Tile(content, tileName, isBigTilePage, disableTransitions) {
         var _this = this;
         this.content = content;
@@ -263,7 +263,7 @@ var Tile = (function () {
     Tile.ACTIVE_IMAGE_CLASS = "open-LoadedImage-active";
     return Tile;
 }());
-var Nav = (function () {
+var Nav = /** @class */ (function () {
     function Nav() {
         var _this = this;
         this.tabs = document.getElementsByClassName("tab");
@@ -317,7 +317,7 @@ var Nav = (function () {
     Nav.ACTIVE_TAB_CLASS = "tab-active";
     return Nav;
 }());
-var Website = (function () {
+var Website = /** @class */ (function () {
     function Website() {
         new Nav();
     }

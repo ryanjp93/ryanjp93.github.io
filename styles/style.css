@@ -92,7 +92,7 @@ body {
 	font-size: 30px;
 }
 
-@media (min-width: 700px) and (min-height: 700px) {
+@media (min-width: 700px) and (min-height: 630px) {
 	.foreground {
     		top: 50%;
     		right: 20px;
@@ -114,7 +114,7 @@ body {
 	}
 }
 
-@media (min-width: 1000px) and (min-height: 700px) {
+@media (min-width: 1000px) and (min-height: 630px) {
 	.foreground {
     		right: 50px;
 		left: 50px;
